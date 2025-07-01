@@ -1,0 +1,237 @@
+{
+  "FOOTER": {
+    "DESCRIPTION": "ARID Foundation se dedica a avanzar en la investigación académica e innovación mediante la colaboración con instituciones e investigadores de todo el mundo.",
+    "QUICK_LINKS": "Enlaces rápidos",
+    "CONTACT_US": "Contáctenos",
+    "ADDRESS": "123 Calle del Conocimiento, Distrito de Investigación, Riad, Arabia Saudita",
+    "WORKING_HOURS": "Domingo - Jueves: 8:00 AM - 4:00 PM",
+    "NEWSLETTER": "Boletín informativo",
+    "SUBSCRIBE_TEXT": "Suscríbase a nuestro boletín para recibir actualizaciones sobre nuestras últimas investigaciones y eventos.",
+    "EMAIL_PLACEHOLDER": "Su dirección de correo electrónico",
+    "ALL_RIGHTS_RESERVED": "Todos los derechos reservados",
+    "PRIVACY": "Política de privacidad",
+    "TERMS": "Términos de servicio"
+  },"LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "USERNAME": "Nombre de usuario",
+    "PASSWORD": "Contraseña",
+    "BUTTON": "Iniciar sesión",
+    "LOADING": "Iniciando sesión...",
+    "NO_ACCOUNT": "¿No tienes una cuenta?",
+    "REGISTER": "Registrarse",
+    "SUCCESS": "Inicio de sesión exitoso",
+    "ERROR": "Nombre de usuario o contraseña inválidos"
+  },
+  "HOME": {
+    "EXPLORE_MORE": "Explorar más",
+    "ACADEMIC_PROGRAMS": "Nuestros programas académicos",
+    "LEARN_MORE": "Aprender más",
+    "MEDIA_CENTER": "Centro de medios",
+    "EXPLORE_VIDEOS": "Explora nuestros últimos videos y contenido multimedia",
+    "WATCH_VIDEO": "Ver video completo",
+    "PUBLICATIONS": "Nuestras publicaciones",
+    "VIEW_DETAILS": "Ver detalles",
+    "JOURNAL_ISSUES": "Números de la revista",
+    "VOLUME": "Vol.",
+    "ISSUE": "Número",
+    "READ_ISSUE": "Leer número",
+    "LEADERSHIP_TEAM": "Equipo de liderazgo"
+  },
+  "PARTNERS": {
+    "OUR": "Nuestros",
+    "PARTNERS": "Socios",
+    "COLLABORATION": "Colaborando con líderes de la industria para impulsar la innovación y la excelencia",
+    "VISIT_WEBSITE": "Visitar sitio web",
+    "PREVIOUS": "Diapositiva anterior",
+    "NEXT": "Siguiente diapositiva",
+    "GOTO_SLIDE": "Ir a la diapositiva {index}"
+  },
+  "APP": {
+    "TITLE": "Fundación ARID"
+  },
+  "NAV": {
+    "HOME": "Inicio",
+    "ACADEMIC": "Académico",
+    "PARTNERS": "Nuestros socios",
+    "CONTACT": "Contacto",
+    "LOGIN": "Iniciar sesión",
+    "LOGOUT": "Cerrar sesión",
+    "ADMIN": "Administrador",
+    "REGISTER": "Registrarse"
+  },
+  "MODAL": {
+    "CLOSE": "Cerrar"
+  },
+  "SIDEBAR": {
+    "TITLE": "Admin ARID",
+    "MANAGE_SECTIONS": "Gestionar secciones",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "JOURNAL": {
+    "VOL": "Vol.",
+    "ISSUE": "Núm.",
+    "ISSN": "ISSN",
+    "PUBLISHED": "Publicado",
+    "ABSTRACT": "Resumen",
+    "DOWNLOAD_ISSUE": "Descargar número completo",
+    "VOLUME": "Volumen",
+    "DOWNLOAD_JOURNAL": "Descargar revista"
+  },
+  "BOOK": {
+    "DOWNLOAD_PDF": "Descargar PDF",
+    "DOWNLOAD_BOOK": "Descargar libro"
+  },
+  "CARD": {
+    "VIEW_DETAILS": "Ver detalles"
+  },
+  "SECTION": {
+    "TYPES": {
+      "HOME_PAGE": "Página de inicio",
+      "ACADEMIC_RESEARCH": "Académico e investigación",
+      "OUR_PARTNERS": "Nuestros socios",
+      "CONTACT_US": "Contacto",
+      "SADA_ARID": "Revista Sada ARID",
+      "HIGHER_MANAGEMENT": "Alta dirección",
+      "MEDIA": "Medios",
+      "BOOKS": "Libros"
+    },
+    "ALL_SECTIONS": "Todas las secciones",
+    "MANAGE": "Gestionar",
+    "NO_SECTIONS_FOUND": "No se encontraron secciones para esta categoría",
+    "NO_CONTENT": "No hay contenido disponible para esta sección"
+  },
+  "CONTACT": {
+    "ADDRESS": "Dirección",
+    "CONTACT": "Contacto",
+    "PHONE": "Teléfono",
+    "EMAIL": "Correo electrónico",
+    "WORKING_HOURS": "Horario de trabajo"
+  },
+  "MEDIA": {
+    "BROWSER_NOT_SUPPORTED": "Su navegador no soporta el elemento de video"
+  },
+  "COMMON": {
+    "CLOSE": "Cerrar",
+    "NA": "N/A",
+    "LOADING": "Cargando"
+  },
+  "ERRORS": {
+    "LOAD_SECTION": "Error al cargar los detalles de la sección",
+    "LOAD_SECTIONS": "Error al cargar las secciones"
+  },
+  "MANAGE_SECTIONS": {
+    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "Añadir nueva sección",
+    "TITLE": "Gestionar secciones",
+    "TABS": {
+      "BASIC_INFO": "Información básica",
+      "CONTENT": "Contenido",
+      "MEDIA": "Medios",
+      "JOURNAL_DETAILS": "Detalles de revista",
+      "CONTACT_INFO": "Información de contacto",
+      "POSITION": "Posición",
+      "PARTNER_INFO": "Información de socio",
+      "DETAILS": "Detalles"
+    },
+    "ACTIONS": {
+      "ADD_NEW": "Añadir nuevo",
+      "ADD": "Añadir",
+      "EDIT": "Editar",
+      "DELETE": "Eliminar",
+      "SAVE": "Guardar",
+      "UPDATE": "Actualizar",
+      "CANCEL": "Cancelar",
+      "PREVIOUS": "Anterior",
+      "NEXT": "Siguiente"
+    },
+    "LABELS": {
+      "ALL": "Todos",
+      "TITLE_EN": "Título (inglés)",
+      "TITLE_AR": "Título (árabe)",
+      "NO_ARABIC_TITLE": "Sin título en árabe",
+      "SECTION_TYPE": "Tipo de sección",
+      "DISPLAY_ORDER": "Orden de visualización",
+      "CREATED": "Fecha de creación",
+      "ACTIONS": "Acciones",
+      "STATUS": "Estado",
+      "ACTIVE_SECTION": "Sección activa",
+      "SHOW_IN_HOMEPAGE": "Mostrar en página de inicio",
+      "HERO_SECTION": "Sección hero",
+      "DESCRIPTION_EN": "Descripción (inglés)",
+      "DESCRIPTION_AR": "Descripción (árabe)",
+      "CONTENT_EN": "Contenido (inglés)",
+      "CONTENT_AR": "Contenido (árabe)",
+      "MAIN_IMAGE": "Imagen principal",
+      "HERO_IMAGE": "Imagen hero",
+      "UPLOAD_IMAGE": "Subir imagen",
+      "UPLOAD_VIDEO": "Subir video",
+      "UPLOAD_PDF": "Subir PDF",
+      "VIDEO_URL": "URL de video",
+      "PDF_URL": "URL de PDF",
+      "BOOK_PDF": "PDF del libro",
+      "JOURNAL_PDF": "PDF de la revista",
+      "VIEW_PDF": "Ver PDF",
+      "ISSN": "ISSN",
+      "VOLUME": "Volumen",
+      "ISSUE": "Número",
+      "PUBLICATION_DATE": "Fecha de publicación",
+      "ADDRESS_EN": "Dirección (inglés)",
+      "ADDRESS_AR": "Dirección (árabe)",
+      "PHONE": "Teléfono",
+      "EMAIL": "Correo electrónico",
+      "WORKING_HOURS_EN": "Horario de trabajo (inglés)",
+      "WORKING_HOURS_AR": "Horario de trabajo (árabe)",
+      "MAP_EMBED_URL": "URL de mapa incrustado",
+      "POSITION_EN": "Posición (inglés)",
+      "POSITION_AR": "Posición (árabe)",
+      "WEBSITE_URL": "URL del sitio web",
+      "PARTNER_TYPE": "Tipo de socio",
+      "SELECT_PARTNER_TYPE": "Seleccionar tipo de socio",
+      "NO_IMAGE_UPLOADED": "No se ha subido ninguna imagen",
+      "CURRENT_IMAGE": "Imagen actual",
+      "USING_EXTERNAL_LINK": "Usando enlace externo",
+      "NEW_FILE_SELECTED": "Nuevo archivo seleccionado",
+      "OR_UPLOAD_VIDEO": "O subir archivo de video",
+      "OR_UPLOAD_PDF": "O subir archivo PDF",
+      "SECTION": "Sección"
+    },
+    "PLACEHOLDERS": {
+      "ISSN": "Ingrese número ISSN",
+      "VOLUME": "Número de volumen",
+      "ISSUE": "Número de edición",
+      "ADDRESS_EN": "Dirección en inglés",
+      "ADDRESS_AR": "Dirección en árabe",
+      "PHONE": "Número de teléfono",
+      "EMAIL": "Dirección de correo electrónico",
+      "WORKING_HOURS": "Horario de trabajo",
+      "MAP_EMBED_URL": "URL de mapa de Google incrustado",
+      "POSITION": "Título del puesto",
+      "WEBSITE_URL": "URL del sitio web del socio",
+      "SELECT_PARTNER_TYPE": "Seleccionar tipo de socio"
+    },
+    "STATUS": {
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo",
+      "HOME": "Inicio",
+      "HERO": "Hero"
+    },
+    "MESSAGES": {
+      "SECTION_ADDED": "Sección añadida exitosamente",
+      "SECTION_UPDATED": "Sección actualizada exitosamente",
+      "SECTION_DELETED": "Sección eliminada exitosamente",
+      "NO_SECTIONS_FOUND": "No se encontraron secciones que coincidan con el filtro seleccionado",
+      "CONFIRM_DELETE": "¿Está seguro de que desea eliminar esta sección? Esta acción no se puede deshacer.",
+      "INVALID_VIDEO_URL": "Por favor ingrese una URL válida de YouTube o Vimeo",
+      "FILE_SIZE_LIMIT": "El tamaño del archivo debe ser menor a 5MB"
+    }
+  },
+  "SECTION_TYPES": {
+    "HOME_PAGE": "Página de inicio",
+    "ACADEMIC_RESEARCH": "Académico e investigación",
+    "OUR_PARTNERS": "Nuestros socios",
+    "CONTACT_US": "Contacto",
+    "SADA_ARID_JOURNAL": "Revista Sada ARID",
+    "HIGHER_MANAGEMENT": "Alta dirección",
+    "MEDIA": "Medios",
+    "BOOKS": "Libros"
+  }
+}

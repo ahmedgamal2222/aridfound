@@ -1,0 +1,237 @@
+{
+   "FOOTER": {
+    "DESCRIPTION": "ARID基金会致力于通过与全球机构和研究人员的合作来推进学术研究和创新。",
+    "QUICK_LINKS": "快速链接",
+    "CONTACT_US": "联系我们",
+    "ADDRESS": "沙特阿拉伯利雅得研究区知识街123号",
+    "WORKING_HOURS": "周日 - 周四: 上午8:00 - 下午4:00",
+    "NEWSLETTER": "通讯",
+    "SUBSCRIBE_TEXT": "订阅我们的通讯以获取我们最新研究和活动的更新。",
+    "EMAIL_PLACEHOLDER": "您的电子邮件地址",
+    "ALL_RIGHTS_RESERVED": "版权所有",
+    "PRIVACY": "隐私政策",
+    "TERMS": "服务条款"
+  },"LOGIN": {
+    "TITLE": "登录",
+    "USERNAME": "用户名",
+    "PASSWORD": "密码",
+    "BUTTON": "登录",
+    "LOADING": "正在登录...",
+    "NO_ACCOUNT": "没有账号？",
+    "REGISTER": "注册",
+    "SUCCESS": "登录成功",
+    "ERROR": "用户名或密码无效"
+  },
+  "HOME": {
+    "EXPLORE_MORE": "探索更多",
+    "ACADEMIC_PROGRAMS": "我们的学术项目",
+    "LEARN_MORE": "了解更多",
+    "MEDIA_CENTER": "媒体中心",
+    "EXPLORE_VIDEOS": "探索我们的最新视频和媒体内容",
+    "WATCH_VIDEO": "观看完整视频",
+    "PUBLICATIONS": "我们的出版物",
+    "VIEW_DETAILS": "查看详情",
+    "JOURNAL_ISSUES": "期刊期号",
+    "VOLUME": "卷",
+    "ISSUE": "期",
+    "READ_ISSUE": "阅读期刊",
+    "LEADERSHIP_TEAM": "领导团队"
+  },
+  "PARTNERS": {
+    "OUR": "我们的",
+    "PARTNERS": "合作伙伴",
+    "COLLABORATION": "与行业领导者合作推动创新和卓越",
+    "VISIT_WEBSITE": "访问网站",
+    "PREVIOUS": "上一张",
+    "NEXT": "下一张",
+    "GOTO_SLIDE": "转到第{index}张"
+  },
+  "APP": {
+    "TITLE": "ARID基金会"
+  },
+  "NAV": {
+    "HOME": "首页",
+    "ACADEMIC": "学术",
+    "PARTNERS": "我们的合作伙伴",
+    "CONTACT": "联系我们",
+    "LOGIN": "登录",
+    "LOGOUT": "登出",
+    "ADMIN": "管理员",
+    "REGISTER": "注册"
+  },
+  "MODAL": {
+    "CLOSE": "关闭"
+  },
+  "SIDEBAR": {
+    "TITLE": "ARID管理",
+    "MANAGE_SECTIONS": "管理部分",
+    "LOGOUT": "登出"
+  },
+  "JOURNAL": {
+    "VOL": "卷",
+    "ISSUE": "期",
+    "ISSN": "ISSN",
+    "PUBLISHED": "已发布",
+    "ABSTRACT": "摘要",
+    "DOWNLOAD_ISSUE": "下载完整期号",
+    "VOLUME": "卷",
+    "DOWNLOAD_JOURNAL": "下载期刊"
+  },
+  "BOOK": {
+    "DOWNLOAD_PDF": "下载PDF",
+    "DOWNLOAD_BOOK": "下载书籍"
+  },
+  "CARD": {
+    "VIEW_DETAILS": "查看详情"
+  },
+  "SECTION": {
+    "TYPES": {
+      "HOME_PAGE": "首页",
+      "ACADEMIC_RESEARCH": "学术与研究",
+      "OUR_PARTNERS": "我们的合作伙伴",
+      "CONTACT_US": "联系我们",
+      "SADA_ARID": "Sada ARID期刊",
+      "HIGHER_MANAGEMENT": "高级管理",
+      "MEDIA": "媒体",
+      "BOOKS": "书籍"
+    },
+    "ALL_SECTIONS": "所有部分",
+    "MANAGE": "管理",
+    "NO_SECTIONS_FOUND": "未找到此类别的内容",
+    "NO_CONTENT": "此部分无可用内容"
+  },
+  "CONTACT": {
+    "ADDRESS": "地址",
+    "CONTACT": "联系方式",
+    "PHONE": "电话",
+    "EMAIL": "电子邮件",
+    "WORKING_HOURS": "工作时间"
+  },
+  "MEDIA": {
+    "BROWSER_NOT_SUPPORTED": "您的浏览器不支持视频标签"
+  },
+  "COMMON": {
+    "CLOSE": "关闭",
+    "NA": "不适用",
+    "LOADING": "加载中"
+  },
+  "ERRORS": {
+    "LOAD_SECTION": "加载部分详情失败",
+    "LOAD_SECTIONS": "加载部分失败"
+  },
+  "MANAGE_SECTIONS": {
+    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "添加新部分",
+    "TITLE": "管理部分",
+    "TABS": {
+      "BASIC_INFO": "基本信息",
+      "CONTENT": "内容",
+      "MEDIA": "媒体",
+      "JOURNAL_DETAILS": "期刊详情",
+      "CONTACT_INFO": "联系信息",
+      "POSITION": "职位",
+      "PARTNER_INFO": "合作伙伴信息",
+      "DETAILS": "详情"
+    },
+    "ACTIONS": {
+      "ADD_NEW": "新增",
+      "ADD": "添加",
+      "EDIT": "编辑",
+      "DELETE": "删除",
+      "SAVE": "保存",
+      "UPDATE": "更新",
+      "CANCEL": "取消",
+      "PREVIOUS": "上一步",
+      "NEXT": "下一步"
+    },
+    "LABELS": {
+      "ALL": "全部",
+      "TITLE_EN": "标题(英文)",
+      "TITLE_AR": "标题(阿拉伯文)",
+      "NO_ARABIC_TITLE": "无阿拉伯文标题",
+      "SECTION_TYPE": "部分类型",
+      "DISPLAY_ORDER": "显示顺序",
+      "CREATED": "创建日期",
+      "ACTIONS": "操作",
+      "STATUS": "状态",
+      "ACTIVE_SECTION": "活跃部分",
+      "SHOW_IN_HOMEPAGE": "在首页显示",
+      "HERO_SECTION": "主推部分",
+      "DESCRIPTION_EN": "描述(英文)",
+      "DESCRIPTION_AR": "描述(阿拉伯文)",
+      "CONTENT_EN": "内容(英文)",
+      "CONTENT_AR": "内容(阿拉伯文)",
+      "MAIN_IMAGE": "主图",
+      "HERO_IMAGE": "主推图片",
+      "UPLOAD_IMAGE": "上传图片",
+      "UPLOAD_VIDEO": "上传视频",
+      "UPLOAD_PDF": "上传PDF",
+      "VIDEO_URL": "视频URL",
+      "PDF_URL": "PDF URL",
+      "BOOK_PDF": "书籍PDF",
+      "JOURNAL_PDF": "期刊PDF",
+      "VIEW_PDF": "查看PDF",
+      "ISSN": "ISSN",
+      "VOLUME": "卷",
+      "ISSUE": "期",
+      "PUBLICATION_DATE": "发布日期",
+      "ADDRESS_EN": "地址(英文)",
+      "ADDRESS_AR": "地址(阿拉伯文)",
+      "PHONE": "电话",
+      "EMAIL": "电子邮件",
+      "WORKING_HOURS_EN": "工作时间(英文)",
+      "WORKING_HOURS_AR": "工作时间(阿拉伯文)",
+      "MAP_EMBED_URL": "地图嵌入URL",
+      "POSITION_EN": "职位(英文)",
+      "POSITION_AR": "职位(阿拉伯文)",
+      "WEBSITE_URL": "网站URL",
+      "PARTNER_TYPE": "合作伙伴类型",
+      "SELECT_PARTNER_TYPE": "选择合作伙伴类型",
+      "NO_IMAGE_UPLOADED": "未上传图片",
+      "CURRENT_IMAGE": "当前图片",
+      "USING_EXTERNAL_LINK": "使用外部链接",
+      "NEW_FILE_SELECTED": "已选择新文件",
+      "OR_UPLOAD_VIDEO": "或上传视频文件",
+      "OR_UPLOAD_PDF": "或上传PDF文件",
+      "SECTION": "部分"
+    },
+    "PLACEHOLDERS": {
+      "ISSN": "输入ISSN号",
+      "VOLUME": "卷号",
+      "ISSUE": "期号",
+      "ADDRESS_EN": "英文地址",
+      "ADDRESS_AR": "阿拉伯文地址",
+      "PHONE": "电话号码",
+      "EMAIL": "电子邮件地址",
+      "WORKING_HOURS": "工作时间",
+      "MAP_EMBED_URL": "Google地图嵌入URL",
+      "POSITION": "职位名称",
+      "WEBSITE_URL": "合作伙伴网站URL",
+      "SELECT_PARTNER_TYPE": "选择合作伙伴类型"
+    },
+    "STATUS": {
+      "ACTIVE": "活跃",
+      "INACTIVE": "非活跃",
+      "HOME": "首页",
+      "HERO": "主推"
+    },
+    "MESSAGES": {
+      "SECTION_ADDED": "部分添加成功",
+      "SECTION_UPDATED": "部分更新成功",
+      "SECTION_DELETED": "部分删除成功",
+      "NO_SECTIONS_FOUND": "未找到匹配筛选条件的部分",
+      "CONFIRM_DELETE": "确定要删除此部分吗？此操作无法撤销。",
+      "INVALID_VIDEO_URL": "请输入有效的YouTube或Vimeo URL",
+      "FILE_SIZE_LIMIT": "文件大小应小于5MB"
+    }
+  },
+  "SECTION_TYPES": {
+    "HOME_PAGE": "首页",
+    "ACADEMIC_RESEARCH": "学术与研究",
+    "OUR_PARTNERS": "我们的合作伙伴",
+    "CONTACT_US": "联系我们",
+    "SADA_ARID_JOURNAL": "Sada ARID期刊",
+    "HIGHER_MANAGEMENT": "高级管理",
+    "MEDIA": "媒体",
+    "BOOKS": "书籍"
+  }
+}

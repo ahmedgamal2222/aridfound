@@ -1,1 +1,131 @@
 /* You can add global styles to this file, and also import other style files */
+/* Admin Layout Specific Styles */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #f8f9fa;
+  margin-left: 250px; /* Match sidebar width */
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 80px;
+    overflow: hidden;
+  }
+  .sidebar .nav-link span {
+    display: none;
+  }
+  .sidebar-header h4 {
+    display: none;
+  }
+  .main-content {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    left: -250px;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+} /* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 20px;
+  flex: 1;
+}
+
+/* Navbar Styles */
+.navbar {
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* Auth Styles */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Section Styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.table-responsive {
+  margin-top: 1rem;
+}
+
+/* Toastr Overrides */
+.toast-container .ngx-toastr {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.full-width {
+  width: 100%;
+}

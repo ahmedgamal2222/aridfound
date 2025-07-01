@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-purple-bg">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
+      <img src="/logo.png" alt="Logo" class="logo-img">
+      <span>ARID Foundation</span>
+    </a>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">
+            {{ 'NAV.HOME' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/sections']" routerLinkActive="active">
+            {{ 'NAV.ACADEMIC' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/sections']" routerLinkActive="active">
+            {{ 'NAV.PARTNERS' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/sections']" routerLinkActive="active">
+            {{ 'NAV.CONTACT' | translate }}
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav">
+        <!-- Language Selector -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" 
+             role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ currentLanguage | uppercase }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+            <li *ngFor="let lang of languages">
+              <a class="dropdown-item" (click)="changeLanguage(lang.code)">
+                {{ lang.flag }} {{ lang.name }}
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <ng-container *ngIf="authService.isLoggedIn(); else notLoggedIn">
+          <li class="nav-item" *ngIf="authService.isAdmin()">
+            <a class="nav-link" routerLink="/admin">
+              {{ 'NAV.ADMIN' | translate }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="authService.logout()" style="cursor: pointer">
+              {{ 'NAV.LOGOUT' | translate }}
+            </a>
+          </li>
+        </ng-container>
+        
+        <ng-template #notLoggedIn>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              {{ 'NAV.LOGIN' | translate }}
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,58 @@
+<section class="partners-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ 'PARTNERS.OUR' | translate }} <span>{{ 'PARTNERS.PARTNERS' | translate }}</span>
+      </h2>
+      <p class="section-description">{{ 'PARTNERS.COLLABORATION' | translate }}</p>
+    </div>
+
+    <div class="partners-container">
+      <div class="partners-slider">
+        <!-- Slider Track -->
+        <div class="slide-track" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+          <div class="partner-group" *ngFor="let slide of slides; let i = index">
+            <div class="partner-card" *ngFor="let partner of slide">
+              <div class="partner-logo-container">
+                <img [src]="getFullImageUrl(partner.imageUrl)" 
+                     [alt]="partner.title" 
+                     class="partner-logo">
+              </div>
+              <div class="partner-info">
+                <h3 class="partner-name">{{partner.title}}</h3>
+                <p class="partner-description" *ngIf="partner.description">{{partner.description | truncate:120}}</p>
+                <a *ngIf="partner.websiteUrl" [href]="partner.websiteUrl" 
+                   target="_blank" rel="noopener noreferrer" 
+                   class="partner-link">
+                  {{ 'PARTNERS.VISIT_WEBSITE' | translate }} <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="slider-controls">
+          <button class="control-btn" (click)="prevSlide()" [disabled]="slides.length <= 1"
+                  [attr.aria-label]="'PARTNERS.PREVIOUS' | translate">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+          </button>
+          <button class="control-btn" (click)="nextSlide()" [disabled]="slides.length <= 1"
+                  [attr.aria-label]="'PARTNERS.NEXT' | translate">
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <div class="slider-indicators" *ngIf="slides.length > 1">
+        <div *ngFor="let slide of slides; let i = index" 
+             class="indicator" 
+             [class.active]="i === currentSlide"
+             (click)="goToSlide(i)"
+             [attr.aria-label]="'PARTNERS.GOTO_SLIDE' | translate:{index: i + 1}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

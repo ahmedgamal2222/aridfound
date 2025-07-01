@@ -1,0 +1,146 @@
+<!-- Hero Carousel -->
+<section *ngIf="heroSections.length > 0" class="hero-carousel">
+  <carousel [interval]="5000" [isAnimated]="true" [showIndicators]="true">
+    <slide *ngFor="let hero of heroSections">
+      <div class="hero-slide" [style.backgroundImage]="'url(' + getFullImageUrl(hero.heroImageUrl) + ')'">
+        <div class="container">
+          <div class="hero-content">
+            <h1>{{hero.title}}</h1>
+            <p class="lead">{{hero.description}}</p>
+            <div [innerHTML]="hero.content"></div>
+            <button class="btn btn-primary btn-lg mt-3">{{ 'HOME.EXPLORE_MORE' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </slide>
+  </carousel>
+</section>
+
+<!-- Main Content Sections -->
+<section *ngFor="let section of homeSections" class="section" [ngClass]="{'section-bg-light': $even}">
+  <div class="container">
+    <h2 class="section-title">{{section.title}}</h2>
+    <div class="row align-items-center">
+      <div class="col-lg-6" [class.order-lg-2]="$even">
+        <img [src]="getFullImageUrl(section.imageUrl)" [alt]="section.title" 
+             class="img-fluid rounded shadow-lg">
+      </div>
+      <div class="col-lg-6">
+        <div [innerHTML]="section.content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Academic Sections -->
+<section *ngIf="featuredSections.length > 0" class="section section-bg-light">
+  <div class="container">
+    <h2 class="section-title">{{ 'HOME.ACADEMIC_PROGRAMS' | translate }}</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let section of featuredSections">
+        <div class="card">
+          <img [src]="getFullImageUrl(section.imageUrl)" class="card-img-top" [alt]="section.title">
+          <div class="card-body">
+            <h3 class="card-title">{{section.title}}</h3>
+            <p class="card-text">{{section.description | truncate:150}}</p>
+            <a [routerLink]="['/sections', section.id]" class="btn btn-outline-primary">
+              {{ 'HOME.LEARN_MORE' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Media Section -->
+<section *ngIf="videos.length > 0" class="media-section">
+  <div class="container">
+    <h2 class="section-title">{{ 'HOME.MEDIA_CENTER' | translate }}</h2>
+    <p class="text-center mb-5">{{ 'HOME.EXPLORE_VIDEOS' | translate }}</p>
+    
+    <div class="media-container">
+      <div class="media-card" *ngFor="let video of videos">
+        <div class="video-container">
+          <iframe [src]="getSafeVideoUrl(video.videoUrl)" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+        <div class="media-info">
+          <h3>{{video.title}}</h3>
+          <p>{{video.description | truncate:100}}</p>
+          <a [href]="getFullVideoUrl(video.videoUrl)" 
+             target="_blank" 
+             class="btn btn-sm btn-primary">
+            {{ 'HOME.WATCH_VIDEO' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Slider -->
+<app-partner-slider *ngIf="partners.length > 0" [partners]="partners"></app-partner-slider>
+
+<!-- Books Section -->
+<section *ngIf="books.length > 0" class="section">
+  <div class="container">
+    <h2 class="section-title">{{ 'HOME.PUBLICATIONS' | translate }}</h2>
+    <div class="row g-4">
+      <div class="col-md-3" *ngFor="let book of books">
+        <div class="card" (click)="openBookModal(book)">
+          <img [src]="getFullImageUrl(book.imageUrl)" class="card-img-top" [alt]="book.title">
+          <div class="card-body">
+            <h5 class="card-title">{{book.title}}</h5>
+            <button class="btn btn-sm btn-outline-primary">
+              {{ 'HOME.VIEW_DETAILS' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journal Issues -->
+<section *ngIf="journals.length > 0" class="section section-bg-light">
+  <div class="container">
+    <h2 class="section-title">{{ 'HOME.JOURNAL_ISSUES' | translate }}</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let journal of journals">
+        <div class="card" (click)="openJournalModal(journal)">
+          <img [src]="getFullImageUrl(journal.imageUrl)" class="card-img-top" [alt]="journal.title">
+          <div class="card-body">
+            <h5 class="card-title">{{journal.title}}</h5>
+            <p class="card-text">{{ 'HOME.VOLUME' | translate }} {{journal.volume}}, {{ 'HOME.ISSUE' | translate }} {{journal.issue}}</p>
+            <p class="text-muted">{{journal.publicationDate | date:'MMMM yyyy'}}</p>
+            <button class="btn btn-sm btn-primary">
+              {{ 'HOME.READ_ISSUE' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Management Team -->
+<section *ngIf="management.length > 0" class="section">
+  <div class="container">
+    <h2 class="section-title">{{ 'HOME.LEADERSHIP_TEAM' | translate }}</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-6" *ngFor="let member of management">
+        <div class="card text-center">
+          <img [src]="getFullImageUrl(member.imageUrl)" class="card-img-top rounded-circle mx-auto mt-3" 
+               style="width: 150px; height: 150px; object-fit: cover;" [alt]="member.title">
+          <div class="card-body">
+            <h5 class="card-title">{{member.title}}</h5>
+            <p class="text-muted">{{member.position}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
