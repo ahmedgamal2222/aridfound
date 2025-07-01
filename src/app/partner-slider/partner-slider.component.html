@@ -24,7 +24,8 @@
                 <a *ngIf="partner.websiteUrl" [href]="partner.websiteUrl" 
                    target="_blank" rel="noopener noreferrer" 
                    class="partner-link">
-                  {{ 'PARTNERS.VISIT_WEBSITE' | translate }} <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
+                  {{ 'PARTNERS.VISIT_WEBSITE' | translate }} <i class="fas fa-external-link-alt"></i>
+
                 </a>
               </div>
             </div>
@@ -35,11 +36,11 @@
         <div class="slider-controls">
           <button class="control-btn" (click)="prevSlide()" [disabled]="slides.length <= 1"
                   [attr.aria-label]="'PARTNERS.PREVIOUS' | translate">
-            <fa-icon [icon]="faChevronLeft"></fa-icon>
+<i class="fas fa-chevron-left"></i>
           </button>
           <button class="control-btn" (click)="nextSlide()" [disabled]="slides.length <= 1"
                   [attr.aria-label]="'PARTNERS.NEXT' | translate">
-            <fa-icon [icon]="faChevronRight"></fa-icon>
+<i class="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

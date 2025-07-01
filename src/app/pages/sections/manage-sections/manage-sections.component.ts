@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ModalComponent } from '../../../modal/modal.component';
 import { environment } from '../../../core/environments/environment';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { 
   faPlus, faEdit, faTrash, faArrowLeft, 
   faArrowRight, faImage, faLayerGroup, 
@@ -30,7 +29,7 @@ interface Tab {
 @Component({
   selector: 'app-manage-sections',
   standalone: true,
-  imports: [FormsModule, CommonModule, ModalComponent, FontAwesomeModule, TranslateModule],
+  imports: [FormsModule, CommonModule, ModalComponent, TranslateModule],
   templateUrl: './manage-sections.component.html',
   styleUrls: ['./manage-sections.component.css']
 })

@@ -2,15 +2,13 @@ import { Component, Input, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angul
 import { Section } from '../core/models/section.model';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faExternalLinkAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { TruncatePipe } from "../../truncate.pipe";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-partner-slider',
   standalone: true,
-  imports: [CommonModule, CarouselModule, FontAwesomeModule, TruncatePipe, TranslateModule],
+  imports: [CommonModule, CarouselModule,TruncatePipe, TranslateModule],
   templateUrl: './partner-slider.component.html',
   styleUrls: ['./partner-slider.component.css']
 })
@@ -20,9 +18,7 @@ export class PartnerSliderComponent implements OnInit, OnDestroy {
   @Input() interval: number = 5000;
   
   // Font Awesome icons
-  faExternalLinkAlt = faExternalLinkAlt;
-  faChevronLeft = faChevronLeft;
-  faChevronRight = faChevronRight;
+
 
   currentSlide = 0;
   slides: any[] = [];

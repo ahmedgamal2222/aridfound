@@ -3,13 +3,11 @@
     <div class="card-header bg-primary text-white">
       <div class="header-content">
         <h5 class="title">
-          <fa-icon [icon]="icons.layers" class="me-2"></fa-icon>
-          {{ 'MANAGE_SECTIONS.TITLE' | translate }}
+<i class="fas fa-layer-group me-2"></i>          {{ 'MANAGE_SECTIONS.TITLE' | translate }}
         </h5>
         <div class="controls">
           <button class="btn btn-light" (click)="openAddModal()">
-            <fa-icon [icon]="icons.plus" class="me-2"></fa-icon>
-            {{ 'MANAGE_SECTIONS.ACTIONS.ADD_NEW' | translate }}
+<i class="fas fa-plus"class="me-2"></i>            {{ 'MANAGE_SECTIONS.ACTIONS.ADD_NEW' | translate }}
           </button>
           <div class="filter-group">
             <button class="filter-btn" 
@@ -79,14 +77,12 @@
                           (click)="openEditModal(section)"
                           [disabled]="state.loadingStates[section.id]"
                           [title]="'MANAGE_SECTIONS.ACTIONS.EDIT' | translate">
-                    <fa-icon [icon]="icons.edit"></fa-icon>
-                  </button>
+<i class="fas fa-edit"></i>                  </button>
                   <button class="btn-delete" 
                           (click)="deleteSection(section.id)"
                           [disabled]="state.loadingStates[section.id]"
                           [title]="'MANAGE_SECTIONS.ACTIONS.DELETE' | translate">
-                    <fa-icon [icon]="icons.trash"></fa-icon>
-                  </button>
+<i class="fas fa-trash"></i>                  </button>
                 </div>
               </td>
             </tr>
@@ -95,7 +91,7 @@
         
         <div *ngIf="state.filteredSections.length === 0" class="empty-state">
           <div class="empty-content">
-            <fa-icon [icon]="icons.info" class="empty-icon"></fa-icon>
+<i class="fas fa-info-circle empty-icon"></i>
             <p>{{ 'MANAGE_SECTIONS.MESSAGES.NO_SECTIONS_FOUND' | translate }}</p>
           </div>
         </div>
@@ -107,7 +103,7 @@
   <app-modal [isOpen]="state.showModal" (close)="closeModal()" modalClass="section-modal">
     <div class="modal-header">
       <h5 class="modal-title">
-        <fa-icon [icon]="icons.edit" class="me-2"></fa-icon>
+        <i class="fas fa-edit"class="me-2"></i> 
         {{ (state.isEditing ? 'MANAGE_SECTIONS.ACTIONS.EDIT' : 'MANAGE_SECTIONS.ACTIONS.ADD') | translate }} {{ 'MANAGE_SECTIONS.LABELS.SECTION' | translate }}
       </h5>
       <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
@@ -118,7 +114,7 @@
         <li class="tab-item" *ngFor="let tab of getTabs()" 
             [class.active]="state.currentTab === tab.id"
             (click)="state.currentTab = tab.id">
-          <fa-icon [icon]="tab.icon" class="me-2"></fa-icon>
+<i class="fas fa-info-circle me-2"></i>
           {{ tab.translationKey | translate }}
         </li>
       </ul>
@@ -210,8 +206,7 @@
             <!-- Main Image Card -->
             <div class="media-card">
               <div class="card-header">
-                <fa-icon [icon]="icons.image" class="me-2"></fa-icon>
-                {{ 'MANAGE_SECTIONS.LABELS.MAIN_IMAGE' | translate }}
+<i class="fas fa-image"class="me-2"></i>                    {{ 'MANAGE_SECTIONS.LABELS.MAIN_IMAGE' | translate }}
               </div>
               <div class="card-body">
                 <div class="upload-section">
@@ -223,16 +218,14 @@
                     <div *ngIf="state.filePreviews.main" class="image-preview">
                       <img [src]="state.filePreviews.main">
                       <button class="remove-btn" (click)="removeFile('main')">
-                        <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                      </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                        </button>
                     </div>
                     <div *ngIf="state.currentSection.imageUrl && !state.filePreviews.main" class="image-preview">
                       <img [src]="getFullFileUrl(state.currentSection.imageUrl)">
                       <span class="current-label">{{ 'MANAGE_SECTIONS.LABELS.CURRENT_IMAGE' | translate }}</span>
                     </div>
                     <div *ngIf="!state.currentSection.imageUrl && !state.filePreviews.main" class="empty-preview">
-                      <fa-icon [icon]="icons.image"></fa-icon>
-                      <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
+<i class="fas fa-image"class="me-2"></i>                          <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
                     </div>
                   </div>
                 </div>
@@ -242,8 +235,7 @@
             <!-- Hero Image Card -->
             <div class="media-card">
               <div class="card-header">
-                <fa-icon [icon]="icons.star" class="me-2"></fa-icon>
-                {{ 'MANAGE_SECTIONS.LABELS.HERO_IMAGE' | translate }}
+<i class="fas fa-star"class="me-2"></i>                {{ 'MANAGE_SECTIONS.LABELS.HERO_IMAGE' | translate }}
               </div>
               <div class="card-body">
                 <div class="upload-section">
@@ -255,16 +247,14 @@
                     <div *ngIf="state.filePreviews.hero" class="image-preview">
                       <img [src]="state.filePreviews.hero">
                       <button class="remove-btn" (click)="removeFile('hero')">
-                        <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                      </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                        </button>
                     </div>
                     <div *ngIf="state.currentSection.heroImageUrl && !state.filePreviews.hero" class="image-preview">
                       <img [src]="getFullFileUrl(state.currentSection.heroImageUrl)">
                       <span class="current-label">{{ 'MANAGE_SECTIONS.LABELS.CURRENT_IMAGE' | translate }}</span>
                     </div>
                     <div *ngIf="!state.currentSection.heroImageUrl && !state.filePreviews.hero" class="empty-preview">
-                      <fa-icon [icon]="icons.image"></fa-icon>
-                      <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
+<i class="fas fa-image"class="me-2"></i>                      <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
                     </div>
                   </div>
                 </div>
@@ -274,8 +264,7 @@
             <!-- Video Card -->
             <div class="media-card" *ngIf="state.currentSection.sectionType === SectionType.Media">
               <div class="card-header">
-                <fa-icon [icon]="icons.video" class="me-2"></fa-icon>
-                {{ 'MANAGE_SECTIONS.LABELS.VIDEO' | translate }}
+<i class="fas fa-video"class="me-2"></i>                {{ 'MANAGE_SECTIONS.LABELS.VIDEO' | translate }}
               </div>
               <div class="card-body">
                 <div class="upload-section">
@@ -296,8 +285,7 @@
                               frameborder="0" allowfullscreen></iframe>
                     </div>
                     <button class="remove-btn" (click)="state.currentSection.videoUrl = ''">
-                      <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                    </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                      </button>
                   </div>
                   
                   <div *ngIf="state.currentSection.videoUrl?.startsWith('http')" class="video-info">
@@ -307,8 +295,7 @@
                   <div *ngIf="state.fileInputs.video" class="video-info">
                     <span>{{ 'MANAGE_SECTIONS.LABELS.NEW_FILE_SELECTED' | translate }}: {{state.fileInputs.video.name}}</span>
                     <button class="remove-btn" (click)="removeFile('video')">
-                      <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                    </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
                   </div>
                 </div>
               </div>
@@ -318,8 +305,7 @@
             <div class="media-card" *ngIf="state.currentSection.sectionType === SectionType.Books || 
                                         state.currentSection.sectionType === SectionType.SadaARIDJournal">
               <div class="card-header">
-                <fa-icon [icon]="icons.pdf" class="me-2"></fa-icon>
-                {{ (state.currentSection.sectionType === SectionType.Books ? 'MANAGE_SECTIONS.LABELS.BOOK_PDF' : 'MANAGE_SECTIONS.LABELS.JOURNAL_PDF') | translate }}
+<i class="fas fa-file-pdf"class="me-2"></i>                {{ (state.currentSection.sectionType === SectionType.Books ? 'MANAGE_SECTIONS.LABELS.BOOK_PDF' : 'MANAGE_SECTIONS.LABELS.JOURNAL_PDF') | translate }}
               </div>
               <div class="card-body">
                 <div class="upload-section">
@@ -335,14 +321,12 @@
                         accept=".pdf">
                   
                   <div *ngIf="state.currentSection.pdfUrl" class="pdf-preview mt-3">
-                    <fa-icon [icon]="icons.pdf" size="3x"></fa-icon>
-                    <a [href]="getFullFileUrl(state.currentSection.pdfUrl)" 
+<i class="fas fa-file-pdf"class="me-2"></i>                    <a [href]="getFullFileUrl(state.currentSection.pdfUrl)" 
                        target="_blank" class="btn-view">
                       {{ 'MANAGE_SECTIONS.LABELS.VIEW_PDF' | translate }}
                     </a>
                     <button class="remove-btn" (click)="state.currentSection.pdfUrl = ''">
-                      <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                    </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
                   </div>
                   
                   <div *ngIf="state.currentSection.pdfUrl?.startsWith('http')" class="pdf-info">
@@ -352,8 +336,7 @@
                   <div *ngIf="state.fileInputs.pdf" class="pdf-info">
                     <span>{{ 'MANAGE_SECTIONS.LABELS.NEW_FILE_SELECTED' | translate }}: {{state.fileInputs.pdf.name}}</span>
                     <button class="remove-btn" (click)="removeFile('pdf')">
-                      <fa-icon [icon]="icons.trashAlt"></fa-icon>
-                    </button>
+<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
                   </div>
                 </div>
               </div>
@@ -482,16 +465,14 @@
               (click)="prevTab()" 
               *ngIf="state.currentTab !== 'info'"
               [disabled]="state.isSubmitting">
-        <fa-icon [icon]="icons.left" class="me-2"></fa-icon>
-        {{ 'MANAGE_SECTIONS.ACTIONS.PREVIOUS' | translate }}
+<i class="fas fa-arrow-leftclass="class="me-2"></i>        {{ 'MANAGE_SECTIONS.ACTIONS.PREVIOUS' | translate }}
       </button>
       <button type="button" class="btn-nav next" 
               (click)="nextTab()" 
               *ngIf="state.currentTab !== 'specific' || !shouldShowSpecificTab()"
               [disabled]="state.isSubmitting">
         {{ 'MANAGE_SECTIONS.ACTIONS.NEXT' | translate }}
-        <fa-icon [icon]="icons.right" class="ms-2"></fa-icon>
-      </button>
+<i class="fas fa-arrow-right"class="me-2"></i>      </button>
     </div>
     <div class="action-buttons">
       <button type="button" class="btn-cancel" 

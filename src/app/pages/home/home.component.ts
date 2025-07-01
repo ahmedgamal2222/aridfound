@@ -13,7 +13,6 @@ import { BookModalComponent } from '../../book-modal/book-modal.component';
 import { JournalModalComponent } from '../../journal-modal/journal-modal.component';
 import { environment } from '../../core/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -27,7 +26,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     TruncatePipe,
     RouterLink,
     PartnerSliderComponent,
-    FontAwesomeModule,
     TranslateModule
   ],
   templateUrl: './home.component.html',
