@@ -5,8 +5,14 @@ import { ToastrService } from 'ngx-toastr';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ModalComponent } from '../../../modal/modal.component';
 import { environment } from '../../../core/environments/environment';
-
-
+import { 
+  faPlus, faEdit, faTrash, faArrowLeft, 
+  faArrowRight, faImage, faLayerGroup, 
+  faInfoCircle, faAlignLeft, faImages, 
+  faStar, faTrashAlt, faGlobe, faNewspaper,
+  faUserTie, faHandshake, faBook, faVideo,
+  faFilePdf, faCalendarAlt, faIdCard
+} from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -28,6 +34,31 @@ interface Tab {
   styleUrls: ['./manage-sections.component.css']
 })
 export class ManageSectionsComponent {
+
+  // Font Awesome icons
+  icons = {
+    plus: faPlus,
+    edit: faEdit,
+    trash: faTrash,
+    left: faArrowLeft,
+    right: faArrowRight,
+    image: faImage,
+    layers: faLayerGroup,
+    info: faInfoCircle,
+    align: faAlignLeft,
+    images: faImages,
+    star: faStar,
+    trashAlt: faTrashAlt,
+    globe: faGlobe,
+    newspaper: faNewspaper,
+    userTie: faUserTie,
+    handshake: faHandshake,
+    book: faBook,
+    video: faVideo,
+    pdf: faFilePdf,
+    calendar: faCalendarAlt,
+    idCard: faIdCard
+  };
 
   private sectionService = inject(SectionService);
   private toastr = inject(ToastrService);
@@ -62,7 +93,6 @@ export class ManageSectionsComponent {
   readonly sectionTypes = Object.values(SectionType);
   readonly partnerTypes = Object.values(PartnerType);
   readonly maxFileSize = 5 * 1024 * 1024; // 5MB
-  icons: any;
 
   // دالة لترجمة النصوص الديناميكية
   translateDynamic(key: string, defaultValue: string): string {
