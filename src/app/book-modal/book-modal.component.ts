@@ -64,7 +64,7 @@ export class BookModalComponent implements OnInit {
   getFullImageUrl(relativePath: string | undefined): string {
     if (!relativePath) return '';
     if (relativePath.startsWith('http')) return relativePath;
-    const baseUrl = 'https://localhost:7085'; // Replace with your API base URL
+    const baseUrl = 'https://aridfound.premiumasp.net'; // Replace with your API base URL
     return relativePath.startsWith('/') ? `${baseUrl}${relativePath}` : `${baseUrl}/${relativePath}`;
   }
 

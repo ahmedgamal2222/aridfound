@@ -49,7 +49,7 @@ export class CardComponent {
   getSafeImageUrl(imageUrl: string | undefined): string {
     if (!imageUrl) return '';
     if (imageUrl.startsWith('http')) return imageUrl;
-    return `https://localhost:7085${imageUrl}`;
+    return `https://aridfound.premiumasp.net${imageUrl}`;
   }
 
   handleImageError(event: Event) {
