@@ -1,20 +1,21 @@
 {
   "FOOTER": {
-    "DESCRIPTION": "ARID Vakfı, dünya çapındaki kurumlar ve araştırmacılarla iş birliği yaparak akademik araştırma ve yeniliği geliştirmeye adamıştır.",
+    "DESCRIPTION": "Arid Foundation, akademik araştırma, yenilik ve gelişmeye adanmış önde gelen bir platformdur.",
     "QUICK_LINKS": "Hızlı Bağlantılar",
+    "SECTIONS": "Bölümlerimiz",
     "CONTACT_US": "Bize Ulaşın",
-    "ADDRESS": "123 Bilgi Caddesi, Araştırma Bölgesi, Riyad, Suudi Arabistan",
-    "WORKING_HOURS": "Pazar - Perşembe: 08:00 - 16:00",
-    "NEWSLETTER": "Bülten",
-    "SUBSCRIBE_TEXT": "En son araştırma ve etkinliklerimizle ilgili güncellemeleri almak için bültenimize abone olun.",
-    "EMAIL_PLACEHOLDER": "E-posta adresiniz",
+    "ADDRESS": "Riyad, Suudi Arabistan",
+    "WORKING_HOURS": "Paz - Per: 08:00 - 17:00",
     "ALL_RIGHTS_RESERVED": "Tüm hakları saklıdır",
+    "NEWSLETTER": "Bülten",
+    "SUBSCRIBE_TEXT": "Son haberler ve güncellemeleri almak için bültenimize abone olun.",
+    "EMAIL_PLACEHOLDER": "E-posta adresiniz",
     "PRIVACY": "Gizlilik Politikası",
     "TERMS": "Hizmet Şartları"
   },
   "LOGIN": {
     "TITLE": "Giriş Yap",
-    "USERNAME": "Kullanıcı Adı",
+    "USERName": "Kullanıcı Adı",
     "PASSWORD": "Şifre",
     "BUTTON": "Giriş Yap",
     "LOADING": "Giriş yapılıyor...",
@@ -28,8 +29,8 @@
     "ACADEMIC_PROGRAMS": "Akademik Programlarımız",
     "LEARN_MORE": "Daha Fazla Bilgi",
     "MEDIA_CENTER": "Medya Merkezi",
-    "EXPLORE_VIDEOS": "Son videolarımızı ve medya içeriklerini keşfedin",
-    "WATCH_VIDEO": "Videoyu İzle",
+    "EXPLORE_VIdEOS": "Son vIdeolarımızı ve medya içeriklerini keşfedin",
+    "WATCH_VIdEO": "VIdeoyu İzle",
     "PUBLICATIONS": "Yayınlarımız",
     "VIEW_DETAILS": "Detayları Görüntüle",
     "JOURNAL_ISSUES": "Dergi Sayıları",
@@ -41,14 +42,14 @@
   "PARTNERS": {
     "OUR": "",
     "PARTNERS": "Ortaklarımız",
-    "COLLABORATION": "Yenilik ve mükemmelliği teşvik etmek için sektör liderleriyle iş birliği",
+    "COLLABORATION": "Yenilik ve mükemmelliği teşvik etmek için sektör lIderleriyle iş birliği",
     "VISIT_WEBSITE": "Web Sitesini Ziyaret Et",
     "PREVIOUS": "Önceki slayt",
     "NEXT": "Sonraki slayt",
-    "GOTO_SLIDE": "{index} numaralı slayta git"
+    "GOTO_SLIdE": "{index} numaralı slayta git"
   },
   "APP": {
-    "TITLE": "ARID Vakfı"
+    "TITLE": "ARId Vakfı"
   },
   "NAV": {
     "HOME": "Ana Sayfa",
@@ -63,8 +64,8 @@
   "MODAL": {
     "CLOSE": "Kapat"
   },
-  "SIDEBAR": {
-    "TITLE": "ARID Yönetim",
+  "SIdEBAR": {
+    "TITLE": "ARId Yönetim",
     "MANAGE_SECTIONS": "Bölümleri Yönet",
     "LOGOUT": "Çıkış Yap"
   },
@@ -91,7 +92,7 @@
       "ACADEMIC_RESEARCH": "Akademik & Araştırma",
       "OUR_PARTNERS": "Ortaklarımız",
       "CONTACT_US": "Bize Ulaşın",
-      "SADA_ARID": "Sada ARID Dergisi",
+      "SADA_ARId": "Sada ARId Dergisi",
       "HIGHER_MANAGEMENT": "Üst Yönetim",
       "MEDIA": "Medya",
       "BOOKS": "Kitaplar"
@@ -109,7 +110,7 @@
     "WORKING_HOURS": "Çalışma Saatleri"
   },
   "MEDIA": {
-    "BROWSER_NOT_SUPPORTED": "Tarayıcınız video etiketini desteklemiyor"
+    "BROWSER_NOT_SUPPORTED": "Tarayıcınız vIdeo etiketini desteklemiyor"
   },
   "COMMON": {
     "CLOSE": "Kapat",
@@ -120,119 +121,57 @@
     "LOAD_SECTION": "Bölüm detayları yüklenemedi",
     "LOAD_SECTIONS": "Bölümler yüklenemedi"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "Yeni Bölüm Ekle",
-    "TITLE": "Bölümleri Yönet",
-    "TABS": {
-      "BASIC_INFO": "Temel Bilgiler",
-      "CONTENT": "İçerik",
-      "MEDIA": "Medya",
-      "JOURNAL_DETAILS": "Dergi Detayları",
-      "CONTACT_INFO": "İletişim Bilgileri",
-      "POSITION": "Pozisyon",
-      "PARTNER_INFO": "Ortak Bilgileri",
-      "DETAILS": "Detaylar"
-    },
-    "ACTIONS": {
-      "ADD_NEW": "Yeni Ekle",
-      "ADD": "Ekle",
-      "EDIT": "Düzenle",
-      "DELETE": "Sil",
-      "SAVE": "Kaydet",
-      "UPDATE": "Güncelle",
-      "CANCEL": "İptal",
-      "PREVIOUS": "Önceki",
-      "NEXT": "Sonraki"
-    },
-    "LABELS": {
-      "ALL": "Tümü",
-      "TITLE_EN": "Başlık (İngilizce)",
-      "TITLE_AR": "Başlık (Arapça)",
-      "NO_ARABIC_TITLE": "Arapça Başlık Yok",
-      "SECTION_TYPE": "Bölüm Türü",
-      "DISPLAY_ORDER": "Görüntüleme Sırası",
-      "CREATED": "Oluşturulma Tarihi",
-      "ACTIONS": "İşlemler",
-      "STATUS": "Durum",
-      "ACTIVE_SECTION": "Aktif Bölüm",
-      "SHOW_IN_HOMEPAGE": "Ana Sayfada Göster",
-      "HERO_SECTION": "Hero Bölümü",
-      "DESCRIPTION_EN": "Açıklama (İngilizce)",
-      "DESCRIPTION_AR": "Açıklama (Arapça)",
-      "CONTENT_EN": "İçerik (İngilizce)",
-      "CONTENT_AR": "İçerik (Arapça)",
-      "MAIN_IMAGE": "Ana Resim",
-      "HERO_IMAGE": "Hero Resmi",
-      "UPLOAD_IMAGE": "Resim Yükle",
-      "UPLOAD_VIDEO": "Video Yükle",
-      "UPLOAD_PDF": "PDF Yükle",
-      "VIDEO_URL": "Video URL",
-      "PDF_URL": "PDF URL",
-      "BOOK_PDF": "Kitap PDF",
-      "JOURNAL_PDF": "Dergi PDF",
-      "VIEW_PDF": "PDF'yi Görüntüle",
-      "ISSN": "ISSN",
-      "VOLUME": "Cilt",
-      "ISSUE": "Sayı",
-      "PUBLICATION_DATE": "Yayın Tarihi",
-      "ADDRESS_EN": "Adres (İngilizce)",
-      "ADDRESS_AR": "Adres (Arapça)",
-      "PHONE": "Telefon",
-      "EMAIL": "E-posta",
-      "WORKING_HOURS_EN": "Çalışma Saatleri (İngilizce)",
-      "WORKING_HOURS_AR": "Çalışma Saatleri (Arapça)",
-      "MAP_EMBED_URL": "Harita Gömme URL",
-      "POSITION_EN": "Pozisyon (İngilizce)",
-      "POSITION_AR": "Pozisyon (Arapça)",
-      "WEBSITE_URL": "Web Sitesi URL",
-      "PARTNER_TYPE": "Ortak Türü",
-      "SELECT_PARTNER_TYPE": "Ortak Türü Seçin",
-      "NO_IMAGE_UPLOADED": "Yüklenen Resim Yok",
-      "CURRENT_IMAGE": "Mevcut Resim",
-      "USING_EXTERNAL_LINK": "Harici Bağlantı Kullanılıyor",
-      "NEW_FILE_SELECTED": "Yeni Dosya Seçildi",
-      "OR_UPLOAD_VIDEO": "Veya Video Dosyası Yükle",
-      "OR_UPLOAD_PDF": "Veya PDF Dosyası Yükle",
-      "SECTION": "Bölüm"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "ISSN numarasını girin",
-      "VOLUME": "Cilt numarası",
-      "ISSUE": "Sayı numarası",
-      "ADDRESS_EN": "İngilizce adres",
-      "ADDRESS_AR": "Arapça adres",
-      "PHONE": "Telefon numarası",
-      "EMAIL": "E-posta adresi",
-      "WORKING_HOURS": "Çalışma saatleri",
-      "MAP_EMBED_URL": "Google Haritalar gömme URL",
-      "POSITION": "Pozisyon başlığı",
-      "WEBSITE_URL": "Ortak web sitesi URL",
-      "SELECT_PARTNER_TYPE": "Ortak türü seçin"
-    },
-    "STATUS": {
-      "ACTIVE": "Aktif",
-      "INACTIVE": "Pasif",
-      "HOME": "Ana Sayfa",
-      "HERO": "Hero"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "Bölüm başarıyla eklendi",
-      "SECTION_UPDATED": "Bölüm başarıyla güncellendi",
-      "SECTION_DELETED": "Bölüm başarıyla silindi",
-      "NO_SECTIONS_FOUND": "Seçilen filtreyle eşleşen bölüm bulunamadı",
-      "CONFIRM_DELETE": "Bu bölümü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
-      "INVALID_VIDEO_URL": "Lütfen geçerli bir YouTube veya Vimeo URL'si girin",
-      "FILE_SIZE_LIMIT": "Dosya boyutu 5MB'tan küçük olmalıdır"
+ "MANAGE_SECTIONS": {
+      "TABS": {
+        "INFO": "Temel Bilgiler",
+        "CONTENT": "İçerik"
+      },
+      "TITLE": "Bölümleri Yönet",
+      "ACTIONS": {
+        "ADD": "Ekle",
+        "ADD_NEW": "Yeni Ekle",
+        "EDIT": "Düzenle",
+        "DELETE": "Sil",
+        "UPDATE": "Güncelle",
+        "SAVE": "Kaydet",
+        "CANCEL": "İptal",
+        "NEXT": "Sonraki",
+        "PREVIOUS": "Önceki",
+        "ADD_CONTENT": "İçerik Ekle",
+        "EDIT_CONTENT": "İçeriği Düzenle",
+        "SAVE_CONTENT": "İçeriği Kaydet"
+      },
+      "LABELS": {
+        "NAME": "Ad",
+        "VIEW_TYPE": "Görünüm Türü",
+        "ORDER": "Sıra",
+        "STATUS": "Durum",
+        "CREATED": "Oluşturulma",
+        "ACTIONS": "İşlemler",
+        "CONTENTS": "İçerikler",
+        "SECTION": "Bölüm",
+        "LANGUAGE": "Dil",
+        "DEFAULT_LANGUAGE": "Varsayılan Dil",
+        "MENU_SECTION": "Menü Bölümü",
+        "HOMEPAGE_SECTION": "Ana Sayfa Bölümü",
+        "FOOTER_SECTION": "Alt Bilgi Bölümü",
+        "SUBJECT": "Konu",
+        "CONTENT": "İçerik",
+        "IMAGE": "Görsel",
+        "VIDEO": "Video",
+        "ACTIVE": "Aktif"
+      },
+      "STATUS": {
+        "HOME": "Ana Sayfa",
+        "MENU": "Menü",
+        "FOOTER": "Alt Bilgi"
+      },
+      "MESSAGES": {
+        "NO_SECTIONS_FOUND": "Hiç bölüm bulunamadı",
+        "NO_CONTENTS_FOUND": "Hiç içerik bulunamadı"
+      },
+      "CONFIRM": {
+        "DELETE": "Bu bölümü silmek istediğinizden emin misiniz?"
+      }
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "Ana Sayfa",
-    "ACADEMIC_RESEARCH": "Akademik & Araştırma",
-    "OUR_PARTNERS": "Ortaklarımız",
-    "CONTACT_US": "Bize Ulaşın",
-    "SADA_ARID_JOURNAL": "Sada ARID Dergisi",
-    "HIGHER_MANAGEMENT": "Üst Yönetim",
-    "MEDIA": "Medya",
-    "BOOKS": "Kitaplar"
   }
-}

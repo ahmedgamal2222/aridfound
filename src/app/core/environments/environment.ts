@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://aridfound.premiumasp.net/api',
+  apiUrl: 'http://aridfound.premiumasp.net/api',
   
 };

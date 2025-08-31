@@ -1,21 +1,22 @@
   {
   "FOOTER": {
-    "DESCRIPTION": "مؤسسة أريد مخصصة لتطوير البحث الأكاديمي والابتكار من خلال التعاون مع المؤسسات والباحثين حول العالم.",
+    "DESCRIPTION": "مؤسسة Arid هي منصة رائدة مخصصة للبحث الأكاديمي والابتكار والتنمية.",
     "QUICK_LINKS": "روابط سريعة",
+    "SECTIONS": "أقسامنا",
     "CONTACT_US": "اتصل بنا",
-    "ADDRESS": "123 شارع المعرفة، حي البحوث، الرياض، المملكة العربية السعودية",
-    "WORKING_HOURS": "الأحد - الخميس: 8:00 صباحاً - 4:00 مساءً",
-    "NEWSLETTER": "النشرة البريدية",
-    "SUBSCRIBE_TEXT": "اشترك في نشرتنا البريدية لتلقي آخر التحديثات عن أبحاثنا وفعالياتنا.",
-    "EMAIL_PLACEHOLDER": "عنوان بريدك الإلكتروني",
+    "ADDRESS": "الرياض، المملكة العربية السعودية",
+    "WORKING_HOURS": "الأحد - الخميس: 8 ص - 5 م",
     "ALL_RIGHTS_RESERVED": "جميع الحقوق محفوظة",
+    "NEWSLETTER": "النشرة الإخبارية",
+    "SUBSCRIBE_TEXT": "اشترك في نشرتنا الإخبارية لتصلك آخر الأخبار والتحديثات.",
+    "EMAIL_PLACEHOLDER": "بريدك الإلكتروني",
     "PRIVACY": "سياسة الخصوصية",
     "TERMS": "شروط الخدمة"
   },
   
 "LOGIN": {
     "TITLE": "تسجيل الدخول",
-    "USERNAME": "اسم المستخدم",
+    "USERName": "اسم المستخدم",
     "PASSWORD": "كلمة المرور",
     "BUTTON": "تسجيل الدخول",
     "LOADING": "جاري تسجيل الدخول...",
@@ -28,8 +29,8 @@
     "ACADEMIC_PROGRAMS": "برامجنا الأكاديمية",
     "LEARN_MORE": "تعلم المزيد",
     "MEDIA_CENTER": "مركز الوسائط",
-    "EXPLORE_VIDEOS": "استكشف أحدث مقاطع الفيديو والمحتوى الإعلامي",
-    "WATCH_VIDEO": "مشاهدة الفيديو كاملاً",
+    "EXPLORE_VIdEOS": "استكشف أحدث مقاطع الفيديو والمحتوى الإعلامي",
+    "WATCH_VIdEO": "مشاهدة الفيديو كاملاً",
     "PUBLICATIONS": "منشوراتنا",
     "VIEW_DETAILS": "عرض التفاصيل",
     "JOURNAL_ISSUES": "أعداد المجلة",
@@ -44,13 +45,13 @@
     "VISIT_WEBSITE": "زيارة الموقع",
     "PREVIOUS": "الشريحة السابقة",
     "NEXT": "الشريحة التالية",
-    "GOTO_SLIDE": "انتقل إلى الشريحة {index}"
+    "GOTO_SLIdE": "انتقل إلى الشريحة {index}"
   },
    "MODAL": {
     "CLOSE": "إغلاق"
   },
-  "SIDEBAR": {
-    "TITLE": "لوحة تحكم ARID",
+  "SIdEBAR": {
+    "TITLE": "لوحة تحكم ARId",
     "MANAGE_SECTIONS": "إدارة الأقسام",
     "LOGOUT": "تسجيل الخروج"
   },
@@ -83,7 +84,7 @@
     "ACADEMIC_RESEARCH": "الكيانات الأكاديمية والبحثية",
     "OUR_PARTNERS": "شركاؤنا",
     "CONTACT_US": "اتصل بنا",
-    "SADA_ARID": "مجلة صدي ARID",
+    "SADA_ARId": "مجلة صدي ARId",
     "HIGHER_MANAGEMENT": "الإدارة العليا",
     "MEDIA": "الوسائط",
     "BOOKS": "الكتب"
@@ -113,7 +114,7 @@
     "LOAD_SECTIONS": "فشل تحميل الأقسام"
   },
   "APP": {
-    "TITLE": "مؤسسة ARID"
+    "TITLE": "مؤسسة ARId"
   },
   "NAV": {
     "HOME": "الرئيسية",
@@ -125,82 +126,61 @@
     "ADMIN": "الإدارة",
     "REGISTER": "تسجيل جديد"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD": "اضافة قسم جديد",
-    "TITLE": "إدارة الأقسام",
+ "MANAGE_SECTIONS": {
     "TABS": {
-      "BASIC_INFO": "المعلومات الأساسية",
-      "CONTENT": "المحتوى",
-      "MEDIA": "الوسائط",
-      "JOURNAL_DETAILS": "تفاصيل المجلة",
-      "CONTACT_INFO": "معلومات الاتصال",
-      "POSITION": "المنصب",
-      "PARTNER_INFO": "معلومات الشريك",
-      "DETAILS": "التفاصيل"
+      "INFO": "المعلومات الأساسية",
+      "CONTENT": "المحتوى"
     },
+    "TITLE": "إدارة الأقسام",
     "ACTIONS": {
+      "ADD": "إضافة ",
       "ADD_NEW": "إضافة جديد",
-            "ADD": "إضافة ",
-
       "EDIT": "تعديل",
       "DELETE": "حذف",
-      "SAVE": "حفظ",
       "UPDATE": "تحديث",
+      "SAVE": "حفظ",
       "CANCEL": "إلغاء",
+      "NEXT": "التالي",
       "PREVIOUS": "السابق",
-      "NEXT": "التالي"
+      "ADD_CONTENT": "إضافة محتوى",
+      "EDIT_CONTENT": "تعديل المحتوى",
+      "SAVE_CONTENT": "حفظ المحتوى"
     },
     "LABELS": {
-      "ALL": "الكل",
-      "TITLE_EN": "العنوان (الإنجليزية)",
-      "TITLE_AR": "العنوان (العربية)",
-      "NO_ARABIC_TITLE": "لا يوجد عنوان عربي",
-      "SECTION_TYPE": "نوع القسم",
-      "DISPLAY_ORDER": "ترتيب العرض",
+      "NAME": "الاسم",
+      "VIEW_TYPE": "نوع العرض",
+      "ORDER": "الترتيب",
+        "ID": "اضافة",
+
+      "STATUS": "الحالة",
       "CREATED": "تاريخ الإنشاء",
       "ACTIONS": "الإجراءات",
-      "STATUS": "الحالة",
-      "ACTIVE_SECTION": "قسم نشط",
-      "SHOW_IN_HOMEPAGE": "عرض في الصفحة الرئيسية",
-      "HERO_SECTION": "قسم رئيسي",
-      "DESCRIPTION_EN": "الوصف (الإنجليزية)",
-      "DESCRIPTION_AR": "الوصف (العربية)",
-      "CONTENT_EN": "المحتوى (الإنجليزية)",
-      "CONTENT_AR": "المحتوى (العربية)",
-      "MAIN_IMAGE": "الصورة الرئيسية",
-      "HERO_IMAGE": "الصورة البارزة",
-      "UPLOAD_IMAGE": "رفع صورة",
-      "UPLOAD_VIDEO": "رفع فيديو",
-      "UPLOAD_PDF": "رفع ملف PDF",
-      "VIDEO_URL": "رابط الفيديو",
-      "PDF_URL": "رابط PDF",
-      "BOOK_PDF": "كتاب PDF",
-      "JOURNAL_PDF": "مجلة PDF",
-      "VIEW_PDF": "عرض PDF",
-      "ISSN": "رقم ISSN",
-      "VOLUME": "المجلد",
-      "ISSUE": "العدد",
-      "PUBLICATION_DATE": "تاريخ النشر",
-      "ADDRESS_EN": "العنوان (الإنجليزية)",
-      "ADDRESS_AR": "العنوان (العربية)",
-      "PHONE": "الهاتف",
-      "EMAIL": "البريد الإلكتروني",
-      "WORKING_HOURS_EN": "ساعات العمل (الإنجليزية)",
-      "WORKING_HOURS_AR": "ساعات العمل (العربية)",
-      "MAP_EMBED_URL": "رابط خريطة التضمين",
-      "POSITION_EN": "المنصب (الإنجليزية)",
-      "POSITION_AR": "المنصب (العربية)",
-      "WEBSITE_URL": "رابط الموقع",
-      "PARTNER_TYPE": "نوع الشريك",
-      "SELECT_PARTNER_TYPE": "اختر نوع الشريك",
-      "NO_IMAGE_UPLOADED": "لا توجد صورة مرفوعة",
-      "CURRENT_IMAGE": "الصورة الحالية",
-      "USING_EXTERNAL_LINK": "باستخدام رابط خارجي",
-      "NEW_FILE_SELECTED": "تم اختيار ملف جديد",
-      "OR_UPLOAD_VIDEO": "أو رفع ملف فيديو",
-      "OR_UPLOAD_PDF": "أو رفع ملف PDF",
-      "SECTION": "قسم"
+      "CONTENTS": "المحتويات",
+      "SECTION": "قسم",
+      "LANGUAGE": "اللغة",
+      "DEFAULT_LANGUAGE": "اللغة الافتراضية",
+      "MENU_SECTION": "قسم القائمة",
+      "HOMEPAGE_SECTION": "قسم الصفحة الرئيسية",
+      "FOOTER_SECTION": "قسم التذييل",
+      "SUBJECT": "العنوان",
+      "CONTENT": "المحتوى",
+      "IMAGE": "صورة",
+      "VIDEO": "فيديو",
+      "ACTIVE": "نشط"
     },
+    "STATUS": {
+      "HOME": "رئيسي",
+      "MENU": "قائمة",
+      "FOOTER": "تذييل"
+    },
+    "MESSAGES": {
+      "NO_SECTIONS_FOUND": "لم يتم العثور على أقسام",
+      "NO_CONTENTS_FOUND": "لم يتم العثور على محتويات"
+    },
+    "CONFIRM": {
+      "DELETE": "هل أنت متأكد من أنك تريد حذف هذا القسم؟"
+    }
+  ,
     "PLACEHOLDERS": {
       "ISSN": "أدخل رقم ISSN",
       "VOLUME": "رقم المجلد",
@@ -210,25 +190,10 @@
       "PHONE": "رقم الهاتف",
       "EMAIL": "البريد الإلكتروني",
       "WORKING_HOURS": "ساعات العمل",
-      "MAP_EMBED_URL": "رابط تضمين خرائط جوجل",
+      "MAP_EMBED_Url": "رابط تضمين خرائط جوجل",
       "POSITION": "عنوان المنصب",
-      "WEBSITE_URL": "رابط موقع الشريك",
+      "WEBSITE_Url": "رابط موقع الشريك",
       "SELECT_PARTNER_TYPE": "اختر نوع الشريك"
-    },
-    "STATUS": {
-      "ACTIVE": "نشط",
-      "INACTIVE": "غير نشط",
-      "HOME": "رئيسي",
-      "HERO": "رئيسي مميز"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "تمت إضافة القسم بنجاح",
-      "SECTION_UPDATED": "تم تحديث القسم بنجاح",
-      "SECTION_DELETED": "تم حذف القسم بنجاح",
-      "NO_SECTIONS_FOUND": "لا توجد أقسام مطابقة للفلتر المحدد",
-      "CONFIRM_DELETE": "هل أنت متأكد من رغبتك في حذف هذا القسم؟ لا يمكن التراجع عن هذا الإجراء.",
-      "INVALID_VIDEO_URL": "الرجاء إدخال رابط يوتيوب أو فيميو صحيح",
-      "FILE_SIZE_LIMIT": "يجب أن يكون حجم الملف أقل من 5 ميجابايت"
     }
   },
   "SECTION_TYPES": {
@@ -236,7 +201,7 @@
     "ACADEMIC_RESEARCH": "أكاديمي وبحثي",
     "OUR_PARTNERS": "شركاؤنا",
     "CONTACT_US": "اتصل بنا",
-    "SADA_ARID_JOURNAL": "مجلة صدى ARID",
+    "SADA_ARId_JOURNAL": "مجلة صدى ARId",
     "HIGHER_MANAGEMENT": "الإدارة العليا",
     "MEDIA": "وسائط",
     "BOOKS": "كتب"

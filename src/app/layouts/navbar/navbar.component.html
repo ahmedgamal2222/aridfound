@@ -2,10 +2,10 @@
   <div class="container">
     <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
       <img src="/logo.png" alt="Logo" class="logo-img">
-      <span>ARID Foundation</span>
+      <span>ARId Foundation</span>
     </a>
     
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" Id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive="active">
@@ -32,14 +32,14 @@
       <ul class="navbar-nav">
         <!-- Language Selector -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" 
+          <a class="nav-link dropdown-toggle" href="#" Id="languageDropdown" 
              role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ currentLanguage | uppercase }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
             <li *ngFor="let lang of languages">
               <a class="dropdown-item" (click)="changeLanguage(lang.code)">
-                {{ lang.flag }} {{ lang.name }}
+                {{ lang.flag }} {{ lang.Name }}
               </a>
             </li>
           </ul>

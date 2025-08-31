@@ -1,5 +1,5 @@
 {
-  "name": "arid-foundation-frontend",
+  "Name": "arid-foundation-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.2.14",
     "@angular/router": "^19.2.14",
 "@fortawesome/angular-fontawesome": "^1.0.0",    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-"@fortawesome/free-solid-svg-icons": "^6.4.2",
+"@fortawesome/free-solId-svg-icons": "^6.4.2",
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",

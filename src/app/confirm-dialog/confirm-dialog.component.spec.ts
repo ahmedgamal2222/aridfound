@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PartnerSlIderComponent } from './partner-slIder.component';
+import { ConfirmDialogComponent } from './confirm-dialog.component';
 
-describe('PartnerSlIderComponent', () => {
-  let component: PartnerSlIderComponent;
-  let fixture: ComponentFixture<PartnerSlIderComponent>;
+describe('ConfirmDialogComponent', () => {
+  let component: ConfirmDialogComponent;
+  let fixture: ComponentFixture<ConfirmDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PartnerSlIderComponent]
+      imports: [ConfirmDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PartnerSlIderComponent);
+    fixture = TestBed.createComponent(ConfirmDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

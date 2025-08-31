@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Section } from '../core/models/section.model';
+import { Section} from '../core/models/section.model';
 import { RouterLink } from '@angular/router';
 import { TruncatePipe } from '../../truncate.pipe';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,16 +11,16 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [CommonModule, RouterLink, TruncatePipe, TranslateModule],
   template: `
     <div class="card h-100 shadow-sm">
-      <img [src]="getSafeImageUrl(section.imageUrl)" 
+      <img [src]="getSafeImageUrl(section.Contents[0].Image)" 
            class="card-img-top" 
-           [alt]="section.title"
+           [alt]="section.Contents[0].Subject"
            onerror="this.style.display='none'">
       <div class="card-body">
-        <h5 class="card-title">{{section.title}}</h5>
-        <p class="card-text text-muted">{{section.description || '' | truncate: 120}}</p>
+        <h5 class="card-title">{{section.Contents[0].Subject}}</h5>
+        <p class="card-text text-muted">{{section.Contents[0].Description || '' | truncate: 120}}</p>
       </div>
       <div class="card-footer bg-transparent">
-        <a [routerLink]="['/sections', section.id]" class="btn btn-sm btn-outline-primary">
+        <a [routerLink]="['/sections', section.Id]" class="btn btn-sm btn-outline-primary">
           {{ 'CARD.VIEW_DETAILS' | translate }}
         </a>
       </div>
@@ -44,12 +44,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class CardComponent {
   @Input() section!: Section;
-  defaultImage = 'assets/images/default-section.jpg';
+  defaultImage = 'assets/Images/default-section.jpg';
 
-  getSafeImageUrl(imageUrl: string | undefined): string {
-    if (!imageUrl) return '';
-    if (imageUrl.startsWith('http')) return imageUrl;
-    return `https://aridfound.premiumasp.net${imageUrl}`;
+  getSafeImageUrl(ImageUrl: string | undefined): string {
+    if (!ImageUrl) return '';
+    if (ImageUrl.startsWith('http')) return ImageUrl;
+    return `https://arIdfound.premiumasp.net${ImageUrl}`;
   }
 
   handleImageError(event: Event) {

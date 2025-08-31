@@ -1,9 +1,9 @@
-/* Partner Slider Styles */
+/* Partner SlIder Styles */
 .partners-section {
   position: relative;
   padding: 6rem 0;
   background: linear-gradient(135deg, #f9fafc 0%, #f0f4f8 100%);
-  overflow: hidden;
+  overflow: hIdden;
 }
 
 .partners-section::before {
@@ -11,7 +11,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  wIdth: 100%;
   height: 10px;
   background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
 }
@@ -44,35 +44,35 @@
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 100%;
+  wIdth: 100%;
   height: 4px;
   background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
   border-radius: 2px;
 }
 
-.section-header .section-description {
+.section-header .section-Description {
   color: #7f8c8d;
   font-size: 1.2rem;
-  max-width: 700px;
+  max-wIdth: 700px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 .partners-container {
   position: relative;
-  max-width: 1400px;
+  max-wIdth: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.partners-slider {
+.partners-slIder {
   position: relative;
   min-height: 400px;
   display: flex;
   align-items: center;
 }
 
-.slide-track {
+.slIde-track {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -83,20 +83,20 @@
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  min-width: 100%;
+  min-wIdth: 100%;
 }
 
 .partner-card {
   flex: 1 1 calc(25% - 2rem);
-  min-width: 250px;
+  min-wIdth: 250px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: 2.5rem;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(52, 152, 219, 0.1);
+  overflow: hIdden;
+  border: 1px solId rgba(52, 152, 219, 0.1);
 }
 
 .partner-card::before {
@@ -104,7 +104,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  wIdth: 4px;
   height: 0;
   background: linear-gradient(to bottom, #3498db 0%, #2ecc71 100%);
   transition: height 0.3s ease;
@@ -135,7 +135,7 @@
 
 .partner-logo {
   max-height: 80%;
-  max-width: 80%;
+  max-wIdth: 80%;
   object-fit: contain;
   filter: grayscale(100%) brightness(0.9) contrast(0.8);
   opacity: 0.9;
@@ -146,7 +146,7 @@
   text-align: center;
 }
 
-.partner-name {
+.partner-Name {
   font-size: 1.3rem;
   font-weight: 700;
   color: #2c3e50;
@@ -155,18 +155,18 @@
   padding-bottom: 0.5rem;
 }
 
-.partner-name::after {
+.partner-Name::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  wIdth: 50px;
   height: 2px;
   background: rgba(52, 152, 219, 0.3);
 }
 
-.partner-description {
+.partner-Description {
   color: #34495e;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -181,12 +181,12 @@
   text-decoration: none;
   font-weight: 600;
   padding: 0.6rem 1.5rem;
-  border: 2px solid #3498db;
+  border: 2px solId #3498db;
   border-radius: 30px;
   transition: all 0.3s ease;
   background: white;
   position: relative;
-  overflow: hidden;
+  overflow: hIdden;
   z-index: 1;
 }
 
@@ -195,10 +195,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  wIdth: 0;
   height: 100%;
   background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
-  transition: width 0.3s ease;
+  transition: wIdth 0.3s ease;
   z-index: -1;
 }
 
@@ -208,11 +208,11 @@
 }
 
 .partner-link:hover::before {
-  width: 100%;
+  wIdth: 100%;
 }
 
 /* Navigation controls */
-.slider-controls {
+.slIder-controls {
   position: absolute;
   top: 50%;
   left: 0;
@@ -225,7 +225,7 @@
 }
 
 .control-btn {
-  width: 50px;
+  wIdth: 50px;
   height: 50px;
   border-radius: 50%;
   background: white;
@@ -256,7 +256,7 @@
 }
 
 /* Indicators */
-.slider-indicators {
+.slIder-indicators {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
@@ -264,7 +264,7 @@
 }
 
 .indicator {
-  width: 12px;
+  wIdth: 12px;
   height: 12px;
   border-radius: 50%;
   background: rgba(52, 152, 219, 0.3);
@@ -278,13 +278,13 @@
 }
 
 /* Responsive styles */
-@media (max-width: 1200px) {
+@media (max-wIdth: 1200px) {
   .partner-card {
     flex: 1 1 calc(33.333% - 2rem);
   }
 }
 
-@media (max-width: 992px) {
+@media (max-wIdth: 992px) {
   .partners-section {
     padding: 5rem 0;
   }
@@ -299,23 +299,23 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-wIdth: 768px) {
   .partners-container {
     padding: 0 1.5rem;
   }
 
   .partner-card {
     flex: 1 1 100%;
-    max-width: 400px;
+    max-wIdth: 400px;
     margin: 0 auto;
   }
 
-  .slider-controls {
+  .slIder-controls {
     display: none;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-wIdth: 576px) {
   .partners-section {
     padding: 4rem 0;
   }

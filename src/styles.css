@@ -8,18 +8,18 @@
 .main-content {
   flex: 1;
   background-color: #f8f9fa;
-  margin-left: 250px; /* Match sidebar width */
+  margin-left: 250px; /* Match sIdebar wIdth */
 }
 
-@media (max-width: 992px) {
-  .sidebar {
-    width: 80px;
-    overflow: hidden;
+@media (max-wIdth: 992px) {
+  .sIdebar {
+    wIdth: 80px;
+    overflow: hIdden;
   }
-  .sidebar .nav-link span {
+  .sIdebar .nav-link span {
     display: none;
   }
-  .sidebar-header h4 {
+  .sIdebar-header h4 {
     display: none;
   }
   .main-content {
@@ -27,13 +27,13 @@
   }
 }
 
-@media (max-width: 768px) {
-  .sidebar {
+@media (max-wIdth: 768px) {
+  .sIdebar {
     position: fixed;
     z-index: 1000;
     left: -250px;
   }
-  .sidebar.active {
+  .sIdebar.active {
     left: 0;
   }
   .main-content {
@@ -79,8 +79,8 @@ body {
 }
 
 .auth-card {
-  width: 100%;
-  max-width: 400px;
+  wIdth: 100%;
+  max-wIdth: 400px;
   padding: 2rem;
   background: white;
   border-radius: 8px;
@@ -108,7 +108,7 @@ body {
   margin-top: 1rem;
 }
 
-/* Toastr Overrides */
+/* Toastr OverrIdes */
 .toast-container .ngx-toastr {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
@@ -126,6 +126,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.full-width {
-  width: 100%;
+.full-wIdth {
+  wIdth: 100%;
 }

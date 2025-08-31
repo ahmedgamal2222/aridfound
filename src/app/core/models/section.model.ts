@@ -1,61 +1,40 @@
+export enum ViewType {
+  HeroImage = 'HeroImage',
+  SliderHero = 'SliderHero',
+  HtmlBlock = 'HtmlBlock',
+  List4Items = 'List4Items',
+  List3Items = 'List3Items',
+  AutoScroll = 'AutoScroll',
+  ArrowScroll = 'ArrowScroll',
+  Video = 'Video',
+  FixedScroll = 'FixedScroll'
+}
+
+// Section Model
 export interface Section {
-  id: number;
-  title: string;
-  titleAr: string;
-  sectionType: SectionType;
-  description: string;
-  descriptionAr: string;
-  content: string;
-  contentAr: string;
-  imageUrl: string;
-  heroImageUrl: string;
-  videoUrl: string;
-  pdfUrl: string;
-  order: number;
-  isActive: boolean;
-  showInHomePage: boolean;
-  isHeroSection: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  
-  // Journal specific properties
-  issn: string;
-  volume: number | null;
-  issue: number | null;
-  publicationDate: Date | null;
-  
-  // Contact Us specific properties
-  address: string;
-  addressAr: string;
-  phone: string;
-  email: string;
-  workingHours: string;
-  workingHoursAr: string;
-  mapEmbedUrl: string;
-  
-  // Higher Management specific properties
-  position: string;
-  positionAr: string;
-  
-  // Partner specific properties
-  websiteUrl: string;
-  partnerType: PartnerType | null;
+  Id: number;
+  Name: string;
+  Indx: number;
+  IsMenu: boolean;
+  IsHomePage: boolean;
+  IsFooter: boolean;
+  ViewType: ViewType | string; // عشان يدعم backend لو رجّع string
+  LanguageId: number | null;
+  CreatedAt: Date;
+  UpdatedAt: Date;
+  Contents: SectionContent[];
 }
 
-export enum SectionType {
-  HomePage = 'HomePage',
-  AcademicAndResearchEntities = 'AcademicAndResearchEntities',
-  OurPartners = 'OurPartners',
-  ContactUs = 'ContactUs',
-  SadaARIDJournal = 'SadaARIDJournal',
-  HigherManagement = 'HigherManagement',
-  Media = 'Media',
-  Books = 'Books'
-}
-
-export enum PartnerType {
-  Academic = 'Academic',
-  Corporate = 'Corporate',
-  Government = 'Government',
-  International = 'International'
+// SectionContent Model
+export interface SectionContent {
+  Id: number;
+  SectionId: number;
+  Subject: string;
+  Content: string;
+  LanguageId: number | null;
+  Image?: string;
+  Description?: string;
+  Url?: string;
+  Order: number;
+  IsActive: boolean;
 }

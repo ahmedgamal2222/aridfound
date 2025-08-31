@@ -1,146 +1,586 @@
 <!-- Hero Carousel -->
 <section *ngIf="heroSections.length > 0" class="hero-carousel">
   <carousel [interval]="5000" [isAnimated]="true" [showIndicators]="true">
-    <slide *ngFor="let hero of heroSections">
-      <div class="hero-slide" [style.backgroundImage]="'url(' + getFullImageUrl(hero.heroImageUrl) + ')'">
-        <div class="container">
-          <div class="hero-content">
-            <h1>{{hero.title}}</h1>
-            <p class="lead">{{hero.description}}</p>
-            <div [innerHTML]="hero.content"></div>
-            <button class="btn btn-primary btn-lg mt-3">{{ 'HOME.EXPLORE_MORE' | translate }}</button>
+    <ng-container *ngFor="let hero of heroSections">
+      <slide *ngIf="hero.Contents.length > 0">
+        <div
+          class="hero-slide"
+          [style.backgroundImage]="'url(' + getFullImageUrl(hero.Contents[0].Image) + ')'"
+          [ngStyle]="getSectionStyle(hero)"
+        >
+          <div class="container">
+            <div class="hero-content text-center text-white">
+              <h1>{{ hero.Name }}</h1>
+              <p class="lead" *ngIf="hero.Contents[0]?.Description">
+                {{ hero.Contents[0].Description }}
+              </p>
+              <div *ngIf="hero.Contents[0]?.Content" [innerHTML]="hero.Contents[0].Content"></div>
+              <a
+                *ngIf="hero.Contents[0]?.Url"
+                [href]="hero.Contents[0].Url"
+                class="btn btn-primary btn-lg mt-3"
+              >
+                {{ 'HOME.EXPLORE_MORE' | translate }}
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </slide>
+      </slide>
+    </ng-container>
   </carousel>
 </section>
 
-<!-- Main Content Sections -->
-<section *ngFor="let section of homeSections" class="section" [ngClass]="{'section-bg-light': $even}">
-  <div class="container">
-    <h2 class="section-title">{{section.title}}</h2>
-    <div class="row align-items-center">
-      <div class="col-lg-6" [class.order-lg-2]="$even">
-        <img [src]="getFullImageUrl(section.imageUrl)" [alt]="section.title" 
-             class="img-fluid rounded shadow-lg">
-      </div>
-      <div class="col-lg-6">
-        <div [innerHTML]="section.content"></div>
+<!-- Dynamic Sections by ViewType -->
+<ng-container *ngFor="let section of sections">
+  <!-- HeroImage Sections -->
+  <section
+    *ngIf="section.ViewType === 'HeroImage' && section.Contents.length > 0"
+    class="hero-section"
+    [ngStyle]="getSectionStyle(section)"
+  >
+    <div class="container">
+      <h2 class="section-title">{{ section.Name }}</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <img
+            [src]="getFullImageUrl(section.Contents[0].Image)"
+            [alt]="section.Name"
+            class="img-fluid rounded hero-image"
+          />
+        </div>
+        <div class="col-lg-6 hero-content">
+          <h3>{{ section.Contents[0].Subject }}</h3>
+          <div *ngIf="section.Contents[0]?.Content" [innerHTML]="section.Contents[0].Content"></div>
+          <a 
+            *ngIf="section.Contents[0]?.Url" 
+            [href]="section.Contents[0].Url" 
+            class="btn btn-primary mt-3"
+          >
+            {{ 'HOME.LEARN_MORE' | translate }}
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Featured Academic Sections -->
-<section *ngIf="featuredSections.length > 0" class="section section-bg-light">
-  <div class="container">
-    <h2 class="section-title">{{ 'HOME.ACADEMIC_PROGRAMS' | translate }}</h2>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let section of featuredSections">
-        <div class="card">
-          <img [src]="getFullImageUrl(section.imageUrl)" class="card-img-top" [alt]="section.title">
-          <div class="card-body">
-            <h3 class="card-title">{{section.title}}</h3>
-            <p class="card-text">{{section.description | truncate:150}}</p>
-            <a [routerLink]="['/sections', section.id]" class="btn btn-outline-primary">
+  <!-- SliderHero Sections -->
+  <section
+    *ngIf="section.ViewType === 'SliderHero' && section.Contents.length > 0"
+    class="slider-hero-section"
+  >
+    <div class="container">
+      <h2 class="section-title text-center mb-4">{{ section.Name }}</h2>
+      <div class="slider-wrapper">
+        <div class="slider-container">
+          <div *ngFor="let content of section.Contents" class="slider-item">
+            <div class="slider-card">
+              <img
+                [src]="getFullImageUrl(content.Image)"
+                [alt]="content.Subject"
+                class="slider-image"
+              />
+              <div class="slider-content">
+                <h4>{{ content.Subject }}</h4>
+                <p>{{ content.Description | truncate:120 }}</p>
+                <a *ngIf="content.Url" [href]="content.Url" class="btn btn-outline-primary btn-sm">
+                  {{ 'HOME.VIEW_DETAILS' | translate }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HtmlBlock Sections -->
+  <section
+    *ngIf="section.ViewType === 'HtmlBlock' && section.Contents.length > 0"
+    class="html-block-section"
+    [ngStyle]="getSectionStyle(section)"
+  >
+    <div class="container">
+      <h2 class="section-title text-center">{{ section.Name }}</h2>
+      <div class="html-content-wrapper">
+        <div *ngFor="let content of section.Contents" class="html-content-block">
+          <div [innerHTML]="content.Content" class="html-content"></div>
+          <a *ngIf="content.Url" [href]="content.Url" class="btn btn-link">
+            {{ 'HOME.READ_MORE' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- List4Items Sections -->
+  <section
+    *ngIf="section.ViewType === 'List4Items' && section.Contents.length > 0"
+    class="list-section list-4-items"
+  >
+    <div class="container">
+      <h2 class="section-title">{{ section.Name }}</h2>
+      <div class="row">
+        <div *ngFor="let content of section.Contents; let i = index" class="col-lg-3 col-md-6 mb-4">
+          <div class="list-item-card">
+            <div class="item-number">{{ i + 1 }}</div>
+            <h4 class="item-title">{{ content.Subject }}</h4>
+            <p class="item-description">{{ content.Description | truncate:100 }}</p>
+            <a *ngIf="content.Url" [href]="content.Url" class="item-link">
+              {{ 'HOME.DISCOVER' | translate }} <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- List3Items Sections -->
+  <section
+    *ngIf="section.ViewType === 'List3Items' && section.Contents.length > 0"
+    class="list-section list-3-items"
+  >
+    <div class="container">
+      <h2 class="section-title text-center">{{ section.Name }}</h2>
+      <div class="row justify-content-center">
+        <div *ngFor="let content of section.Contents" class="col-lg-4 col-md-6 mb-4">
+          <div class="list-item-card text-center">
+            <div class="item-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4 class="item-title">{{ content.Subject }}</h4>
+            <p class="item-description">{{ content.Description }}</p>
+            <a *ngIf="content.Url" [href]="content.Url" class="btn btn-outline-primary">
               {{ 'HOME.LEARN_MORE' | translate }}
             </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Media Section -->
-<section *ngIf="videos.length > 0" class="media-section">
-  <div class="container">
-    <h2 class="section-title">{{ 'HOME.MEDIA_CENTER' | translate }}</h2>
-    <p class="text-center mb-5">{{ 'HOME.EXPLORE_VIDEOS' | translate }}</p>
-    
-    <div class="media-container">
-      <div class="media-card" *ngFor="let video of videos">
-        <div class="video-container">
-          <iframe [src]="getSafeVideoUrl(video.videoUrl)" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
-        </div>
-        <div class="media-info">
-          <h3>{{video.title}}</h3>
-          <p>{{video.description | truncate:100}}</p>
-          <a [href]="getFullVideoUrl(video.videoUrl)" 
-             target="_blank" 
-             class="btn btn-sm btn-primary">
-            {{ 'HOME.WATCH_VIDEO' | translate }}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Partners Slider -->
-<app-partner-slider *ngIf="partners.length > 0" [partners]="partners"></app-partner-slider>
-
-<!-- Books Section -->
-<section *ngIf="books.length > 0" class="section">
-  <div class="container">
-    <h2 class="section-title">{{ 'HOME.PUBLICATIONS' | translate }}</h2>
-    <div class="row g-4">
-      <div class="col-md-3" *ngFor="let book of books">
-        <div class="card" (click)="openBookModal(book)">
-          <img [src]="getFullImageUrl(book.imageUrl)" class="card-img-top" [alt]="book.title">
-          <div class="card-body">
-            <h5 class="card-title">{{book.title}}</h5>
-            <button class="btn btn-sm btn-outline-primary">
-              {{ 'HOME.VIEW_DETAILS' | translate }}
-            </button>
+  <!-- AutoScroll Sections -->
+  <section
+    *ngIf="section.ViewType === 'AutoScroll' && section.Contents.length > 0"
+    class="scroll-section auto-scroll"
+  >
+    <div class="container">
+      <h2 class="section-title">{{ section.Name }}</h2>
+      <div class="auto-scroll-container">
+        <div class="auto-scroll-content">
+          <div *ngFor="let content of section.Contents" class="scroll-item">
+            <img [src]="getFullImageUrl(content.Image)" [alt]="content.Subject" />
+            <h5>{{ content.Subject }}</h5>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Journal Issues -->
-<section *ngIf="journals.length > 0" class="section section-bg-light">
-  <div class="container">
-    <h2 class="section-title">{{ 'HOME.JOURNAL_ISSUES' | translate }}</h2>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let journal of journals">
-        <div class="card" (click)="openJournalModal(journal)">
-          <img [src]="getFullImageUrl(journal.imageUrl)" class="card-img-top" [alt]="journal.title">
-          <div class="card-body">
-            <h5 class="card-title">{{journal.title}}</h5>
-            <p class="card-text">{{ 'HOME.VOLUME' | translate }} {{journal.volume}}, {{ 'HOME.ISSUE' | translate }} {{journal.issue}}</p>
-            <p class="text-muted">{{journal.publicationDate | date:'MMMM yyyy'}}</p>
-            <button class="btn btn-sm btn-primary">
-              {{ 'HOME.READ_ISSUE' | translate }}
-            </button>
+  <!-- ArrowScroll Sections -->
+  <section
+    *ngIf="section.ViewType === 'ArrowScroll' && section.Contents.length > 0"
+    class="scroll-section arrow-scroll"
+  >
+    <div class="container">
+      <div class="section-header d-flex justify-content-between align-items-center">
+        <h2 class="section-title">{{ section.Name }}</h2>
+        <div class="scroll-arrows">
+          <button class="arrow-btn prev-arrow"><i class="fas fa-chevron-left"></i></button>
+          <button class="arrow-btn next-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div class="arrow-scroll-container">
+        <div class="arrow-scroll-content">
+          <div *ngFor="let content of section.Contents" class="scroll-item card">
+            <img
+              [src]="getFullImageUrl(content.Image)"
+              class="card-img-top"
+              [alt]="content.Subject"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ content.Subject }}</h5>
+              <p class="card-text">{{ content.Description | truncate:80 }}</p>
+              <a *ngIf="content.Url" [href]="content.Url" class="btn btn-sm btn-primary">
+                {{ 'HOME.VIEW' | translate }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Management Team -->
-<section *ngIf="management.length > 0" class="section">
-  <div class="container">
-    <h2 class="section-title">{{ 'HOME.LEADERSHIP_TEAM' | translate }}</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-3 col-sm-6" *ngFor="let member of management">
-        <div class="card text-center">
-          <img [src]="getFullImageUrl(member.imageUrl)" class="card-img-top rounded-circle mx-auto mt-3" 
-               style="width: 150px; height: 150px; object-fit: cover;" [alt]="member.title">
-          <div class="card-body">
-            <h5 class="card-title">{{member.title}}</h5>
-            <p class="text-muted">{{member.position}}</p>
+  <!-- Video Sections -->
+  <section
+    *ngIf="section.ViewType === 'Video' && section.Contents.length > 0"
+    class="video-section"
+  >
+    <div class="container">
+      <h2 class="section-title text-center">{{ section.Name }}</h2>
+      <div class="row justify-content-center">
+        <div *ngFor="let content of section.Contents" class="col-lg-6 col-md-10 mb-4">
+          <div class="video-card">
+            <div class="video-wrapper ratio ratio-16x9">
+              <iframe
+                [src]="content.Url ? getSafeVIdeoUrl(content.Url) : null"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="video-content">
+              <h3>{{ content.Subject }}</h3>
+              <p>{{ content.Description }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- FixedScroll Sections -->
+  <section
+    *ngIf="section.ViewType === 'FixedScroll' && section.Contents.length > 0"
+    class="scroll-section fixed-scroll"
+  >
+    <div class="container">
+      <h2 class="section-title">{{ section.Name }}</h2>
+      <div class="fixed-scroll-container">
+        <div class="fixed-scroll-content">
+          <div *ngFor="let content of section.Contents" class="scroll-item">
+            <div class="fixed-item-card">
+              <img [src]="getFullImageUrl(content.Image)" [alt]="content.Subject" />
+              <div class="fixed-item-content">
+                <h5>{{ content.Subject }}</h5>
+                <p>{{ content.Description | truncate:60 }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<style>
+/* أنماط عامة */
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* أنماط Hero */
+.hero-section {
+  padding: 5rem 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-image {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.03);
+}
+
+.hero-content {
+  padding: 1.5rem;
+}
+
+/* أنماط SliderHero */
+.slider-hero-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 1rem 0.5rem;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-item {
+  flex: 0 0 300px;
+}
+
+.slider-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.slider-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.slider-content {
+  padding: 1.5rem;
+}
+
+/* أنماط HtmlBlock */
+.html-block-section {
+  padding: 4rem 0;
+}
+
+.html-content-wrapper {
+  display: grid;
+  gap: 2rem;
+}
+
+.html-content-block {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.html-content {
+  line-height: 1.8;
+}
+
+.html-content ::ng-deep h3 {
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.html-content ::ng-deep p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* أنماط القوائم */
+.list-section {
+  padding: 4rem 0;
+}
+
+.list-item-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  height: 100%;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.list-item-card:hover {
+  transform: translateY(-5px);
+}
+
+.item-number {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  background: #3498db;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.item-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.item-description {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+}
+
+.item-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-icon {
+  font-size: 2.5rem;
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+.list-3-items .list-item-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+/* أنماط التمرير */
+.scroll-section {
+  padding: 4rem 0;
+}
+
+.auto-scroll-container, .fixed-scroll-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.auto-scroll-content {
+  display: flex;
+  animation: autoScroll 30s linear infinite;
+  gap: 1.5rem;
+}
+
+.auto-scroll-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes autoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.arrow-scroll-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem 0;
+}
+
+.arrow-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.arrow-scroll-content {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+.arrow-scroll-content .scroll-item {
+  flex: 0 0 280px;
+}
+
+.scroll-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #3498db;
+  background: white;
+  color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.arrow-btn:hover {
+  background: #3498db;
+  color: white;
+}
+
+.fixed-scroll-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.fixed-item-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.fixed-item-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.fixed-item-content {
+  padding: 1.5rem;
+}
+
+/* أنماط الفيديو */
+.video-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.video-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.video-content {
+  padding: 1.5rem;
+}
+
+.video-content h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.video-content p {
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* أنماط الاستجابة */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-content {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .slider-item {
+    flex: 0 0 85%;
+  }
+  
+  .fixed-scroll-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .html-content-block {
+    padding: 1.5rem;
+  }
+}
+</style>

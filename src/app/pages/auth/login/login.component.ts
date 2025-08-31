@@ -14,7 +14,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  model = { username: '', password: '' };
+  model = { userName: '', password: '' };
   isLoading = false;
 
   constructor(

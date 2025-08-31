@@ -5,15 +5,15 @@
       <div class="col-lg-4 col-md-6">
         <div class="footer-about">
           <a routerLink="/" class="footer-logo d-flex align-items-center gap-2 mb-3">
-            <img src="/logo.png" alt="ARID Foundation Logo" class="logo-img">
-            <span class="fw-bold">ARID Foundation</span>
+            <img src="/logo.png" alt="ARId Foundation Logo" class="logo-img">
+            <span class="fw-bold">ARId Foundation</span>
           </a>
           <p class="footer-description">
             {{ 'FOOTER.DESCRIPTION' | translate }}
           </p>
           <div class="social-links mt-3">
             @for (social of socialLinks; track social.icon) {
-              <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <a [href]="social.Url" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <i [class]="social.icon"></i>
               </a>
             }
@@ -21,21 +21,22 @@
         </div>
       </div>
 
-      <!-- Column 2: Quick Links -->
-      <div class="col-lg-2 col-md-6">
-        <h5 class="footer-title">{{ 'FOOTER.QUICK_LINKS' | translate }}</h5>
+     
+      <!-- Column 3: Footer Sections (Dynamic) -->
+      <div class="col-lg-3 col-md-6" *ngIf="footerSections$ | async as footerSections">
+        <h5 class="footer-title">{{ 'FOOTER.SECTIONS' | translate }}</h5>
         <ul class="footer-links">
-          @for (link of quickLinks; track link.label) {
+          @for (section of footerSections; track section.Id) {
             <li>
-              <a [routerLink]="link.path" routerLinkActive="active">
-                {{ link.label | translate }}
+              <a [routerLink]="['/section', section.Id]" routerLinkActive="active">
+                {{ section.Name }}
               </a>
             </li>
           }
         </ul>
       </div>
 
-      <!-- Column 3: Contact Info -->
+      <!-- Column 4: Contact Info -->
       <div class="col-lg-3 col-md-6">
         <h5 class="footer-title">{{ 'FOOTER.CONTACT_US' | translate }}</h5>
         <ul class="footer-contact">
@@ -57,48 +58,32 @@
           </li>
         </ul>
       </div>
-
-      <!-- Column 4: Newsletter -->
-      <div class="col-lg-3 col-md-6">
-        <h5 class="footer-title">{{ 'FOOTER.NEWSLETTER' | translate }}</h5>
-        <p class="newsletter-description">
-          {{ 'FOOTER.SUBSCRIBE_TEXT' | translate }}
-        </p>
-        <form class="newsletter-form">
-          <div class="input-group mb-3">
-            <input type="email" class="form-control" [placeholder]="'FOOTER.EMAIL_PLACEHOLDER' | translate" required>
-            <button class="btn btn-primary" type="submit">
-              <i class="bi bi-send-fill"></i>
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
 
     <div class="footer-bottom">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
           <p class="copyright mb-0">
-            &copy; {{ currentYear }} ARID Foundation. {{ 'FOOTER.ALL_RIGHTS_RESERVED' | translate }}
+            &copy; {{ currentYear }} Arid Foundation. {{ 'FOOTER.ALL_RIGHTS_RESERVED' | translate }}
           </p>
         </div>
         <div class="col-md-6 text-center text-md-end">
           <div class="footer-lang-switcher">
-          <div class="footer-lang-switcher">
-  <select class="form-select form-select-sm" (change)="translate.use($any($event.target).value)">
-    <option value="en" [selected]="translate.currentLang === 'en'">English 🇬🇧</option>
-    <option value="ar" [selected]="translate.currentLang === 'ar'">العربية 🇸🇦</option>
-    <option value="es" [selected]="translate.currentLang === 'es'">Español 🇪🇸</option>
-    <option value="fr" [selected]="translate.currentLang === 'fr'">Français 🇫🇷</option>
-    <option value="de" [selected]="translate.currentLang === 'de'">Deutsch 🇩🇪</option>
-    <option value="zh" [selected]="translate.currentLang === 'zh'">中文 🇨🇳</option>
-    <option value="ru" [selected]="translate.currentLang === 'ru'">Русский 🇷🇺</option>
-    <option value="pt" [selected]="translate.currentLang === 'pt'">Português 🇵🇹</option>
-    <option value="ja" [selected]="translate.currentLang === 'ja'">日本語 🇯🇵</option>
-    <option value="hi" [selected]="translate.currentLang === 'hi'">हिन्दी 🇮🇳</option>
-    <option value="tr" [selected]="translate.currentLang === 'tr'">Türkçe 🇹🇷</option>
-  </select>
-</div>
+            <select class="form-select form-select-sm" 
+                    [value]="translate.currentLang" 
+                    (change)="changeLanguage($any($event.target).value)">
+              <option value="en">English 🇬🇧</option>
+              <option value="ar">العربية 🇸🇦</option>
+              <option value="es">Español 🇪🇸</option>
+              <option value="fr">Français 🇫🇷</option>
+              <option value="de">Deutsch 🇩🇪</option>
+              <option value="zh">中文 🇨🇳</option>
+              <option value="ru">Русский 🇷🇺</option>
+              <option value="pt">Português 🇵🇹</option>
+              <option value="ja">日本語 🇯🇵</option>
+              <option value="hi">हिन्दी 🇮🇳</option>
+              <option value="tr">Türkçe 🇹🇷</option>
+            </select>
           </div>
         </div>
       </div>

@@ -1,53 +1,54 @@
 {
-   "FOOTER": {
-    "DESCRIPTION": "A Fundação ARID dedica-se ao avanço da pesquisa acadêmica e inovação através da colaboração com instituições e pesquisadores em todo o mundo.",
+"FOOTER": {
+    "DESCRIPTION": "Arid Foundation é uma plataforma líder dedicada à pesquisa acadêmica, inovação e desenvolvimento.",
     "QUICK_LINKS": "Links rápidos",
-    "CONTACT_US": "Contate-nos",
-    "ADDRESS": "123 Rua do Conhecimento, Distrito de Pesquisa, Riade, Arábia Saudita",
-    "WORKING_HOURS": "Domingo - Quinta: 8:00 - 16:00",
-    "NEWSLETTER": "Newsletter",
-    "SUBSCRIBE_TEXT": "Assine nossa newsletter para receber atualizações sobre nossas últimas pesquisas e eventos.",
-    "EMAIL_PLACEHOLDER": "Seu endereço de e-mail",
+    "SECTIONS": "Nossas seções",
+    "CONTACT_US": "Entre em contato",
+    "ADDRESS": "Riyadh, Arábia Saudita",
+    "WORKING_HOURS": "Dom - Qui: 8h - 17h",
     "ALL_RIGHTS_RESERVED": "Todos os direitos reservados",
+    "NEWSLETTER": "Newsletter",
+    "SUBSCRIBE_TEXT": "Assine nossa newsletter para receber as últimas notícias e atualizações.",
+    "EMAIL_PLACEHOLDER": "Seu endereço de e-mail",
     "PRIVACY": "Política de Privacidade",
     "TERMS": "Termos de Serviço"
   },"LOGIN": {
     "TITLE": "Login",
-    "USERNAME": "Nome de usuário",
+    "USERName": "Nome de usuário",
     "PASSWORD": "Senha",
     "BUTTON": "Entrar",
     "LOADING": "Fazendo login...",
     "NO_ACCOUNT": "Não tem uma conta?",
     "REGISTER": "Registrar",
-    "SUCCESS": "Login bem-sucedido",
-    "ERROR": "Nome de usuário ou senha inválidos"
+    "SUCCESS": "Login bem-sucedIdo",
+    "ERROR": "Nome de usuário ou senha inválIdos"
   },
   "HOME": {
     "EXPLORE_MORE": "Explore mais",
     "ACADEMIC_PROGRAMS": "Nossos programas acadêmicos",
     "LEARN_MORE": "Saiba mais",
     "MEDIA_CENTER": "Centro de mídia",
-    "EXPLORE_VIDEOS": "Explore nossos vídeos mais recentes e conteúdo de mídia",
-    "WATCH_VIDEO": "Assistir vídeo completo",
+    "EXPLORE_VIdEOS": "Explore nossos vídeos mais recentes e conteúdo de mídia",
+    "WATCH_VIdEO": "Assistir vídeo completo",
     "PUBLICATIONS": "Nossas publicações",
     "VIEW_DETAILS": "Ver detalhes",
     "JOURNAL_ISSUES": "Edições do jornal",
     "VOLUME": "Vol.",
     "ISSUE": "Edição",
     "READ_ISSUE": "Ler edição",
-    "LEADERSHIP_TEAM": "Equipe de liderança"
+    "LEADERSHIP_TEAM": "Equipe de lIderança"
   },
   "PARTNERS": {
     "OUR": "Nossos",
     "PARTNERS": "Parceiros",
     "COLLABORATION": "Colaborando com líderes do setor para impulsionar inovação e excelência",
     "VISIT_WEBSITE": "Visitar site",
-    "PREVIOUS": "Slide anterior",
-    "NEXT": "Próximo slide",
-    "GOTO_SLIDE": "Ir para o slide {index}"
+    "PREVIOUS": "SlIde anterior",
+    "NEXT": "Próximo slIde",
+    "GOTO_SLIdE": "Ir para o slIde {index}"
   },
   "APP": {
-    "TITLE": "Fundação ARID"
+    "TITLE": "Fundação ARId"
   },
   "NAV": {
     "HOME": "Início",
@@ -62,8 +63,8 @@
   "MODAL": {
     "CLOSE": "Fechar"
   },
-  "SIDEBAR": {
-    "TITLE": "ARID Admin",
+  "SIdEBAR": {
+    "TITLE": "ARId Admin",
     "MANAGE_SECTIONS": "Gerenciar seções",
     "LOGOUT": "Sair"
   },
@@ -90,7 +91,7 @@
       "ACADEMIC_RESEARCH": "Acadêmico e pesquisa",
       "OUR_PARTNERS": "Nossos parceiros",
       "CONTACT_US": "Contato",
-      "SADA_ARID": "Jornal Sada ARID",
+      "SADA_ARId": "Jornal Sada ARId",
       "HIGHER_MANAGEMENT": "Alta administração",
       "MEDIA": "Mídia",
       "BOOKS": "Livros"
@@ -105,7 +106,7 @@
     "CONTACT": "Contato",
     "PHONE": "Telefone",
     "EMAIL": "Email",
-    "WORKING_HOURS": "Horário de funcionamento"
+    "WORKING_HOURS": "Horário de funcioNamento"
   },
   "MEDIA": {
     "BROWSER_NOT_SUPPORTED": "Seu navegador não suporta a tag de vídeo"
@@ -120,118 +121,56 @@
     "LOAD_SECTIONS": "Falha ao carregar seções"
   },
   "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "Adicionar nova seção",
-    "TITLE": "Gerenciar seções",
-    "TABS": {
-      "BASIC_INFO": "Informações básicas",
-      "CONTENT": "Conteúdo",
-      "MEDIA": "Mídia",
-      "JOURNAL_DETAILS": "Detalhes do jornal",
-      "CONTACT_INFO": "Informações de contato",
-      "POSITION": "Posição",
-      "PARTNER_INFO": "Informações do parceiro",
-      "DETAILS": "Detalhes"
-    },
-    "ACTIONS": {
-      "ADD_NEW": "Adicionar novo",
-      "ADD": "Adicionar",
-      "EDIT": "Editar",
-      "DELETE": "Excluir",
-      "SAVE": "Salvar",
-      "UPDATE": "Atualizar",
-      "CANCEL": "Cancelar",
-      "PREVIOUS": "Anterior",
-      "NEXT": "Próximo"
-    },
-    "LABELS": {
-      "ALL": "Todos",
-      "TITLE_EN": "Título (inglês)",
-      "TITLE_AR": "Título (árabe)",
-      "NO_ARABIC_TITLE": "Sem título em árabe",
-      "SECTION_TYPE": "Tipo de seção",
-      "DISPLAY_ORDER": "Ordem de exibição",
-      "CREATED": "Data de criação",
-      "ACTIONS": "Ações",
-      "STATUS": "Status",
-      "ACTIVE_SECTION": "Seção ativa",
-      "SHOW_IN_HOMEPAGE": "Mostrar na página inicial",
-      "HERO_SECTION": "Seção hero",
-      "DESCRIPTION_EN": "Descrição (inglês)",
-      "DESCRIPTION_AR": "Descrição (árabe)",
-      "CONTENT_EN": "Conteúdo (inglês)",
-      "CONTENT_AR": "Conteúdo (árabe)",
-      "MAIN_IMAGE": "Imagem principal",
-      "HERO_IMAGE": "Imagem hero",
-      "UPLOAD_IMAGE": "Enviar imagem",
-      "UPLOAD_VIDEO": "Enviar vídeo",
-      "UPLOAD_PDF": "Enviar PDF",
-      "VIDEO_URL": "URL do vídeo",
-      "PDF_URL": "URL do PDF",
-      "BOOK_PDF": "PDF do livro",
-      "JOURNAL_PDF": "PDF do jornal",
-      "VIEW_PDF": "Ver PDF",
-      "ISSN": "ISSN",
-      "VOLUME": "Volume",
-      "ISSUE": "Edição",
-      "PUBLICATION_DATE": "Data de publicação",
-      "ADDRESS_EN": "Endereço (inglês)",
-      "ADDRESS_AR": "Endereço (árabe)",
-      "PHONE": "Telefone",
-      "EMAIL": "Email",
-      "WORKING_HOURS_EN": "Horário de funcionamento (inglês)",
-      "WORKING_HOURS_AR": "Horário de funcionamento (árabe)",
-      "MAP_EMBED_URL": "URL do mapa incorporado",
-      "POSITION_EN": "Posição (inglês)",
-      "POSITION_AR": "Posição (árabe)",
-      "WEBSITE_URL": "URL do site",
-      "PARTNER_TYPE": "Tipo de parceiro",
-      "SELECT_PARTNER_TYPE": "Selecionar tipo de parceiro",
-      "NO_IMAGE_UPLOADED": "Nenhuma imagem enviada",
-      "CURRENT_IMAGE": "Imagem atual",
-      "USING_EXTERNAL_LINK": "Usando link externo",
-      "NEW_FILE_SELECTED": "Novo arquivo selecionado",
-      "OR_UPLOAD_VIDEO": "Ou enviar arquivo de vídeo",
-      "OR_UPLOAD_PDF": "Ou enviar arquivo PDF",
-      "SECTION": "Seção"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "Digite o número ISSN",
-      "VOLUME": "Número do volume",
-      "ISSUE": "Número da edição",
-      "ADDRESS_EN": "Endereço em inglês",
-      "ADDRESS_AR": "Endereço em árabe",
-      "PHONE": "Número de telefone",
-      "EMAIL": "Endereço de email",
-      "WORKING_HOURS": "Horário de funcionamento",
-      "MAP_EMBED_URL": "URL do mapa incorporado do Google",
-      "POSITION": "Título do cargo",
-      "WEBSITE_URL": "URL do site do parceiro",
-      "SELECT_PARTNER_TYPE": "Selecione o tipo de parceiro"
-    },
-    "STATUS": {
-      "ACTIVE": "Ativo",
-      "INACTIVE": "Inativo",
-      "HOME": "Início",
-      "HERO": "Hero"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "Seção adicionada com sucesso",
-      "SECTION_UPDATED": "Seção atualizada com sucesso",
-      "SECTION_DELETED": "Seção excluída com sucesso",
-      "NO_SECTIONS_FOUND": "Nenhuma seção encontrada correspondente ao filtro selecionado",
-      "CONFIRM_DELETE": "Tem certeza que deseja excluir esta seção? Esta ação não pode ser desfeita.",
-      "INVALID_VIDEO_URL": "Por favor, insira um URL válido do YouTube ou Vimeo",
-      "FILE_SIZE_LIMIT": "O tamanho do arquivo deve ser menor que 5MB"
+      "TABS": {
+        "INFO": "Informações Básicas",
+        "CONTENT": "Conteúdo"
+      },
+      "TITLE": "Gerenciar Seções",
+      "ACTIONS": {
+        "ADD": "Adicionar",
+        "ADD_NEW": "Adicionar Novo",
+        "EDIT": "Editar",
+        "DELETE": "Excluir",
+        "UPDATE": "Atualizar",
+        "SAVE": "Salvar",
+        "CANCEL": "Cancelar",
+        "NEXT": "Próximo",
+        "PREVIOUS": "Anterior",
+        "ADD_CONTENT": "Adicionar Conteúdo",
+        "EDIT_CONTENT": "Editar Conteúdo",
+        "SAVE_CONTENT": "Salvar Conteúdo"
+      },
+      "LABELS": {
+        "NAME": "Nome",
+        "VIEW_TYPE": "Tipo de Visualização",
+        "ORDER": "Ordem",
+        "STATUS": "Status",
+        "CREATED": "Criado",
+        "ACTIONS": "Ações",
+        "CONTENTS": "Conteúdos",
+        "SECTION": "Seção",
+        "LANGUAGE": "Idioma",
+        "DEFAULT_LANGUAGE": "Idioma Padrão",
+        "MENU_SECTION": "Seção de Menu",
+        "HOMEPAGE_SECTION": "Seção da Página Inicial",
+        "FOOTER_SECTION": "Seção de Rodapé",
+        "SUBJECT": "Assunto",
+        "CONTENT": "Conteúdo",
+        "IMAGE": "Imagem",
+        "VIDEO": "Vídeo",
+        "ACTIVE": "Ativo"
+      },
+      "STATUS": {
+        "HOME": "Início",
+        "MENU": "Menu",
+        "FOOTER": "Rodapé"
+      },
+      "MESSAGES": {
+        "NO_SECTIONS_FOUND": "Nenhuma seção encontrada",
+        "NO_CONTENTS_FOUND": "Nenhum conteúdo encontrado"
+      },
+      "CONFIRM": {
+        "DELETE": "Tem certeza de que deseja excluir esta seção?"
+      }
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "Página inicial",
-    "ACADEMIC_RESEARCH": "Acadêmico e pesquisa",
-    "OUR_PARTNERS": "Nossos parceiros",
-    "CONTACT_US": "Contato",
-    "SADA_ARID_JOURNAL": "Jornal Sada ARID",
-    "HIGHER_MANAGEMENT": "Alta administração",
-    "MEDIA": "Mídia",
-    "BOOKS": "Livros"
   }
-}

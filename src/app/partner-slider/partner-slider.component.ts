@@ -6,13 +6,13 @@ import { TruncatePipe } from "../../truncate.pipe";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-partner-slider',
+  selector: 'app-partner-slIder',
   standalone: true,
   imports: [CommonModule, CarouselModule,TruncatePipe, TranslateModule],
-  templateUrl: './partner-slider.component.html',
-  styleUrls: ['./partner-slider.component.css']
+  templateUrl: './partner-slIder.component.html',
+  styleUrls: ['./partner-slIder.component.css']
 })
-export class PartnerSliderComponent implements OnInit, OnDestroy {
+export class PartnerSlIderComponent implements OnInit, OnDestroy {
   @Input() partners: Section[] = [];
   @Input() autoPlay: boolean = true;
   @Input() interval: number = 5000;
@@ -20,8 +20,8 @@ export class PartnerSliderComponent implements OnInit, OnDestroy {
   // Font Awesome icons
 
 
-  currentSlide = 0;
-  slides: any[] = [];
+  currentSlIde = 0;
+  slIdes: any[] = [];
   isBrowser: boolean;
   private resizeObserver: ResizeObserver | null = null;
 
@@ -33,7 +33,7 @@ export class PartnerSliderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.initSlider();
+    this.initSlIder();
     if (this.isBrowser) {
       this.setupResizeObserver();
     }
@@ -45,16 +45,16 @@ export class PartnerSliderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private initSlider(): void {
-    // Group partners into slides based on items per slide
-    const itemsPerSlide = this.calculateItemsPerSlide();
-    this.slides = this.chunkArray(this.partners, itemsPerSlide);
+  private initSlIder(): void {
+    // Group partners into slIdes based on items per slIde
+    const itemsPerSlIde = this.calculateItemsPerSlIde();
+    this.slIdes = this.chunkArray(this.partners, itemsPerSlIde);
   }
 
   private setupResizeObserver(): void {
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver(() => {
-        this.initSlider();
+        this.initSlIder();
       });
       
       const container = document.querySelector('.partners-container');
@@ -72,41 +72,41 @@ export class PartnerSliderComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  calculateItemsPerSlide(): number {
+  calculateItemsPerSlIde(): number {
     if (!this.isBrowser) return 4;
     
-    const width = window.innerWidth;
-    if (width > 1400) return 4;
-    if (width > 1024) return 3;
-    if (width > 768) return 2;
+    const wIdth = window.innerWidth;
+    if (wIdth > 1400) return 4;
+    if (wIdth > 1024) return 3;
+    if (wIdth > 768) return 2;
     return 1;
   }
 
   getFullImageUrl(relativePath: string | undefined): string {
     if (!relativePath) return '';
     if (relativePath.startsWith('http')) return relativePath;
-    const baseUrl = 'https://aridfound.premiumasp.net'; // Replace with your API base URL
+    const baseUrl = 'https://arIdfound.premiumasp.net'; // Replace with your API base Url
     return relativePath.startsWith('/') ? `${baseUrl}${relativePath}` : `${baseUrl}/${relativePath}`;
   }
 
 
-  prevSlide(): void {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  prevSlIde(): void {
+    this.currentSlIde = (this.currentSlIde - 1 + this.slIdes.length) % this.slIdes.length;
   }
 
-  nextSlide(): void {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+  nextSlIde(): void {
+    this.currentSlIde = (this.currentSlIde + 1) % this.slIdes.length;
   }
 
-  goToSlide(index: number): void {
-    this.currentSlide = index;
+  goToSlIde(index: number): void {
+    this.currentSlIde = index;
   }
 
-  get sliderHeight(): string {
-    if (this.slides.length === 0) return 'auto';
-    const itemsInFirstSlide = this.slides[0].length;
-    if (itemsInFirstSlide <= 2) return '400px';
-    if (itemsInFirstSlide <= 4) return '350px';
+  get slIderHeight(): string {
+    if (this.slIdes.length === 0) return 'auto';
+    const itemsInFirstSlIde = this.slIdes[0].length;
+    if (itemsInFirstSlIde <= 2) return '400px';
+    if (itemsInFirstSlIde <= 4) return '350px';
     return '300px';
   }
 }

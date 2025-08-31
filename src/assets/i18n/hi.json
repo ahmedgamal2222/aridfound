@@ -1,19 +1,20 @@
 {
   "FOOTER": {
-    "DESCRIPTION": "ARID फाउंडेशन संस्थानों और शोधकर्ताओं के साथ सहयोग के माध्यम से शैक्षणिक अनुसंधान और नवाचार को आगे बढ़ाने के लिए समर्पित है।",
+    "DESCRIPTION": "Arid Foundation एक अकादमिक शोध, नवाचार और विकास के लिए समर्पित अग्रणी प्लेटफॉर्म है।",
     "QUICK_LINKS": "त्वरित लिंक",
-    "CONTACT_US": "संपर्क करें",
-    "ADDRESS": "123 नॉलेज स्ट्रीट, रिसर्च डिस्ट्रिक्ट, रियाद, सऊदी अरब",
-    "WORKING_HOURS": "रविवार - गुरुवार: सुबह 8:00 - शाम 4:00",
-    "NEWSLETTER": "न्यूज़लेटर",
-    "SUBSCRIBE_TEXT": "हमारे नवीनतम शोध और कार्यक्रमों के अपडेट प्राप्त करने के लिए हमारे न्यूज़लेटर की सदस्यता लें।",
-    "EMAIL_PLACEHOLDER": "आपका ईमेल पता",
+    "SECTIONS": "हमारे विभाग",
+    "CONTACT_US": "हमसे संपर्क करें",
+    "ADDRESS": "रियाद, सऊदी अरब",
+    "WORKING_HOURS": "रवि - गुरु: सुबह 8 बजे - शाम 5 बजे",
     "ALL_RIGHTS_RESERVED": "सर्वाधिकार सुरक्षित",
+    "NEWSLETTER": "न्यूज़लेटर",
+    "SUBSCRIBE_TEXT": "नवीनतम समाचार और अपडेट प्राप्त करने के लिए हमारे न्यूज़लेटर की सदस्यता लें।",
+    "EMAIL_PLACEHOLDER": "आपका ईमेल पता",
     "PRIVACY": "गोपनीयता नीति",
     "TERMS": "सेवा की शर्तें"
   },"LOGIN": {
     "TITLE": "लॉगिन",
-    "USERNAME": "उपयोगकर्ता नाम",
+    "USERName": "उपयोगकर्ता नाम",
     "PASSWORD": "पासवर्ड",
     "BUTTON": "लॉग इन करें",
     "LOADING": "लॉगिन हो रहा है...",
@@ -27,8 +28,8 @@
     "ACADEMIC_PROGRAMS": "हमारे शैक्षणिक कार्यक्रम",
     "LEARN_MORE": "और जानें",
     "MEDIA_CENTER": "मीडिया केंद्र",
-    "EXPLORE_VIDEOS": "हमारे नवीनतम वीडियो और मीडिया सामग्री का अन्वेषण करें",
-    "WATCH_VIDEO": "पूरा वीडियो देखें",
+    "EXPLORE_VIdEOS": "हमारे नवीनतम वीडियो और मीडिया सामग्री का अन्वेषण करें",
+    "WATCH_VIdEO": "पूरा वीडियो देखें",
     "PUBLICATIONS": "हमारे प्रकाशन",
     "VIEW_DETAILS": "विवरण देखें",
     "JOURNAL_ISSUES": "जर्नल अंक",
@@ -44,7 +45,7 @@
     "VISIT_WEBSITE": "वेबसाइट देखें",
     "PREVIOUS": "पिछली स्लाइड",
     "NEXT": "अगली स्लाइड",
-    "GOTO_SLIDE": "स्लाइड {index} पर जाएं"
+    "GOTO_SLIdE": "स्लाइड {index} पर जाएं"
   },
   "APP": {
     "TITLE": "एआरआईडी फाउंडेशन"
@@ -62,7 +63,7 @@
   "MODAL": {
     "CLOSE": "बंद करें"
   },
-  "SIDEBAR": {
+  "SIdEBAR": {
     "TITLE": "एआरआईडी एडमिन",
     "MANAGE_SECTIONS": "सेक्शन प्रबंधित करें",
     "LOGOUT": "लॉगआउट"
@@ -90,7 +91,7 @@
       "ACADEMIC_RESEARCH": "शैक्षणिक और अनुसंधान",
       "OUR_PARTNERS": "हमारे साझेदार",
       "CONTACT_US": "संपर्क करें",
-      "SADA_ARID": "सादा एआरआईडी जर्नल",
+      "SADA_ARId": "सादा एआरआईडी जर्नल",
       "HIGHER_MANAGEMENT": "उच्च प्रबंधन",
       "MEDIA": "मीडिया",
       "BOOKS": "पुस्तकें"
@@ -119,119 +120,57 @@
     "LOAD_SECTION": "सेक्शन विवरण लोड करने में विफल",
     "LOAD_SECTIONS": "सेक्शन लोड करने में विफल"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "नया सेक्शन जोड़ें",
-    "TITLE": "सेक्शन प्रबंधित करें",
-    "TABS": {
-      "BASIC_INFO": "मूल जानकारी",
-      "CONTENT": "सामग्री",
-      "MEDIA": "मीडिया",
-      "JOURNAL_DETAILS": "जर्नल विवरण",
-      "CONTACT_INFO": "संपर्क जानकारी",
-      "POSITION": "पद",
-      "PARTNER_INFO": "साझेदार जानकारी",
-      "DETAILS": "विवरण"
-    },
-    "ACTIONS": {
-      "ADD_NEW": "नया जोड़ें",
-      "ADD": "जोड़ें",
-      "EDIT": "संपादित करें",
-      "DELETE": "हटाएं",
-      "SAVE": "सहेजें",
-      "UPDATE": "अपडेट करें",
-      "CANCEL": "रद्द करें",
-      "PREVIOUS": "पिछला",
-      "NEXT": "अगला"
-    },
-    "LABELS": {
-      "ALL": "सभी",
-      "TITLE_EN": "शीर्षक (अंग्रेजी)",
-      "TITLE_AR": "शीर्षक (अरबी)",
-      "NO_ARABIC_TITLE": "कोई अरबी शीर्षक नहीं",
-      "SECTION_TYPE": "सेक्शन प्रकार",
-      "DISPLAY_ORDER": "प्रदर्शन क्रम",
-      "CREATED": "निर्माण तिथि",
-      "ACTIONS": "क्रियाएं",
-      "STATUS": "स्थिति",
-      "ACTIVE_SECTION": "सक्रिय सेक्शन",
-      "SHOW_IN_HOMEPAGE": "होमपेज पर दिखाएं",
-      "HERO_SECTION": "हीरो सेक्शन",
-      "DESCRIPTION_EN": "विवरण (अंग्रेजी)",
-      "DESCRIPTION_AR": "विवरण (अरबी)",
-      "CONTENT_EN": "सामग्री (अंग्रेजी)",
-      "CONTENT_AR": "सामग्री (अरबी)",
-      "MAIN_IMAGE": "मुख्य छवि",
-      "HERO_IMAGE": "हीरो छवि",
-      "UPLOAD_IMAGE": "छवि अपलोड करें",
-      "UPLOAD_VIDEO": "वीडियो अपलोड करें",
-      "UPLOAD_PDF": "PDF अपलोड करें",
-      "VIDEO_URL": "वीडियो URL",
-      "PDF_URL": "PDF URL",
-      "BOOK_PDF": "पुस्तक PDF",
-      "JOURNAL_PDF": "जर्नल PDF",
-      "VIEW_PDF": "PDF देखें",
-      "ISSN": "ISSN",
-      "VOLUME": "वॉल्यूम",
-      "ISSUE": "अंक",
-      "PUBLICATION_DATE": "प्रकाशन तिथि",
-      "ADDRESS_EN": "पता (अंग्रेजी)",
-      "ADDRESS_AR": "पता (अरबी)",
-      "PHONE": "फोन",
-      "EMAIL": "ईमेल",
-      "WORKING_HOURS_EN": "कार्य घंटे (अंग्रेजी)",
-      "WORKING_HOURS_AR": "कार्य घंटे (अरबी)",
-      "MAP_EMBED_URL": "मैप एम्बेड URL",
-      "POSITION_EN": "पद (अंग्रेजी)",
-      "POSITION_AR": "पद (अरबी)",
-      "WEBSITE_URL": "वेबसाइट URL",
-      "PARTNER_TYPE": "साझेदार प्रकार",
-      "SELECT_PARTNER_TYPE": "साझेदार प्रकार चुनें",
-      "NO_IMAGE_UPLOADED": "कोई छवि अपलोड नहीं की गई",
-      "CURRENT_IMAGE": "वर्तमान छवि",
-      "USING_EXTERNAL_LINK": "बाहरी लिंक का उपयोग करना",
-      "NEW_FILE_SELECTED": "नई फ़ाइल चुनी गई",
-      "OR_UPLOAD_VIDEO": "या वीडियो फ़ाइल अपलोड करें",
-      "OR_UPLOAD_PDF": "या PDF फ़ाइल अपलोड करें",
-      "SECTION": "सेक्शन"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "ISSN नंबर दर्ज करें",
-      "VOLUME": "वॉल्यूम नंबर",
-      "ISSUE": "अंक नंबर",
-      "ADDRESS_EN": "अंग्रेजी में पता",
-      "ADDRESS_AR": "अरबी में पता",
-      "PHONE": "फोन नंबर",
-      "EMAIL": "ईमेल पता",
-      "WORKING_HOURS": "कार्य घंटे",
-      "MAP_EMBED_URL": "Google मैप्स एम्बेड URL",
-      "POSITION": "पद शीर्षक",
-      "WEBSITE_URL": "साझेदार वेबसाइट URL",
-      "SELECT_PARTNER_TYPE": "साझेदार प्रकार चुनें"
-    },
-    "STATUS": {
-      "ACTIVE": "सक्रिय",
-      "INACTIVE": "निष्क्रिय",
-      "HOME": "होम",
-      "HERO": "हीरो"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "सेक्शन सफलतापूर्वक जोड़ा गया",
-      "SECTION_UPDATED": "सेक्शन सफलतापूर्वक अपडेट किया गया",
-      "SECTION_DELETED": "सेक्शन सफलतापूर्वक हटाया गया",
-      "NO_SECTIONS_FOUND": "चयनित फ़िल्टर से मेल खाने वाला कोई सेक्शन नहीं मिला",
-      "CONFIRM_DELETE": "क्या आप वाकई इस सेक्शन को हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
-      "INVALID_VIDEO_URL": "कृपया एक वैध YouTube या Vimeo URL दर्ज करें",
-      "FILE_SIZE_LIMIT": "फ़ाइल का आकार 5MB से कम होना चाहिए"
+"MANAGE_SECTIONS": {
+      "TABS": {
+        "INFO": "मूल जानकारी",
+        "CONTENT": "सामग्री"
+      },
+      "TITLE": "अनुभाग प्रबंधित करें",
+      "ACTIONS": {
+        "ADD": "जोड़ें",
+        "ADD_NEW": "नया जोड़ें",
+        "EDIT": "संपादित करें",
+        "DELETE": "हटाएं",
+        "UPDATE": "अपडेट करें",
+        "SAVE": "सहेजें",
+        "CANCEL": "रद्द करें",
+        "NEXT": "अगला",
+        "PREVIOUS": "पिछला",
+        "ADD_CONTENT": "सामग्री जोड़ें",
+        "EDIT_CONTENT": "सामग्री संपादित करें",
+        "SAVE_CONTENT": "सामग्री सहेजें"
+      },
+      "LABELS": {
+        "NAME": "नाम",
+        "VIEW_TYPE": "दृश्य प्रकार",
+        "ORDER": "क्रम",
+        "STATUS": "स्थिति",
+        "CREATED": "बनाया गया",
+        "ACTIONS": "क्रियाएं",
+        "CONTENTS": "सामग्री",
+        "SECTION": "अनुभाग",
+        "LANGUAGE": "भाषा",
+        "DEFAULT_LANGUAGE": "डिफ़ॉल्ट भाषा",
+        "MENU_SECTION": "मेनू अनुभाग",
+        "HOMEPAGE_SECTION": "होमपेज अनुभाग",
+        "FOOTER_SECTION": "फुटर अनुभाग",
+        "SUBJECT": "विषय",
+        "CONTENT": "सामग्री",
+        "IMAGE": "छवि",
+        "VIDEO": "वीडियो",
+        "ACTIVE": "सक्रिय"
+      },
+      "STATUS": {
+        "HOME": "होम",
+        "MENU": "मेनू",
+        "FOOTER": "फुटर"
+      },
+      "MESSAGES": {
+        "NO_SECTIONS_FOUND": "कोई अनुभाग नहीं मिला",
+        "NO_CONTENTS_FOUND": "कोई सामग्री नहीं मिली"
+      },
+      "CONFIRM": {
+        "DELETE": "क्या आप वाकई इस अनुभाग को हटाना चाहते हैं?"
+      }
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "होम पेज",
-    "ACADEMIC_RESEARCH": "शैक्षणिक और अनुसंधान",
-    "OUR_PARTNERS": "हमारे साझेदार",
-    "CONTACT_US": "संपर्क करें",
-    "SADA_ARID_JOURNAL": "सादा एआरआईडी जर्नल",
-    "HIGHER_MANAGEMENT": "उच्च प्रबंधन",
-    "MEDIA": "मीडिया",
-    "BOOKS": "पुस्तकें"
   }
-}

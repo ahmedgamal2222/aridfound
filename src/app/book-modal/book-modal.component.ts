@@ -17,14 +17,14 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     <div class="modal-body">
       <div class="row">
         <div class="col-md-4">
-          <img [src]="getFullImageUrl(book?.imageUrl)" 
-               [alt]="book?.title" 
-               class="img-fluid rounded shadow mb-3">
+          <img [src]="getFullImageUrl(book?.ImageUrl)" 
+               [alt]="book?.Title" 
+               class="img-fluId rounded shadow mb-3">
         </div>
         <div class="col-md-8">
-          <div [innerHTML]="book?.content"></div>
-          <div *ngIf="book?.description" class="mt-3">
-            <p>{{book?.description}}</p>
+          <div [innerHTML]="book?.Content"></div>
+          <div *ngIf="book?.Description" class="mt-3">
+            <p>{{book?.Description}}</p>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
               (click)="downloadPdf()">
         <i class="fas fa-download me-2"></i>{{ 'BOOK.DOWNLOAD_PDF' | translate }}
       </button>
-      <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
+      <button type="button" class="btn btn-secondary" (click)="bsModalRef.hIde()">
         {{ 'COMMON.CLOSE' | translate }}
       </button>
     </div>
@@ -43,7 +43,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styles: [`
     .modal-header {
       background-color: #f8f9fa;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solId #dee2e6;
     }
     .modal-title {
       color: #343a40;
@@ -64,7 +64,7 @@ export class BookModalComponent implements OnInit {
   getFullImageUrl(relativePath: string | undefined): string {
     if (!relativePath) return '';
     if (relativePath.startsWith('http')) return relativePath;
-    const baseUrl = 'https://aridfound.premiumasp.net'; // Replace with your API base URL
+    const baseUrl = 'https://arIdfound.premiumasp.net'; // Replace with your API base Url
     return relativePath.startsWith('/') ? `${baseUrl}${relativePath}` : `${baseUrl}/${relativePath}`;
   }
 

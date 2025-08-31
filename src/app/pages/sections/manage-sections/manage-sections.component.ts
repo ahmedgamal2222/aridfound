@@ -1,637 +1,575 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SectionService } from '../../../core/services/section.service';
-import { Section, SectionType, PartnerType } from '../../../core/models/section.model';
+import { Section, SectionContent, ViewType } from '../../../core/models/section.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ModalComponent } from '../../../modal/modal.component';
 import { environment } from '../../../core/environments/environment';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { 
   faPlus, faEdit, faTrash, faArrowLeft, 
   faArrowRight, faImage, faLayerGroup, 
-  faInfoCircle, faAlignLeft, faImages, 
-  faStar, faTrashAlt, faGlobe, faNewspaper,
-  faUserTie, faHandshake, faBook, faVideo,
-  faFilePdf, faCalendarAlt, faIdCard
+  faInfoCircle, faAlignLeft, faImages,
+  faVideo, faLink, faHome, faBars, faWindowMinimize
 } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TruncatePipe } from "../../../../truncate.pipe";
+import { ConfirmDialogComponent } from "../../../confirm-dialog/confirm-dialog.component";
+import { AuthService } from '../../../core/services/auth.service';
 
-type TabType = 'info' | 'content' | 'images' | 'specific';
+type TabType = 'info' | 'content';
 
 interface Tab {
-  id: TabType;
+  Id: TabType;
   label: string;
   icon: any;
-  translationKey: string;
+}
+
+interface AppState {
+  sections: Section[];
+  filteredSections: Section[];
+  loading: boolean;
+  isSubmitting: boolean;
+  showModal: boolean;
+  isEditing: boolean;
+  currentTab: TabType;
+  currentSection: Section;
+  currentContent: Partial<SectionContent>;
+  fileInputs: {
+    Image: File | null;
+    contentImage: File | null;
+  };
+  filePreviews: {
+    Image: string | null;
+    contentImage: string | null;
+  };
+  searchTerm: string;
+  activeFilter: 'all' | 'active' | 'inactive';
+  typeFilter: ViewType | 'all';
 }
 
 @Component({
   selector: 'app-manage-sections',
   standalone: true,
-  imports: [FormsModule, CommonModule, ModalComponent, TranslateModule],
+  imports: [
+    FormsModule, 
+    CommonModule, 
+    TranslateModule, 
+    FontAwesomeModule, 
+    ModalComponent,
+    TruncatePipe,
+    ConfirmDialogComponent,
+  ],
   templateUrl: './manage-sections.component.html',
   styleUrls: ['./manage-sections.component.css']
 })
-export class ManageSectionsComponent {
-
-  // Font Awesome icons
+export class ManageSectionsComponent implements OnInit {
+  // Icons
   icons = {
     plus: faPlus,
     edit: faEdit,
     trash: faTrash,
     left: faArrowLeft,
     right: faArrowRight,
-    image: faImage,
+    Image: faImage,
     layers: faLayerGroup,
     info: faInfoCircle,
     align: faAlignLeft,
-    images: faImages,
-    star: faStar,
-    trashAlt: faTrashAlt,
-    globe: faGlobe,
-    newspaper: faNewspaper,
-    userTie: faUserTie,
-    handshake: faHandshake,
-    book: faBook,
-    video: faVideo,
-    pdf: faFilePdf,
-    calendar: faCalendarAlt,
-    idCard: faIdCard
+    Images: faImages,
+    vIdeo: faVideo,
+    link: faLink,
+    home: faHome,
+    menu: faBars,
+    footer: faWindowMinimize
   };
+  
+  languages: any[] = [];
+  
+  // Tabs configuration
+  tabs: Tab[] = [
+    { Id: 'info', label: 'MANAGE_SECTIONS.TABS.INFO', icon: this.icons.info },
+    { Id: 'content', label: 'MANAGE_SECTIONS.TABS.CONTENT', icon: this.icons.align }
+  ];
 
-  private sectionService = inject(SectionService);
-  private toastr = inject(ToastrService);
-  private sanitizer = inject(DomSanitizer);
-  private translate = inject(TranslateService);
-
-  SectionType = SectionType;
-  PartnerType = PartnerType;
-
-  state = {
-    sections: [] as Section[],
-    filteredSections: [] as Section[],
-    loadingStates: {} as { [id: number]: boolean },
+  // State
+  state: AppState = {
+    sections: [],
+    filteredSections: [],
+    loading: false,
     isSubmitting: false,
     showModal: false,
     isEditing: false,
-    currentTab: 'info' as TabType,
-    currentFilter: 'all' as SectionType | 'all',
+    currentTab: 'info',
     currentSection: this.createEmptySection(),
+    currentContent: this.createEmptyContent(),
     fileInputs: {
-      main: null as File | null,
-      hero: null as File | null,
-      video: null as File | null,
-      pdf: null as File | null
+      Image: null,
+      contentImage: null
     },
     filePreviews: {
-      main: null as string | null,
-      hero: null as string | null
-    }
-  };
-
-  readonly sectionTypes = Object.values(SectionType);
-  readonly partnerTypes = Object.values(PartnerType);
-  readonly maxFileSize = 5 * 1024 * 1024; // 5MB
-
-  // دالة لترجمة النصوص الديناميكية
-  translateDynamic(key: string, defaultValue: string): string {
-    const translation = this.translate.instant(key);
-    return translation !== key ? translation : defaultValue;
-  }
-
-  ngOnInit() {
-    this.loadSections();
-  }
-
- removeFile(type: 'main' | 'hero' | 'video' | 'pdf') {
-    this.state.fileInputs[type] = null;
-    if (type === 'main' || type === 'hero') {
-      this.state.filePreviews[type] = null;
-    }
-    
-    if (type === 'main') this.state.currentSection.imageUrl = '';
-    if (type === 'hero') this.state.currentSection.heroImageUrl = '';
-    if (type === 'video') this.state.currentSection.videoUrl = '';
-    if (type === 'pdf') this.state.currentSection.pdfUrl = '';
-  }
-
-  // ========== URL Handling Methods ==========
-private isExternalUrl(url: string): boolean {
-  if (!url) return false;
-  // تتضمن الآن الروابط التي تبدأ بـ / أو http أو https أو www
-  return /^(https?:\/\/|\/|www\.)/i.test(url);
-}
-private isYouTubeUrl(url: string): boolean {
-  return /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)/i.test(url);
-}
-
-
-  private isVimeoUrl(url: string): boolean {
-    return /vimeo\.com/i.test(url);
-  }
-
-getFullFileUrl(path: string): string {
-  if (!path) return '';
-  
-  if (this.isExternalUrl(path)) {
-    // إذا كان الرابط يبدأ بـ / فهو رابط محلي
-    if (path.startsWith('/')) {
-      const baseUrl = environment.apiUrl.replace('/api', '');
-      return `${baseUrl}${path}`;
-    }
-    // إذا كان رابط خارجي
-    return path.startsWith('www.') ? `https://${path}` : path;
-  }
-  
-  // الروابط الأخرى (النسبية)
-  const baseUrl = environment.apiUrl.replace('/api', '');
-  return `${baseUrl}/${path}`;
-}
-
- getSafeVideoUrl(url: string): SafeResourceUrl {
-  if (!url) return '';
-  
-  if (this.isYouTubeUrl(url)) {
-    const videoId = this.extractYouTubeId(url);
-    if (videoId) {
-      const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&showinfo=0`;
-      return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
-    }
-  }
-  
-  if (this.isVimeoUrl(url)) {
-    const videoId = url.split('vimeo.com/')[1].split('?')[0];
-    if (videoId) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(
-        `https://player.vimeo.com/video/${videoId}`
-      );
-    }
-  }
-  
-  // إذا كان رابط محلي أو غير معروف
-  return this.sanitizer.bypassSecurityTrustResourceUrl(this.getFullFileUrl(url));
-}
-  private extractYouTubeId(url: string): string | null {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
-  }
-
-  // ========== URL Handling Methods ==========
-
-  // ========== Data Handling Methods ==========
-   private transformIncomingData(apiData: any): Section {
-    const videoUrl = apiData.VideoUrl || '';
-    const transformedVideoUrl = this.isExternalUrl(videoUrl) ? videoUrl : this.getFullFileUrl(videoUrl);
-
-    return {
-      id: apiData.Id,
-      title: apiData.Title,
-      titleAr: apiData.TitleAr || '',
-      sectionType: apiData.SectionType as SectionType,
-      description: apiData.Description || '',
-      descriptionAr: apiData.DescriptionAr || '',
-      content: apiData.Content || '',
-      contentAr: apiData.ContentAr || '',
-      imageUrl: this.getFullFileUrl(apiData.ImageUrl || ''),
-      heroImageUrl: this.getFullFileUrl(apiData.HeroImageUrl || ''),
-      videoUrl: transformedVideoUrl,
-      pdfUrl: this.getFullFileUrl(apiData.PdfUrl || ''),
-      order: apiData.Order || 0,
-      isActive: apiData.IsActive ?? true,
-      showInHomePage: apiData.ShowInHomePage ?? false,
-      isHeroSection: apiData.IsHeroSection ?? false,
-      createdAt: new Date(apiData.CreatedAt),
-      updatedAt: new Date(apiData.UpdatedAt),
-      issn: apiData.ISSN || '',
-      volume: apiData.Volume || null,
-      issue: apiData.Issue || null,
-      publicationDate: apiData.PublicationDate ? new Date(apiData.PublicationDate) : null,
-      address: apiData.Address || '',
-      addressAr: apiData.AddressAr || '',
-      phone: apiData.Phone || '',
-      email: apiData.Email || '',
-      workingHours: apiData.WorkingHours || '',
-      workingHoursAr: apiData.WorkingHoursAr || '',
-      mapEmbedUrl: apiData.MapEmbedUrl || '',
-      position: apiData.Position || '',
-      positionAr: apiData.PositionAr || '',
-      websiteUrl: apiData.WebsiteUrl || '',
-      partnerType: apiData.PartnerType as PartnerType || null
-    };
-  }
-
-
- private prepareFormData(): FormData {
-  const formData = new FormData();
-  const section = { ...this.state.currentSection };
-
-  // إنشاء نسخة من البيانات بدون الحقول التي سنتعامل معها بشكل منفصل
-  const { videoUrl, imageUrl, heroImageUrl, pdfUrl, createdAt, updatedAt, ...sectionData } = section;
-
-  // معالجة رابط الفيديو
-  let finalVideoUrl = '';
-  if (this.state.fileInputs.video) {
-    // إذا كان هناك ملف فيديو يتم رفعه، نتجاهل الرابط
-    finalVideoUrl = '';
-  } else if (videoUrl) {
-    // إذا كان رابط خارجي (يوتيوب/فيميو) نبقيه كما هو
-    if (this.isYouTubeUrl(videoUrl) || this.isVimeoUrl(videoUrl)) {
-      finalVideoUrl = videoUrl;
-    } else {
-      // إذا كان رابط محلي، نزيل عنوان الخادم الأساسي إن وجد
-      const baseUrl = environment.apiUrl.replace('/api', '');
-      finalVideoUrl = videoUrl.replace(baseUrl, '');
-    }
-  }
-
-  // إعداد بيانات القسم للإرسال
-  const dataToSend = {
-    ...sectionData,
-    videoUrl: finalVideoUrl,
-    imageUrl: imageUrl?.replace(environment.apiUrl.replace('/api', ''), '') || '',
-    heroImageUrl: heroImageUrl?.replace(environment.apiUrl.replace('/api', ''), '') || '',
-    pdfUrl: pdfUrl?.replace(environment.apiUrl.replace('/api', ''), '') || '',
-    publicationDate: section.publicationDate?.toISOString() || null,
-    createdAt: section.createdAt?.toISOString() || new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  };
-
-  formData.append('section', JSON.stringify(dataToSend));
-
-  // إضافة الملفات إذا وجدت
-  if (this.state.fileInputs.main) {
-    formData.append('MainImage', this.state.fileInputs.main);
-  }
-  if (this.state.fileInputs.hero) {
-    formData.append('HeroImage', this.state.fileInputs.hero);
-  }
-  if (this.state.fileInputs.video) {
-    formData.append('VideoFile', this.state.fileInputs.video);
-  }
-  if (this.state.fileInputs.pdf) {
-    formData.append('PdfFile', this.state.fileInputs.pdf);
-  }
-
-  return formData;
-}
-
-
-  // ========== Form Submission ==========
-  validateYouTubeUrl(url: string): boolean {
-    if (!url) return true;
-    if (!this.isYouTubeUrl(url) && !this.isVimeoUrl(url)) {
-      this.toastr.warning('Please enter a valid YouTube or Vimeo URL', 'Invalid URL');
-      return false;
-    }
-    return true;
-  }
-validateVideoUrl(url: string): boolean {
-  if (!url) return true;
-  
-  // قبول أي رابط يبدأ بـ http أو https أو / أو www
-  if (/^(https?:\/\/|\/|www\.)/i.test(url)) {
-    return true;
-  }
-  
-  this.toastr.warning('Please enter a valid video URL starting with http://, https://, /, or www.', 'Invalid URL');
-  return false;
-}
-  // ========== UI Methods ==========
- getTabs(): Tab[] {
-    const tabs: Tab[] = [
-      { id: 'info', label: 'BASIC_INFO', icon: this.icons.info, translationKey: 'MANAGE_SECTIONS.TABS.BASIC_INFO' },
-      { id: 'content', label: 'CONTENT', icon: this.icons.align, translationKey: 'MANAGE_SECTIONS.TABS.CONTENT' },
-      { id: 'images', label: 'MEDIA', icon: this.icons.images, translationKey: 'MANAGE_SECTIONS.TABS.MEDIA' }
-    ];
-
-    if (this.shouldShowSpecificTab()) {
-      tabs.push({
-        id: 'specific', 
-        label: this.getSpecificTabName(), 
-        icon: this.getSpecificTabIcon(),
-        translationKey: this.getSpecificTabTranslationKey()
-      });
-    }
-
-    return tabs;
-  }
-
-  public getSpecificTabTranslationKey(): string {
-    switch(this.state.currentSection.sectionType) {
-      case SectionType.SadaARIDJournal: return 'MANAGE_SECTIONS.TABS.JOURNAL_DETAILS';
-      case SectionType.ContactUs: return 'MANAGE_SECTIONS.TABS.CONTACT_INFO';
-      case SectionType.HigherManagement: return 'MANAGE_SECTIONS.TABS.POSITION';
-      case SectionType.OurPartners: return 'MANAGE_SECTIONS.TABS.PARTNER_INFO';
-      default: return 'MANAGE_SECTIONS.TABS.DETAILS';
-    }
-  }
-
-  getTypeName(type: SectionType): string {
-  const translationKeys: Record<SectionType, string> = {
-    [SectionType.HomePage]: 'SECTION.TYPES.HOME_PAGE',
-    [SectionType.AcademicAndResearchEntities]: 'SECTION.TYPES.ACADEMIC_RESEARCH',
-    [SectionType.OurPartners]: 'SECTION.TYPES.OUR_PARTNERS',
-    [SectionType.ContactUs]: 'SECTION.TYPES.CONTACT_US',
-    [SectionType.SadaARIDJournal]: 'SECTION.TYPES.SADA_ARID',
-    [SectionType.HigherManagement]: 'SECTION.TYPES.HIGHER_MANAGEMENT',
-    [SectionType.Media]: 'SECTION.TYPES.MEDIA',
-    [SectionType.Books]: 'SECTION.TYPES.BOOKS'
-  };
-  
-  return this.translate.instant(translationKeys[type] || type.toString());
-}
-  getTypeBadgeClass(type: SectionType): string {
-    const typeClasses: Record<SectionType, string> = {
-      [SectionType.HomePage]: 'bg-primary',
-      [SectionType.AcademicAndResearchEntities]: 'bg-success',
-      [SectionType.OurPartners]: 'bg-info text-dark',
-      [SectionType.ContactUs]: 'bg-warning text-dark',
-      [SectionType.SadaARIDJournal]: 'bg-danger',
-      [SectionType.HigherManagement]: 'bg-dark',
-      [SectionType.Media]: 'bg-purple',
-      [SectionType.Books]: 'bg-brown'
-    };
-    return typeClasses[type] || 'bg-secondary';
-  }
-
-  // ========== CRUD Operations ==========
-  loadSections() {
-    this.sectionService.getAllSections().subscribe({
-      next: (sections) => {
-        this.state.sections = sections.map(s => this.transformIncomingData(s));
-        this.filterSections();
-      },
-      error: (err) => this.showError('Failed to load sections', err)
-    });
-  }
-
-submitForm(sectionForm: NgForm) {
-  if (sectionForm.invalid || this.state.isSubmitting) return;
-
-  // تحقق إضافي من رابط الفيديو
-  if (this.state.currentSection.videoUrl) {
-    const videoUrl = this.state.currentSection.videoUrl.trim();
-    if (!this.isYouTubeUrl(videoUrl) && !this.isVimeoUrl(videoUrl)) {
-      this.toastr.warning('Please enter a valid YouTube or Vimeo URL', 'Invalid URL');
-      return;
-    }
-    this.state.currentSection.videoUrl = videoUrl;
-  }
-
-  this.state.isSubmitting = true;
-  const formData = this.prepareFormData();
-
-  // تسجيل البيانات قبل الإرسال للتأكد
-  console.log('Final Video URL to send:', this.state.currentSection.videoUrl);
-  console.log('FormData section:', formData.get('section'));
-
-  const request = this.state.isEditing
-    ? this.sectionService.updateSectionWithFiles(this.state.currentSection.id, formData)
-    : this.sectionService.addSectionWithFiles(formData);
-
-  request.subscribe({
-    next: (response) => {
-      console.log('Server response:', response); // تسجيل استجابة الخادم
-      this.handleSuccess();
+      Image: null,
+      contentImage: null
     },
-    error: (err) => {
-      console.error('Error response:', err); // تسجيل تفاصيل الخطأ
-      this.handleError(err);
-    }
-  });
-    console.log('Sending video URL:', this.state.currentSection.videoUrl);
-console.log('FormData content:', formData.get('section'));
-  }
+    searchTerm: '',
+    activeFilter: 'all',
+    typeFilter: 'all'
+  };
 
-  deleteSection(id: number) {
-    if (confirm('Are you sure you want to delete this section? This action cannot be undone.')) {
-      this.state.loadingStates[id] = true;
-      
-      this.sectionService.deleteSection(id).subscribe({
-        next: () => {
-          this.showSuccess('Section deleted successfully');
-          this.loadSections();
-          this.state.loadingStates[id] = false;
-        },
-        error: (err) => {
-          this.showError('Failed to delete section', err);
-          this.state.loadingStates[id] = false;
-        }
-      });
-    }
-  }
+  // Constants
+  readonly ViewTypes = Object.values(ViewType);
+  readonly maxFileSize = 5 * 1024 * 1024; // 5MB
+  showConfirmDialog = false;
+  confirmAction: 'deleteSection' | 'deleteContent' | null = null;
+  itemToDelete: any = null;
 
-  // ========== Modal & File Handling ==========
-  openAddModal() {
-    this.resetFormState();
-    this.state.showModal = true;
-  }
+  constructor(
+    private sectionService: SectionService,
+    private toastr: ToastrService,
+    private sanitizer: DomSanitizer,
+    private translate: TranslateService,
+    private authService: AuthService
+  ) {}
 
-  openEditModal(section: Section) {
-    this.state.loadingStates[section.id] = true;
-    
-    this.sectionService.getSectionById(section.id).subscribe({
-      next: (updatedSection) => {
-        this.state.currentSection = this.transformIncomingData(updatedSection);
-        this.state.isEditing = true;
-        this.resetFilePreviews();
-        this.state.showModal = true;
-        this.state.loadingStates[section.id] = false;
+  ngOnInit(): void {
+    this.loadSections();
+    this.loadLanguages();
+  }
+  
+  loadLanguages(): void {
+    this.sectionService.getLanguages().subscribe({
+      next: (langs) => {
+        this.languages = langs;
       },
       error: (err) => {
-        this.showError('Failed to load section details', err);
-        this.state.loadingStates[section.id] = false;
+        console.error('Failed to load languages', err);
+        this.showError('MANAGE_SECTIONS.ERRORS.LOAD_LANGUAGES');
+      }
+    });
+  }
+  
+  // ========== Data Loading ==========
+  loadSections(): void {
+    this.state.loading = true;
+    this.sectionService.getAllSections().subscribe({
+      next: (sections) => {
+        // تحويل undefined إلى null للتوافق مع TypeScript
+        this.state.sections = sections.map(section => ({
+          ...section,
+          LanguageId: section.LanguageId === undefined ? null : section.LanguageId,
+          Contents: section.Contents?.map(content => ({
+            ...content,
+            LanguageId: content.LanguageId === undefined ? null : content.LanguageId
+          })) || []
+        }));
+        this.applyFilters();
+        this.state.loading = false;
+      },
+      error: (err) => {
+        this.showError('MANAGE_SECTIONS.ERRORS.LOAD_SECTIONS', err);
+        this.state.loading = false;
       }
     });
   }
 
-  onFileSelected(event: Event, type: 'main' | 'hero' | 'video' | 'pdf') {
+  // ========== CRUD Operations ==========
+  createSection(sectionForm: NgForm): void {
+    console.log('Form values:', sectionForm.value);
+    console.log('Current section object:', this.state.currentSection);
+    
+    if (sectionForm.invalid || this.state.isSubmitting) return;
+
+    this.state.isSubmitting = true;
+    const sectionData = this.prepareSectionData();
+
+    const request = this.state.isEditing 
+      ? this.sectionService.updateSection(this.state.currentSection.Id, sectionData)
+      : this.sectionService.createSection(sectionData);
+
+    request.subscribe({
+      next: (section) => {
+        // تحويل undefined إلى null للتوافق مع TypeScript
+        const processedSection = {
+          ...section,
+          LanguageId: section.LanguageId === undefined ? null : section.LanguageId,
+          Contents: section.Contents?.map(content => ({
+            ...content,
+            LanguageId: content.LanguageId === undefined ? null : content.LanguageId
+          })) || []
+        };
+
+        this.showSuccess('MANAGE_SECTIONS.SUCCESS.SECTION_SAVED');
+        this.state.currentSection = processedSection;
+        this.loadSections();
+        this.state.currentTab = 'content';
+        this.state.isSubmitting = false;
+      },
+      error: (err) => {
+        this.showError('MANAGE_SECTIONS.ERRORS.SAVE_SECTION', err);
+        this.state.isSubmitting = false;
+      }
+    });
+  }
+  
+  deleteSection(Id: number): void {
+    this.confirmAction = 'deleteSection';
+    this.itemToDelete = Id;
+    this.showConfirmDialog = true;
+  }
+
+  confirmDelete(): void {
+    if (!this.confirmAction || !this.itemToDelete) return;
+
+    if (this.confirmAction === 'deleteSection') {
+      this.sectionService.deleteSection(this.itemToDelete).subscribe({
+        next: () => {
+          this.showSuccess('MANAGE_SECTIONS.SUCCESS.SECTION_DELETED');
+          this.loadSections();
+        },
+        error: (err) => this.showError('MANAGE_SECTIONS.ERRORS.DELETE_SECTION', err)
+      });
+    } else if (this.confirmAction === 'deleteContent') {
+      this.sectionService.deleteContent(this.itemToDelete).subscribe({
+        next: () => {
+          this.showSuccess('MANAGE_SECTIONS.SUCCESS.CONTENT_DELETED');
+          // إعادة تحميل محتويات القسم
+          this.state.currentSection.Contents = this.state.currentSection.Contents.filter(
+            c => c.Id !== this.itemToDelete
+          );
+        },
+        error: (err) => this.showError('MANAGE_SECTIONS.ERRORS.DELETE_CONTENT', err)
+      });
+    }
+
+    this.resetConfirmation();
+  }
+
+  // ========== Content Management ==========
+  async addContent(): Promise<void> {
+    if (!this.state.currentContent.Subject || !this.state.currentContent.Content) {
+      this.showError('MANAGE_SECTIONS.ERRORS.REQUIRED_FIELDS');
+      return;
+    }
+
+    try {
+      const contentData: Partial<SectionContent> = {
+        ...this.state.currentContent,
+        SectionId: this.state.currentSection.Id,
+        Url: this.state.currentContent.Url || undefined,
+        Image: this.state.fileInputs.contentImage 
+          ? await this.fileToBase64(this.state.fileInputs.contentImage) 
+          : undefined,
+        LanguageId: this.state.currentContent.LanguageId === null ? undefined : this.state.currentContent.LanguageId
+      };
+
+      const request = this.state.currentContent.Id
+        ? this.sectionService.updateContent(this.state.currentContent.Id as number, contentData)
+        : this.sectionService.addContent(contentData);
+
+      request.subscribe({
+        next: (content) => {
+          // تحويل undefined إلى null للتوافق مع TypeScript
+          const processedContent = {
+            ...content,
+            LanguageId: content.LanguageId === undefined ? null : content.LanguageId
+          };
+
+          this.showSuccess('MANAGE_SECTIONS.SUCCESS.CONTENT_SAVED');
+          
+          // تحديث قائمة المحتويات
+          if (this.state.currentContent.Id) {
+            const index = this.state.currentSection.Contents.findIndex(c => c.Id === processedContent.Id);
+            if (index !== -1) {
+              this.state.currentSection.Contents[index] = processedContent;
+            }
+          } else {
+            this.state.currentSection.Contents.push(processedContent);
+          }
+          
+          this.state.currentContent = this.createEmptyContent();
+          this.removeFile('contentImage');
+        },
+        error: (err) => this.showError('MANAGE_SECTIONS.ERRORS.SAVE_CONTENT', err)
+      });
+    } catch (error) {
+      this.showError('MANAGE_SECTIONS.ERRORS.FILE_UPLOAD', error);
+    }
+  }
+  
+  deleteContent(contentId: number): void {
+    this.confirmAction = 'deleteContent';
+    this.itemToDelete = contentId;
+    this.showConfirmDialog = true;
+  }
+
+  // ========== Helper Methods ==========
+  private prepareSectionData(): Partial<Section> {
+    const section = { ...this.state.currentSection };
+    
+    console.log('LanguageId before processing:', section.LanguageId);
+    
+    // معالجة LanguageId بشكل صريح
+    if (section.LanguageId === null || section.LanguageId === undefined || section.LanguageId === 0) {
+      section.LanguageId = null;
+    } else {
+      // تحقق من أن القيمة رقمية
+      section.LanguageId = Number(section.LanguageId);
+      if (isNaN(section.LanguageId)) {
+        section.LanguageId = null;
+      }
+    }
+    
+    console.log('LanguageId after processing:', section.LanguageId);
+    
+    return {
+      ...section,
+      ViewType: section.ViewType || ViewType.HtmlBlock
+    };
+  }
+  
+  onLanguageChange(event: any): void {
+    const value = event.target.value;
+    console.log('Selected language value (raw):', value);
+
+    const parsedValue = parseInt(value, 10);
+
+    if (isNaN(parsedValue)) {
+      this.state.currentSection.LanguageId = null;
+    } else {
+      this.state.currentSection.LanguageId = parsedValue;
+    }
+
+    console.log('Current section LanguageId:', this.state.currentSection.LanguageId);
+  }
+
+  private createEmptySection(): Section {
+    return {
+      Id: 0,
+      Name: '',
+      Indx: 0,
+      IsMenu: false,
+      IsHomePage: false,
+      IsFooter: false,
+      ViewType: ViewType.HtmlBlock,
+      LanguageId: null, // استخدام null بدلاً من 1
+      CreatedAt: new Date(),
+      UpdatedAt: new Date(),
+      Contents: []
+    };
+  }
+
+  private createEmptyContent(): Partial<SectionContent> {
+    return {
+      Subject: '',
+      Content: '',
+      Order: 0,
+      IsActive: true,
+      Url: '',
+      LanguageId: null // استخدام null بدلاً من undefined
+    };
+  }
+
+  private async fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  // ========== UI Methods ==========
+  openAddModal(): void {
+    this.state.currentSection = this.createEmptySection();
+    this.state.isEditing = false;
+    this.state.currentTab = 'info';
+    this.state.showModal = true;
+    this.resetFileInputs();
+  }
+
+  openEditModal(section: Section): void {
+    this.state.currentSection = {...section};
+    this.state.isEditing = true;
+    this.state.currentTab = 'info';
+    this.state.showModal = true;
+    this.resetFileInputs();
+  }
+
+  closeModal(): void {
+    this.state.showModal = false;
+    this.state.isSubmitting = false;
+    this.resetFileInputs();
+  }
+
+  // ========== Tab Navigation Methods ==========
+  nextTab(): void {
+    const currentIndex = this.tabs.findIndex(tab => tab.Id === this.state.currentTab);
+    if (currentIndex < this.tabs.length - 1) {
+      this.state.currentTab = this.tabs[currentIndex + 1].Id;
+    }
+  }
+
+  prevTab(): void {
+    const currentIndex = this.tabs.findIndex(tab => tab.Id === this.state.currentTab);
+    if (currentIndex > 0) {
+      this.state.currentTab = this.tabs[currentIndex - 1].Id;
+    }
+  }
+
+  // ========== Content Management Methods ==========
+  addNewContent(): void {
+    this.state.currentContent = this.createEmptyContent();
+    this.removeFile('contentImage');
+  }
+
+  editContent(content: SectionContent): void {
+    this.state.currentContent = { ...content };
+    if (content.Image) {
+      this.state.filePreviews.contentImage = this.getFullFileUrl(content.Image);
+    }
+  }
+
+  cancelContentEdit(): void {
+    this.state.currentContent = this.createEmptyContent();
+    this.removeFile('contentImage');
+  }
+
+  // ========== Filter Methods ==========
+  applyFilters(): void {
+    this.state.filteredSections = this.state.sections.filter(section => {
+      // Search filter
+      const matchesSearch = !this.state.searchTerm || 
+        section.Name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
+        section.Id.toString().includes(this.state.searchTerm);
+
+      // Type filter
+      const matchesType = this.state.typeFilter === 'all' || 
+        section.ViewType === this.state.typeFilter;
+
+      return matchesSearch && matchesType;
+    });
+
+    // Sort by index
+    this.state.filteredSections.sort((a, b) => a.Indx - b.Indx);
+  }
+
+  onSearchChange(): void {
+    this.applyFilters();
+  }
+
+  onFilterChange(): void {
+    this.applyFilters();
+  }
+
+  // ========== UI Helper Methods ==========
+  getTabIcon(tabId: TabType): any {
+    const tab = this.tabs.find(t => t.Id === tabId);
+    return tab ? tab.icon : this.icons.info;
+  }
+
+  // ========== دالة جديدة لعرض الصور المشفرة بـ Base64 ==========
+  getFullFileUrl(fileName: string): string {
+    if (!fileName) return '';
+    
+    // إذا كانت الصورة مشفرة بـ Base64
+    if (fileName.startsWith('data:image/')) {
+      return fileName;
+    }
+    
+    // إذا كان المسار يحتوي على عنوان URL كامل بالفعل
+    if (fileName.startsWith('http')) return fileName;
+    
+    // إذا كان المسار يبدأ بـ uploads/
+    if (fileName.startsWith('uploads/') || fileName.startsWith('/uploads/')) {
+      const cleanPath = fileName.startsWith('/') ? fileName.substring(1) : fileName;
+      return `${environment.apiUrl}/${cleanPath}`;
+    }
+    
+    // إذا كان المسار يبدأ مباشرة بـ sections/
+    if (fileName.startsWith('sections/') || fileName.startsWith('/sections/')) {
+      const cleanPath = fileName.startsWith('/') ? fileName.substring(1) : fileName;
+      return `${environment.apiUrl}/uploads/${cleanPath}`;
+    }
+    
+    // للمسارات الأخرى
+    const baseUrl = environment.apiUrl.replace('/api', '');
+    return fileName.startsWith('/') ? `${baseUrl}${fileName}` : `${baseUrl}/${fileName}`;
+  }
+
+  getSafeVideoUrl(url: string): SafeResourceUrl {
+    if (!url) return this.sanitizer.bypassSecurityTrustResourceUrl('');
+
+    // Convert YouTube url to embed format
+    if (url.includes('youtube.com/watch?v=')) {
+      url = url.replace('youtube.com/watch?v=', 'youtube.com/embed/');
+    } else if (url.includes('youtu.be/')) {
+      url = url.replace('youtu.be/', 'youtube.com/embed/');
+    } else if (url.includes('vimeo.com/')) {
+      url = url.replace('vimeo.com/', 'player.vimeo.com/video/');
+    }
+    
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  // ========== File Handling ==========
+  onFileSelected(event: Event, type: 'Image' | 'contentImage'): void {
     const input = event.target as HTMLInputElement;
     if (!input.files?.length) return;
 
     const file = input.files[0];
     if (file.size > this.maxFileSize) {
-      this.showWarning('File size should be less than 5MB');
+      this.showWarning('MANAGE_SECTIONS.WARNINGS.FILE_SIZE');
       return;
     }
 
     this.state.fileInputs[type] = file;
-    
-    if (type === 'video') {
-      this.state.currentSection.videoUrl = '';
-    }
-    
-    if (type === 'main' || type === 'hero') {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.state.filePreviews[type] = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
 
-  // ========== Utility Methods ==========
-  private createEmptySection(): Section {
-    return {
-      id: 0,
-      title: '',
-      titleAr: '',
-      sectionType: SectionType.HomePage,
-      description: '',
-      descriptionAr: '',
-      content: '',
-      contentAr: '',
-      imageUrl: '',
-      heroImageUrl: '',
-      videoUrl: '',
-      pdfUrl: '',
-      order: 0,
-      isActive: true,
-      showInHomePage: true,
-      isHeroSection: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      issn: '',
-      volume: null,
-      issue: null,
-      publicationDate: null,
-      address: '',
-      addressAr: '',
-      phone: '',
-      email: '',
-      workingHours: '',
-      workingHoursAr: '',
-      mapEmbedUrl: '',
-      position: '',
-      positionAr: '',
-      websiteUrl: '',
-      partnerType: null
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.state.filePreviews[type] = reader.result as string;
     };
+    reader.readAsDataURL(file);
   }
 
-  private resetFormState() {
-    this.state.currentSection = this.createEmptySection();
-    this.resetFilePreviews();
-    this.state.currentTab = 'info';
-    this.state.isEditing = false;
-    this.state.isSubmitting = false;
+  removeFile(type: 'Image' | 'contentImage'): void {
+    this.state.fileInputs[type] = null;
+    this.state.filePreviews[type] = null;
+    const inputs = document.querySelectorAll(`input[type="file"][accept="image/*"]`) as NodeListOf<HTMLInputElement>;
+    inputs.forEach(input => input.value = '');
   }
 
-  private resetFilePreviews() {
+  private resetFileInputs(): void {
     this.state.fileInputs = {
-      main: null,
-      hero: null,
-      video: null,
-      pdf: null
+      Image: null,
+      contentImage: null
     };
     this.state.filePreviews = {
-      main: null,
-      hero: null
+      Image: null,
+      contentImage: null
     };
   }
 
-  private handleSuccess() {
-    this.showSuccess(`Section ${this.state.isEditing ? 'updated' : 'added'} successfully`);
-    this.loadSections();
-    this.closeModal();
-    this.resetFormState();
+  public resetConfirmation(): void {
+    this.showConfirmDialog = false;
+    this.confirmAction = null;
+    this.itemToDelete = null;
   }
 
-  private handleError(error: any) {
-    console.error('Operation failed:', error);
-    this.state.isSubmitting = false;
-    this.showError(
-      `Failed to ${this.state.isEditing ? 'update' : 'add'} section`, 
-      error.error?.message || error.message
-    );
+  // ========== Notification Methods ==========
+  private showSuccess(message: string): void {
+    this.toastr.success(this.translate.instant(message));
   }
 
-  private showSuccess(message: string) {
-    this.toastr.success(message, 'Success');
-  }
-
-  private showError(message: string, error?: any) {
+  private showError(message: string, error?: any): void {
     console.error(message, error);
-    this.toastr.error(message, 'Error');
+    this.toastr.error(this.translate.instant(message));
   }
 
-  private showWarning(message: string) {
-    this.toastr.warning(message, 'Warning');
+  private showWarning(message: string): void {
+    this.toastr.warning(this.translate.instant(message));
   }
 
-  // ========== Navigation Methods ==========
-  nextTab() {
-    const tabs: TabType[] = ['info', 'content', 'images', 'specific'];
-    const currentIndex = tabs.indexOf(this.state.currentTab);
-    if (currentIndex < tabs.length - 1) {
-      this.state.currentTab = tabs[currentIndex + 1];
-    }
-  }
-
-  prevTab() {
-    const tabs: TabType[] = ['info', 'content', 'images', 'specific'];
-    const currentIndex = tabs.indexOf(this.state.currentTab);
-    if (currentIndex > 0) {
-      this.state.currentTab = tabs[currentIndex - 1];
-    }
-  }
-
-  setCurrentTab(tabId: TabType) {
-    this.state.currentTab = tabId;
-  }
-
-  closeModal() {
-    this.state.showModal = false;
-    this.state.isSubmitting = false;
-  }
-
-  filterByType(type: SectionType | 'all') {
-    this.state.currentFilter = type;
-    this.filterSections();
-  }
-
-  filterSections() {
-    this.state.filteredSections = this.state.currentFilter === 'all' 
-      ? [...this.state.sections] 
-      : this.state.sections.filter(s => s.sectionType === this.state.currentFilter);
-  }
-
-  shouldShowSpecificTab(): boolean {
-    return [
-      SectionType.SadaARIDJournal,
-      SectionType.ContactUs,
-      SectionType.HigherManagement,
-      SectionType.OurPartners
-    ].includes(this.state.currentSection.sectionType);
-  }
-
-  getSpecificTabIcon() {
-    switch(this.state.currentSection.sectionType) {
-      case SectionType.SadaARIDJournal: return this.icons.newspaper;
-      case SectionType.ContactUs: return this.icons.globe;
-      case SectionType.HigherManagement: return this.icons.userTie;
-      case SectionType.OurPartners: return this.icons.handshake;
-      default: return this.icons.info;
-    }
-  }
-
-  getSpecificTabName(): string {
-    switch(this.state.currentSection.sectionType) {
-      case SectionType.SadaARIDJournal: return 'Journal Details';
-      case SectionType.ContactUs: return 'Contact Info';
-      case SectionType.HigherManagement: return 'Position';
-      case SectionType.OurPartners: return 'Partner Info';
-      default: return 'Details';
-    }
-  }
-
-  onSectionTypeChange() {
-    if (this.state.currentSection.sectionType !== SectionType.HomePage) {
-      this.state.currentSection.imageUrl = '';
-      this.state.fileInputs.main = null;
-      this.state.filePreviews.main = null;
-    }
-  }
+  // ========== Role Check ==========
+  // يمكنك إضافة دوال التحقق من الصلاحيات هنا إذا لزم الأمر
 }

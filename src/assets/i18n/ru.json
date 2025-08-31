@@ -1,19 +1,20 @@
 {
-   "FOOTER": {
-    "DESCRIPTION": "Фонд ARID занимается развитием академических исследований и инноваций посредством сотрудничества с учреждениями и исследователями по всему миру.",
+"FOOTER": {
+    "DESCRIPTION": "Arid Foundation - это ведущая платформа, посвященная академическим исследованиям, инновациям и развитию.",
     "QUICK_LINKS": "Быстрые ссылки",
-    "CONTACT_US": "Связаться с нами",
-    "ADDRESS": "123 Улица Знаний, Исследовательский район, Эр-Рияд, Саудовская Аравия",
-    "WORKING_HOURS": "Воскресенье - Четверг: 8:00 - 16:00",
-    "NEWSLETTER": "Рассылка",
-    "SUBSCRIBE_TEXT": "Подпишитесь на нашу рассылку, чтобы получать обновления о наших последних исследованиях и мероприятиях.",
-    "EMAIL_PLACEHOLDER": "Ваш адрес электронной почты",
+    "SECTIONS": "Наши разделы",
+    "CONTACT_US": "Свяжитесь с нами",
+    "ADDRESS": "Эр-Рияд, Саудовская Аравия",
+    "WORKING_HOURS": "Вс - Чт: 8:00 - 17:00",
     "ALL_RIGHTS_RESERVED": "Все права защищены",
+    "NEWSLETTER": "Рассылка новостей",
+    "SUBSCRIBE_TEXT": "Подпишитесь на нашу рассылку, чтобы получать последние новости и обновления.",
+    "EMAIL_PLACEHOLDER": "Ваш адрес электронной почты",
     "PRIVACY": "Политика конфиденциальности",
     "TERMS": "Условия обслуживания"
   },"LOGIN": {
     "TITLE": "Вход",
-    "USERNAME": "Имя пользователя",
+    "USERName": "Имя пользователя",
     "PASSWORD": "Пароль",
     "BUTTON": "Войти",
     "LOADING": "Вход в систему...",
@@ -27,8 +28,8 @@
     "ACADEMIC_PROGRAMS": "Наши академические программы",
     "LEARN_MORE": "Подробнее",
     "MEDIA_CENTER": "Медиацентр",
-    "EXPLORE_VIDEOS": "Ознакомьтесь с нашими последними видео и медиаматериалами",
-    "WATCH_VIDEO": "Смотреть полное видео",
+    "EXPLORE_VIdEOS": "Ознакомьтесь с нашими последними видео и медиаматериалами",
+    "WATCH_VIdEO": "Смотреть полное видео",
     "PUBLICATIONS": "Наши публикации",
     "VIEW_DETAILS": "Подробнее",
     "JOURNAL_ISSUES": "Выпуски журнала",
@@ -44,10 +45,10 @@
     "VISIT_WEBSITE": "Посетить сайт",
     "PREVIOUS": "Предыдущий слайд",
     "NEXT": "Следующий слайд",
-    "GOTO_SLIDE": "Перейти к слайду {index}"
+    "GOTO_SLIdE": "Перейти к слайду {index}"
   },
   "APP": {
-    "TITLE": "Фонд ARID"
+    "TITLE": "Фонд ARId"
   },
   "NAV": {
     "HOME": "Главная",
@@ -62,8 +63,8 @@
   "MODAL": {
     "CLOSE": "Закрыть"
   },
-  "SIDEBAR": {
-    "TITLE": "ARID Админ",
+  "SIdEBAR": {
+    "TITLE": "ARId Админ",
     "MANAGE_SECTIONS": "Управление разделами",
     "LOGOUT": "Выход"
   },
@@ -90,7 +91,7 @@
       "ACADEMIC_RESEARCH": "Академические и исследовательские",
       "OUR_PARTNERS": "Наши партнеры",
       "CONTACT_US": "Контакты",
-      "SADA_ARID": "Журнал Sada ARID",
+      "SADA_ARId": "Журнал Sada ARId",
       "HIGHER_MANAGEMENT": "Высшее руководство",
       "MEDIA": "Медиа",
       "BOOKS": "Книги"
@@ -108,7 +109,7 @@
     "WORKING_HOURS": "Рабочие часы"
   },
   "MEDIA": {
-    "BROWSER_NOT_SUPPORTED": "Ваш браузер не поддерживает тег video"
+    "BROWSER_NOT_SUPPORTED": "Ваш браузер не поддерживает тег vIdeo"
   },
   "COMMON": {
     "CLOSE": "Закрыть",
@@ -119,119 +120,58 @@
     "LOAD_SECTION": "Не удалось загрузить детали раздела",
     "LOAD_SECTIONS": "Не удалось загрузить разделы"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "Добавить новый раздел",
-    "TITLE": "Управление разделами",
-    "TABS": {
-      "BASIC_INFO": "Основная информация",
-      "CONTENT": "Содержимое",
-      "MEDIA": "Медиа",
-      "JOURNAL_DETAILS": "Детали журнала",
-      "CONTACT_INFO": "Контактная информация",
-      "POSITION": "Должность",
-      "PARTNER_INFO": "Информация о партнере",
-      "DETAILS": "Детали"
-    },
-    "ACTIONS": {
-      "ADD_NEW": "Добавить новый",
-      "ADD": "Добавить",
-      "EDIT": "Редактировать",
-      "DELETE": "Удалить",
-      "SAVE": "Сохранить",
-      "UPDATE": "Обновить",
-      "CANCEL": "Отменить",
-      "PREVIOUS": "Назад",
-      "NEXT": "Далее"
-    },
-    "LABELS": {
-      "ALL": "Все",
-      "TITLE_EN": "Название (англ.)",
-      "TITLE_AR": "Название (араб.)",
-      "NO_ARABIC_TITLE": "Нет арабского названия",
-      "SECTION_TYPE": "Тип раздела",
-      "DISPLAY_ORDER": "Порядок отображения",
-      "CREATED": "Дата создания",
-      "ACTIONS": "Действия",
-      "STATUS": "Статус",
-      "ACTIVE_SECTION": "Активный раздел",
-      "SHOW_IN_HOMEPAGE": "Показывать на главной",
-      "HERO_SECTION": "Главный раздел",
-      "DESCRIPTION_EN": "Описание (англ.)",
-      "DESCRIPTION_AR": "Описание (араб.)",
-      "CONTENT_EN": "Содержимое (англ.)",
-      "CONTENT_AR": "Содержимое (араб.)",
-      "MAIN_IMAGE": "Основное изображение",
-      "HERO_IMAGE": "Главное изображение",
-      "UPLOAD_IMAGE": "Загрузить изображение",
-      "UPLOAD_VIDEO": "Загрузить видео",
-      "UPLOAD_PDF": "Загрузить PDF",
-      "VIDEO_URL": "URL видео",
-      "PDF_URL": "URL PDF",
-      "BOOK_PDF": "PDF книги",
-      "JOURNAL_PDF": "PDF журнала",
-      "VIEW_PDF": "Просмотр PDF",
-      "ISSN": "ISSN",
-      "VOLUME": "Том",
-      "ISSUE": "Выпуск",
-      "PUBLICATION_DATE": "Дата публикации",
-      "ADDRESS_EN": "Адрес (англ.)",
-      "ADDRESS_AR": "Адрес (араб.)",
-      "PHONE": "Телефон",
-      "EMAIL": "Email",
-      "WORKING_HOURS_EN": "Рабочие часы (англ.)",
-      "WORKING_HOURS_AR": "Рабочие часы (араб.)",
-      "MAP_EMBED_URL": "URL встроенной карты",
-      "POSITION_EN": "Должность (англ.)",
-      "POSITION_AR": "Должность (араб.)",
-      "WEBSITE_URL": "URL сайта",
-      "PARTNER_TYPE": "Тип партнера",
-      "SELECT_PARTNER_TYPE": "Выбрать тип партнера",
-      "NO_IMAGE_UPLOADED": "Изображение не загружено",
-      "CURRENT_IMAGE": "Текущее изображение",
-      "USING_EXTERNAL_LINK": "Использование внешней ссылки",
-      "NEW_FILE_SELECTED": "Выбран новый файл",
-      "OR_UPLOAD_VIDEO": "Или загрузить видеофайл",
-      "OR_UPLOAD_PDF": "Или загрузить PDF файл",
-      "SECTION": "Раздел"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "Введите номер ISSN",
-      "VOLUME": "Номер тома",
-      "ISSUE": "Номер выпуска",
-      "ADDRESS_EN": "Адрес на английском",
-      "ADDRESS_AR": "Адрес на арабском",
-      "PHONE": "Номер телефона",
-      "EMAIL": "Адрес электронной почты",
-      "WORKING_HOURS": "Рабочие часы",
-      "MAP_EMBED_URL": "URL встроенной карты Google",
-      "POSITION": "Название должности",
-      "WEBSITE_URL": "URL сайта партнера",
-      "SELECT_PARTNER_TYPE": "Выберите тип партнера"
-    },
-    "STATUS": {
-      "ACTIVE": "Активный",
-      "INACTIVE": "Неактивный",
-      "HOME": "Главная",
-      "HERO": "Главный"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "Раздел успешно добавлен",
-      "SECTION_UPDATED": "Раздел успешно обновлен",
-      "SECTION_DELETED": "Раздел успешно удален",
-      "NO_SECTIONS_FOUND": "Не найдено разделов, соответствующих выбранному фильтру",
-      "CONFIRM_DELETE": "Вы уверены, что хотите удалить этот раздел? Это действие нельзя отменить.",
-      "INVALID_VIDEO_URL": "Пожалуйста, введите действительный URL YouTube или Vimeo",
-      "FILE_SIZE_LIMIT": "Размер файла должен быть меньше 5MB"
+   
+    "MANAGE_SECTIONS": {
+      "TABS": {
+        "INFO": "Основная Информация",
+        "CONTENT": "Содержание"
+      },
+      "TITLE": "Управление Разделами",
+      "ACTIONS": {
+        "ADD": "Добавить",
+        "ADD_NEW": "Добавить Новый",
+        "EDIT": "Редактировать",
+        "DELETE": "Удалить",
+        "UPDATE": "Обновить",
+        "SAVE": "Сохранить",
+        "CANCEL": "Отмена",
+        "NEXT": "Далее",
+        "PREVIOUS": "Назад",
+        "ADD_CONTENT": "Добавить Контент",
+        "EDIT_CONTENT": "Редактировать Контент",
+        "SAVE_CONTENT": "Сохранить Контент"
+      },
+      "LABELS": {
+        "NAME": "Название",
+        "VIEW_TYPE": "Тип Представления",
+        "ORDER": "Порядок",
+        "STATUS": "Статус",
+        "CREATED": "Создано",
+        "ACTIONS": "Действия",
+        "CONTENTS": "Содержимое",
+        "SECTION": "Раздел",
+        "LANGUAGE": "Язык",
+        "DEFAULT_LANGUAGE": "Язык по Умолчанию",
+        "MENU_SECTION": "Раздел Меню",
+        "HOMEPAGE_SECTION": "Раздел Главной Страницы",
+        "FOOTER_SECTION": "Раздел Нижнего Колонтитула",
+        "SUBJECT": "Тема",
+        "CONTENT": "Содержание",
+        "IMAGE": "Изображение",
+        "VIDEO": "Видео",
+        "ACTIVE": "Активный"
+      },
+      "STATUS": {
+        "HOME": "Главная",
+        "MENU": "Меню",
+        "FOOTER": "Нижний Колонтитул"
+      },
+      "MESSAGES": {
+        "NO_SECTIONS_FOUND": "Разделы не найдены",
+        "NO_CONTENTS_FOUND": "Контент не найден"
+      },
+      "CONFIRM": {
+        "DELETE": "Вы уверены, что хотите удалить этот раздел?"
+      }
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "Главная страница",
-    "ACADEMIC_RESEARCH": "Академические и исследовательские",
-    "OUR_PARTNERS": "Наши партнеры",
-    "CONTACT_US": "Контакты",
-    "SADA_ARID_JOURNAL": "Журнал Sada ARID",
-    "HIGHER_MANAGEMENT": "Высшее руководство",
-    "MEDIA": "Медиа",
-    "BOOKS": "Книги"
   }
-}

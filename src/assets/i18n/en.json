@@ -1,33 +1,34 @@
 {
       "FOOTER": {
-    "DESCRIPTION": "ARID Foundation is dedicated to advancing academic research and innovation through collaboration with institutions and researchers worldwide.",
+    "DESCRIPTION": "Arid Foundation is a leading platform dedicated to academic research, innovation, and development.",
     "QUICK_LINKS": "Quick Links",
+    "SECTIONS": "Our Sections",
     "CONTACT_US": "Contact Us",
-    "ADDRESS": "123 Knowledge Street, Research District, Riyadh, Saudi Arabia",
-    "WORKING_HOURS": "Sunday - Thursday: 8:00 AM - 4:00 PM",
-    "NEWSLETTER": "Newsletter",
-    "SUBSCRIBE_TEXT": "Subscribe to our newsletter to receive updates on our latest research and events.",
-    "EMAIL_PLACEHOLDER": "Your email address",
+    "ADDRESS": "Riyadh, Saudi Arabia",
+    "WORKING_HOURS": "Sun - Thu: 8 AM - 5 PM",
     "ALL_RIGHTS_RESERVED": "All rights reserved",
+    "NEWSLETTER": "Newsletter",
+    "SUBSCRIBE_TEXT": "Subscribe to our newsletter to get the latest news and updates.",
+    "EMAIL_PLACEHOLDER": "Your email address",
     "PRIVACY": "Privacy Policy",
     "TERMS": "Terms of Service"
   },"LOGIN": {
     "TITLE": "Login",
-    "USERNAME": "Username",
+    "USERName": "UserName",
     "PASSWORD": "Password",
     "BUTTON": "Login",
     "LOADING": "Logging in...",
     "NO_ACCOUNT": "Don't have an account?",
     "REGISTER": "Register",
     "SUCCESS": "Login successful",
-    "ERROR": "Invalid username or password"
+    "ERROR": "InvalId userName or password"
   },"HOME": {
     "EXPLORE_MORE": "Explore More",
     "ACADEMIC_PROGRAMS": "Our Academic Programs",
     "LEARN_MORE": "Learn More",
     "MEDIA_CENTER": "Media Center",
-    "EXPLORE_VIDEOS": "Explore our latest videos and media content",
-    "WATCH_VIDEO": "Watch Full Video",
+    "EXPLORE_VIdEOS": "Explore our latest vIdeos and media content",
+    "WATCH_VIdEO": "Watch Full VIdeo",
     "PUBLICATIONS": "Our Publications",
     "VIEW_DETAILS": "View Details",
     "JOURNAL_ISSUES": "Journal Issues",
@@ -40,12 +41,12 @@
     "PARTNERS": "Partners",
     "COLLABORATION": "Collaborating with industry leaders to drive innovation and excellence",
     "VISIT_WEBSITE": "Visit Website",
-    "PREVIOUS": "Previous slide",
-    "NEXT": "Next slide",
-    "GOTO_SLIDE": "Go to slide {index}"
+    "PREVIOUS": "Previous slIde",
+    "NEXT": "Next slIde",
+    "GOTO_SLIdE": "Go to slIde {index}"
   }
   ,"APP": {
-    "TITLE": "ARID Foundation"
+    "TITLE": "ARId Foundation"
   },
   "NAV": {
     "HOME": "Home",
@@ -59,8 +60,8 @@
   }, "MODAL": {
     "CLOSE": "Close"
   },
-  "SIDEBAR": {
-    "TITLE": "ARID Admin",
+  "SIdEBAR": {
+    "TITLE": "ARId Admin",
     "MANAGE_SECTIONS": "Manage Sections",
     "LOGOUT": "Logout"
   },
@@ -87,7 +88,7 @@
     "ACADEMIC_RESEARCH": "Academic & Research",
     "OUR_PARTNERS": "Our Partners",
     "CONTACT_US": "Contact Us",
-    "SADA_ARID": "Sada ARID Journal",
+    "SADA_ARId": "Sada ARId Journal",
     "HIGHER_MANAGEMENT": "Higher Management",
     "MEDIA": "Media",
     "BOOKS": "Books"
@@ -105,7 +106,7 @@
     "WORKING_HOURS": "Working Hours"
   },
   "MEDIA": {
-    "BROWSER_NOT_SUPPORTED": "Your browser does not support the video tag"
+    "BROWSER_NOT_SUPPORTED": "Your browser does not support the vIdeo tag"
   },
   "COMMON": {
     "CLOSE": "Close",
@@ -116,119 +117,57 @@
     "LOAD_SECTION": "Failed to load section details",
     "LOAD_SECTIONS": "Failed to load sections"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "Add New Section",
-    "TITLE": "Manage Sections",
-    "TABS": {
-      "BASIC_INFO": "Basic Information",
-      "CONTENT": "Content",
-      "MEDIA": "Media",
-      "JOURNAL_DETAILS": "Journal Details",
-      "CONTACT_INFO": "Contact Information",
-      "POSITION": "Position",
-      "PARTNER_INFO": "Partner Information",
-      "DETAILS": "Details"
+"MANAGE_SECTIONS": {
+  "TABS": {
+      "INFO": "Basic Info",
+      "CONTENT": "Content"
     },
+    "TITLE": "Manage Sections",
     "ACTIONS": {
+      "ADD": "Add ",
       "ADD_NEW": "Add New",
-      "ADD": "Add",
       "EDIT": "Edit",
       "DELETE": "Delete",
-      "SAVE": "Save",
       "UPDATE": "Update",
+      "SAVE": "Save",
       "CANCEL": "Cancel",
+      "NEXT": "Next",
       "PREVIOUS": "Previous",
-      "NEXT": "Next"
+      "ADD_CONTENT": "Add Content",
+      "EDIT_CONTENT": "Edit Content",
+      "SAVE_CONTENT": "Save Content"
     },
     "LABELS": {
-      "ALL": "All",
-      "TITLE_EN": "Title (English)",
-      "TITLE_AR": "Title (Arabic)",
-      "NO_ARABIC_TITLE": "No Arabic Title",
-      "SECTION_TYPE": "Section Type",
-      "DISPLAY_ORDER": "Display Order",
-      "CREATED": "Created Date",
-      "ACTIONS": "Actions",
+      "NAME": "Name",
+      "VIEW_TYPE": "View Type",
+      "ORDER": "Order",
       "STATUS": "Status",
-      "ACTIVE_SECTION": "Active Section",
-      "SHOW_IN_HOMEPAGE": "Show in Homepage",
-      "HERO_SECTION": "Hero Section",
-      "DESCRIPTION_EN": "Description (English)",
-      "DESCRIPTION_AR": "Description (Arabic)",
-      "CONTENT_EN": "Content (English)",
-      "CONTENT_AR": "Content (Arabic)",
-      "MAIN_IMAGE": "Main Image",
-      "HERO_IMAGE": "Hero Image",
-      "UPLOAD_IMAGE": "Upload Image",
-      "UPLOAD_VIDEO": "Upload Video",
-      "UPLOAD_PDF": "Upload PDF",
-      "VIDEO_URL": "Video URL",
-      "PDF_URL": "PDF URL",
-      "BOOK_PDF": "Book PDF",
-      "JOURNAL_PDF": "Journal PDF",
-      "VIEW_PDF": "View PDF",
-      "ISSN": "ISSN",
-      "VOLUME": "Volume",
-      "ISSUE": "Issue",
-      "PUBLICATION_DATE": "Publication Date",
-      "ADDRESS_EN": "Address (English)",
-      "ADDRESS_AR": "Address (Arabic)",
-      "PHONE": "Phone",
-      "EMAIL": "Email",
-      "WORKING_HOURS_EN": "Working Hours (English)",
-      "WORKING_HOURS_AR": "Working Hours (Arabic)",
-      "MAP_EMBED_URL": "Map Embed URL",
-      "POSITION_EN": "Position (English)",
-      "POSITION_AR": "Position (Arabic)",
-      "WEBSITE_URL": "Website URL",
-      "PARTNER_TYPE": "Partner Type",
-      "SELECT_PARTNER_TYPE": "Select Partner Type",
-      "NO_IMAGE_UPLOADED": "No Image Uploaded",
-      "CURRENT_IMAGE": "Current Image",
-      "USING_EXTERNAL_LINK": "Using External Link",
-      "NEW_FILE_SELECTED": "New File Selected",
-      "OR_UPLOAD_VIDEO": "Or Upload Video File",
-      "OR_UPLOAD_PDF": "Or Upload PDF File",
-      "SECTION": "Section"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "Enter ISSN number",
-      "VOLUME": "Volume number",
-      "ISSUE": "Issue number",
-      "ADDRESS_EN": "English address",
-      "ADDRESS_AR": "Arabic address",
-      "PHONE": "Phone number",
-      "EMAIL": "Email address",
-      "WORKING_HOURS": "Working hours",
-      "MAP_EMBED_URL": "Google Maps embed URL",
-      "POSITION": "Position title",
-      "WEBSITE_URL": "Partner website URL",
-      "SELECT_PARTNER_TYPE": "Select partner type"
+      "CREATED": "Created",
+      "ACTIONS": "Actions",
+      "CONTENTS": "Contents",
+      "SECTION": "Section",
+      "LANGUAGE": "Language",
+      "DEFAULT_LANGUAGE": "Default Language",
+      "MENU_SECTION": "Menu Section",
+      "HOMEPAGE_SECTION": "Homepage Section",
+      "FOOTER_SECTION": "Footer Section",
+      "SUBJECT": "Subject",
+      "CONTENT": "Content",
+      "IMAGE": "Image",
+      "VIDEO": "Video",
+      "ACTIVE": "Active"
     },
     "STATUS": {
-      "ACTIVE": "Active",
-      "INACTIVE": "Inactive",
       "HOME": "Home",
-      "HERO": "Hero"
+      "MENU": "Menu",
+      "FOOTER": "Footer"
     },
     "MESSAGES": {
-      "SECTION_ADDED": "Section added successfully",
-      "SECTION_UPDATED": "Section updated successfully",
-      "SECTION_DELETED": "Section deleted successfully",
-      "NO_SECTIONS_FOUND": "No sections found matching the selected filter",
-      "CONFIRM_DELETE": "Are you sure you want to delete this section? This action cannot be undone.",
-      "INVALID_VIDEO_URL": "Please enter a valid YouTube or Vimeo URL",
-      "FILE_SIZE_LIMIT": "File size should be less than 5MB"
+      "NO_SECTIONS_FOUND": "No sections found",
+      "NO_CONTENTS_FOUND": "No contents found"
+    },
+    "CONFIRM": {
+      "DELETE": "Are you sure you want to delete this section?"
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "Home Page",
-    "ACADEMIC_RESEARCH": "Academic & Research",
-    "OUR_PARTNERS": "Our Partners",
-    "CONTACT_US": "Contact Us",
-    "SADA_ARID_JOURNAL": "Sada ARID Journal",
-    "HIGHER_MANAGEMENT": "Higher Management",
-    "MEDIA": "Media",
-    "BOOKS": "Books"
   }
 }

@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'sections', component: SectionsComponent },
-  { path: 'sections/:id', component: SectionDetailsComponent },
+  { path: 'section/:id', component: SectionDetailsComponent },
   { 
     path: 'admin', 
     component: AdminDashboardComponent,

@@ -3,96 +3,91 @@
     <div class="card-header bg-primary text-white">
       <div class="header-content">
         <h5 class="title">
-<i class="fas fa-layer-group me-2"></i>          {{ 'MANAGE_SECTIONS.TITLE' | translate }}
+          <fa-icon [icon]="icons.layers" class="me-2"></fa-icon>
+          {{ 'MANAGE_SECTIONS.TITLE' | translate }}
         </h5>
         <div class="controls">
-          <button class="btn btn-light" (click)="openAddModal()">
-<i class="fas fa-plus"class="me-2"></i>            {{ 'MANAGE_SECTIONS.ACTIONS.ADD_NEW' | translate }}
+          <button class="btn btn-light btn-add" (click)="openAddModal()">
+            <fa-icon [icon]="icons.plus" class="me-2"></fa-icon>
+            {{ 'MANAGE_SECTIONS.ACTIONS.ADD_NEW' | translate }}
           </button>
-          <div class="filter-group">
-            <button class="filter-btn" 
-                    [class.active]="state.currentFilter === 'all'"
-                    (click)="filterByType('all')">
-              {{ 'MANAGE_SECTIONS.LABELS.ALL' | translate }}
-            </button>
-            <button *ngFor="let type of sectionTypes" 
-                    class="filter-btn"
-                    [class.active]="state.currentFilter === type"
-                    (click)="filterByType(type)">
-              {{ getTypeName(type) }}
-            </button>
-          </div>
         </div>
       </div>
     </div>
 
-    <div class="card-body">
-      <div class="table-wrapper">
-        <table class="section-table">
-          <thead>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="section-table table table-hover mb-0">
+          <thead class="table-header">
             <tr>
-              <th width="80px">ID</th>
-              <th>{{ 'MANAGE_SECTIONS.LABELS.TITLE_EN' | translate }}</th>
-              <th width="150px">{{ 'MANAGE_SECTIONS.LABELS.SECTION_TYPE' | translate }}</th>
-              <th width="100px">{{ 'MANAGE_SECTIONS.LABELS.DISPLAY_ORDER' | translate }}</th>
+              <th width="80px" class="ps-4">ID</th>
+              <th>{{ 'MANAGE_SECTIONS.LABELS.NAME' | translate }}</th>
+              <th width="150px">{{ 'MANAGE_SECTIONS.LABELS.VIEW_TYPE' | translate }}</th>
+              <th width="100px">{{ 'MANAGE_SECTIONS.LABELS.ORDER' | translate }}</th>
               <th width="120px">{{ 'MANAGE_SECTIONS.LABELS.STATUS' | translate }}</th>
               <th width="150px">{{ 'MANAGE_SECTIONS.LABELS.CREATED' | translate }}</th>
-              <th width="150px">{{ 'MANAGE_SECTIONS.LABELS.ACTIONS' | translate }}</th>
+              <th width="150px" class="pe-4 text-end">{{ 'MANAGE_SECTIONS.LABELS.ACTIONS' | translate }}</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let section of state.filteredSections" 
-                [class.hero-row]="section.isHeroSection"
-                [class.homepage-row]="section.showInHomePage && !section.isHeroSection">
-              <td class="id-cell">{{section.id}}</td>
+                [class.table-primary]="section.IsHomePage">
+              <td class="id-cell ps-4">{{section.Id}}</td>
               <td class="title-cell">
-                <div class="title-content">
-                  <span class="main-title">{{section.title}}</span>
-                  <span class="subtitle">{{section.titleAr || ('MANAGE_SECTIONS.LABELS.NO_ARABIC_TITLE' | translate)}}</span>
+                <div class="title-content d-flex align-items-center">
+                  <span class="main-title fw-semibold">{{section.Name}}</span>
+                  <span *ngIf="section.Contents?.length" class="badge bg-secondary ms-2">
+                    {{ section.Contents.length }} {{ 'MANAGE_SECTIONS.LABELS.CONTENTS' | translate | lowercase }}
+                  </span>
                 </div>
               </td>
               <td class="type-cell">
-                <span class="type-badge" [ngClass]="getTypeBadgeClass(section.sectionType)">
-                  {{ getTypeName(section.sectionType) }}
+                <span class="badge bg-light text-dark border">
+                  {{ section.ViewType }}
                 </span>
-                <div class="visibility-badges" *ngIf="section.showInHomePage || section.isHeroSection">
-                  <span *ngIf="section.showInHomePage" class="badge home-badge">
+                <div class="badges-group mt-1">
+                  <span *ngIf="section.IsHomePage" class="badge bg-info me-1">
                     {{ 'MANAGE_SECTIONS.STATUS.HOME' | translate }}
                   </span>
-                  <span *ngIf="section.isHeroSection" class="badge hero-badge">
-                    {{ 'MANAGE_SECTIONS.STATUS.HERO' | translate }}
+                  <span *ngIf="section.IsMenu" class="badge bg-warning text-dark me-1">
+                    {{ 'MANAGE_SECTIONS.STATUS.MENU' | translate }}
+                  </span>
+                  <span *ngIf="section.IsFooter" class="badge bg-dark">
+                    {{ 'MANAGE_SECTIONS.STATUS.FOOTER' | translate }}
                   </span>
                 </div>
               </td>
-              <td class="order-cell">{{section.order}}</td>
+              <td class="order-cell">{{section.Indx}}</td>
               <td class="status-cell">
-                <span class="status-badge" [ngClass]="section.isActive ? 'active' : 'inactive'">
-                  {{ section.isActive ? ('MANAGE_SECTIONS.STATUS.ACTIVE' | translate) : ('MANAGE_SECTIONS.STATUS.INACTIVE' | translate) }}
-                </span>
+                <span class="badge bg-success">{{ 'MANAGE_SECTIONS.LABELS.ACTIVE' | translate }}</span>
               </td>
-              <td class="date-cell">{{section.createdAt | date:'shortDate'}}</td>
-              <td class="actions-cell">
-                <div class="action-buttons">
-                  <button class="btn-edit" 
+              <td class="date-cell">{{section.CreatedAt | date:'shortDate'}}</td>
+              <td class="actions-cell pe-4 text-end">
+                <div class="btn-group btn-group-sm">
+                  <button class="btn btn-outline-primary rounded-start" 
                           (click)="openEditModal(section)"
-                          [disabled]="state.loadingStates[section.id]"
                           [title]="'MANAGE_SECTIONS.ACTIONS.EDIT' | translate">
-<i class="fas fa-edit"></i>                  </button>
-                  <button class="btn-delete" 
-                          (click)="deleteSection(section.id)"
-                          [disabled]="state.loadingStates[section.id]"
+                    <fa-icon [icon]="icons.edit"></fa-icon>
+                  </button>
+                  <button class="btn btn-outline-danger rounded-end" 
+                          (click)="deleteSection(section.Id)"
                           [title]="'MANAGE_SECTIONS.ACTIONS.DELETE' | translate">
-<i class="fas fa-trash"></i>                  </button>
+                    <fa-icon [icon]="icons.trash"></fa-icon>
+                  </button>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
         
-        <div *ngIf="state.filteredSections.length === 0" class="empty-state">
+        <div *ngIf="state.filteredSections.length === 0" class="empty-state text-center py-5">
           <div class="empty-content">
-<i class="fas fa-info-circle empty-icon"></i>
-            <p>{{ 'MANAGE_SECTIONS.MESSAGES.NO_SECTIONS_FOUND' | translate }}</p>
+            <fa-icon [icon]="icons.layers" class="empty-icon fs-1 text-muted mb-3"></fa-icon>
+            <h5 class="text-muted">{{ 'MANAGE_SECTIONS.MESSAGES.NO_SECTIONS_FOUND' | translate }}</h5>
+            <button class="btn btn-primary mt-3" (click)="openAddModal()">
+              <fa-icon [icon]="icons.plus" class="me-2"></fa-icon>
+              {{ 'MANAGE_SECTIONS.ACTIONS.ADD_NEW' | translate }}
+            </button>
           </div>
         </div>
       </div>
@@ -101,242 +96,218 @@
 
   <!-- Edit/Add Modal -->
   <app-modal [isOpen]="state.showModal" (close)="closeModal()" modalClass="section-modal">
-    <div class="modal-header">
+    <div class="modal-header bg-light">
       <h5 class="modal-title">
-        <i class="fas fa-edit"class="me-2"></i> 
-        {{ (state.isEditing ? 'MANAGE_SECTIONS.ACTIONS.EDIT' : 'MANAGE_SECTIONS.ACTIONS.ADD') | translate }} {{ 'MANAGE_SECTIONS.LABELS.SECTION' | translate }}
+        <fa-icon [icon]="state.isEditing ? icons.edit : icons.plus" class="me-2"></fa-icon>
+        {{ (state.isEditing ? 'MANAGE_SECTIONS.ACTIONS.EDIT' : 'MANAGE_SECTIONS.ACTIONS.ADD') | translate }} 
+        {{ 'MANAGE_SECTIONS.LABELS.SECTION' | translate }}
       </h5>
       <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
     </div>
     
-    <div class="modal-body">
-      <ul class="modal-tabs">
-        <li class="tab-item" *ngFor="let tab of getTabs()" 
-            [class.active]="state.currentTab === tab.id"
-            (click)="state.currentTab = tab.id">
-<i class="fas fa-info-circle me-2"></i>
-          {{ tab.translationKey | translate }}
+    <div class="modal-body p-0">
+      <ul class="nav nav-tabs nav-justified mb-0">
+        <li class="nav-item" *ngFor="let tab of tabs">
+          <a class="nav-link py-3" [class.active]="state.currentTab === tab.Id"
+             (click)="state.currentTab = tab.Id">
+            <fa-icon [icon]="getTabIcon(tab.Id)" class="me-2"></fa-icon>
+            {{ tab.label | translate }}
+          </a>
         </li>
       </ul>
 
-      <form (ngSubmit)="submitForm(sectionForm)" #sectionForm="ngForm">
+      <form (ngSubmit)="createSection(sectionForm)" #sectionForm="ngForm" class="p-4">
         <!-- Basic Info Tab -->
         <div *ngIf="state.currentTab === 'info'" class="tab-content">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.TITLE_EN' | translate }}*</label>
-              <input type="text" class="form-control" 
-                    [(ngModel)]="state.currentSection.title" name="title" required>
-            </div>
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.TITLE_AR' | translate }}*</label>
-              <input type="text" class="form-control" 
-                    [(ngModel)]="state.currentSection.titleAr" name="titleAr" required>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">{{ 'MANAGE_SECTIONS.LABELS.NAME' | translate }}*</label>
+              <input type="text" class="form-control form-control-lg" 
+                    [(ngModel)]="state.currentSection.Name" name="sectionName" required>
             </div>
             
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.SECTION_TYPE' | translate }}*</label>
-              <select class="form-control" 
-                      [(ngModel)]="state.currentSection.sectionType" 
-                      name="sectionType" required (change)="onSectionTypeChange()">
-                <option *ngFor="let type of sectionTypes" [value]="type">
-                  {{ getTypeName(type) }}
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">{{ 'MANAGE_SECTIONS.LABELS.VIEW_TYPE' | translate }}*</label>
+              <select class="form-select form-select-lg" 
+                      [(ngModel)]="state.currentSection.ViewType" 
+                      name="viewType" required>
+                <option *ngFor="let type of ViewTypes" [value]="type">
+                  {{ type }}
                 </option>
               </select>
             </div>
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.DISPLAY_ORDER' | translate }}*</label>
-              <input type="number" class="form-control" 
-                    [(ngModel)]="state.currentSection.order" name="order" required min="0">
+            
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">{{ 'MANAGE_SECTIONS.LABELS.ORDER' | translate }}*</label>
+              <input type="number" class="form-control form-control-lg" 
+                    [(ngModel)]="state.currentSection.Indx" name="sectionIndex" required min="0">
             </div>
             
-            <div class="form-group switch-group">
-              <label class="switch">
-                <input type="checkbox" [(ngModel)]="state.currentSection.isActive" name="isActive">
-                <span class="slider"></span>
-              </label>
-              <span class="switch-label">{{ 'MANAGE_SECTIONS.LABELS.ACTIVE_SECTION' | translate }}</span>
+            <div class="col-md-6" *ngIf="languages && languages.length > 0">
+              <label class="form-label fw-semibold">{{ 'MANAGE_SECTIONS.LABELS.LANGUAGE' | translate }}</label>
+              <select class="form-select form-select-lg" 
+                      [(ngModel)]="state.currentSection.LanguageId" 
+                      name="languageId">
+                <option [ngValue]="null">{{ 'MANAGE_SECTIONS.LABELS.DEFAULT_LANGUAGE' | translate }}</option>
+                <option *ngFor="let lang of languages" [ngValue]="lang.Id">
+                  {{ lang.Name }}
+                </option>
+              </select>
             </div>
-            <div class="form-group switch-group">
-              <label class="switch">
-                <input type="checkbox" [(ngModel)]="state.currentSection.showInHomePage" name="showInHomePage">
-                <span class="slider"></span>
-              </label>
-              <span class="switch-label">{{ 'MANAGE_SECTIONS.LABELS.SHOW_IN_HOMEPAGE' | translate }}</span>
-            </div>
-            <div class="form-group switch-group" *ngIf="state.currentSection.sectionType === sectionTypes[0]">
-              <label class="switch">
-                <input type="checkbox" [(ngModel)]="state.currentSection.isHeroSection" name="isHeroSection">
-                <span class="slider"></span>
-              </label>
-              <span class="switch-label">{{ 'MANAGE_SECTIONS.LABELS.HERO_SECTION' | translate }}</span>
+            
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title mb-3">{{ 'MANAGE_SECTIONS.LABELS.STATUS' | translate }}</h6>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="IsMenuSwitch" 
+                              [(ngModel)]="state.currentSection.IsMenu" name="isMenu">
+                        <label class="form-check-label fw-medium" for="IsMenuSwitch">
+                          {{ 'MANAGE_SECTIONS.LABELS.MENU_SECTION' | translate }}
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="IsHomePageSwitch" 
+                              [(ngModel)]="state.currentSection.IsHomePage" name="isHomePage">
+                        <label class="form-check-label fw-medium" for="IsHomePageSwitch">
+                          {{ 'MANAGE_SECTIONS.LABELS.HOMEPAGE_SECTION' | translate }}
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="IsFooterSwitch" 
+                              [(ngModel)]="state.currentSection.IsFooter" name="isFooter">
+                        <label class="form-check-label fw-medium" for="IsFooterSwitch">
+                          {{ 'MANAGE_SECTIONS.LABELS.FOOTER_SECTION' | translate }}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Content Tab -->
         <div *ngIf="state.currentTab === 'content'" class="tab-content">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.DESCRIPTION_EN' | translate }}</label>
-              <textarea class="form-control" [(ngModel)]="state.currentSection.description" 
-                        name="description" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.DESCRIPTION_AR' | translate }}</label>
-              <textarea class="form-control" [(ngModel)]="state.currentSection.descriptionAr" 
-                        name="descriptionAr" rows="4"></textarea>
-            </div>
-            <div class="form-group full-width">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.CONTENT_EN' | translate }}</label>
-              <textarea class="form-control" [(ngModel)]="state.currentSection.content" 
-                        name="content" rows="6"></textarea>
-            </div>
-            <div class="form-group full-width">
-              <label>{{ 'MANAGE_SECTIONS.LABELS.CONTENT_AR' | translate }}</label>
-              <textarea class="form-control" [(ngModel)]="state.currentSection.contentAr" 
-                        name="contentAr" rows="6"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- Media Tab -->
-        <div *ngIf="state.currentTab === 'images'" class="tab-content">
-          <div class="media-grid">
-            <!-- Main Image Card -->
-            <div class="media-card">
-              <div class="card-header">
-<i class="fas fa-image"class="me-2"></i>                    {{ 'MANAGE_SECTIONS.LABELS.MAIN_IMAGE' | translate }}
+          <div class="content-management row g-4">
+            <div class="content-list col-md-5">
+              <h6 class="mb-3 fw-semibold">{{ 'MANAGE_SECTIONS.LABELS.CONTENTS' | translate }}</h6>
+              
+              <div *ngIf="!state.currentSection.Contents?.length" class="alert alert-info">
+                {{ 'MANAGE_SECTIONS.MESSAGES.NO_CONTENTS_FOUND' | translate }}
               </div>
-              <div class="card-body">
-                <div class="upload-section">
-                  <label class="upload-label">{{ 'MANAGE_SECTIONS.LABELS.UPLOAD_IMAGE' | translate }}</label>
-                  <input type="file" class="upload-input" 
-                        (change)="onFileSelected($event, 'main')" 
-                        accept="image/*">
-                  <div class="preview-container">
-                    <div *ngIf="state.filePreviews.main" class="image-preview">
-                      <img [src]="state.filePreviews.main">
-                      <button class="remove-btn" (click)="removeFile('main')">
-<i class="fas fa-trash-alt"class="me-2"></i>                        </button>
-                    </div>
-                    <div *ngIf="state.currentSection.imageUrl && !state.filePreviews.main" class="image-preview">
-                      <img [src]="getFullFileUrl(state.currentSection.imageUrl)">
-                      <span class="current-label">{{ 'MANAGE_SECTIONS.LABELS.CURRENT_IMAGE' | translate }}</span>
-                    </div>
-                    <div *ngIf="!state.currentSection.imageUrl && !state.filePreviews.main" class="empty-preview">
-<i class="fas fa-image"class="me-2"></i>                          <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
+              
+              <div class="content-items-container" style="max-height: 400px; overflow-y: auto;">
+                <div *ngFor="let content of state.currentSection.Contents" 
+                     class="content-item card mb-2">
+                  <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-1 fw-semibold">{{ content.Subject }}</h6>
+                        <p class="small text-muted mb-2">{{ content.Content | truncate:50 }}</p>
+                        <div *ngIf="content.Image" class="mt-2">
+                          <img [src]="getFullFileUrl(content.Image)" class="img-thumbnail" style="max-height: 50px;">
+                        </div>
+                      </div>
+                      <div class="btn-group ms-2">
+                        <button class="btn btn-sm btn-outline-primary" (click)="editContent(content)">
+                          <fa-icon [icon]="icons.edit"></fa-icon>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" (click)="deleteContent(content.Id)">
+                          <fa-icon [icon]="icons.trash"></fa-icon>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              <button class="btn btn-outline-primary w-100 mt-3" (click)="addNewContent()">
+                <fa-icon [icon]="icons.plus" class="me-2"></fa-icon>
+                {{ 'MANAGE_SECTIONS.ACTIONS.ADD_CONTENT' | translate }}
+              </button>
             </div>
 
-            <!-- Hero Image Card -->
-            <div class="media-card">
-              <div class="card-header">
-<i class="fas fa-star"class="me-2"></i>                {{ 'MANAGE_SECTIONS.LABELS.HERO_IMAGE' | translate }}
-              </div>
-              <div class="card-body">
-                <div class="upload-section">
-                  <label class="upload-label">{{ 'MANAGE_SECTIONS.LABELS.UPLOAD_IMAGE' | translate }}</label>
-                  <input type="file" class="upload-input" 
-                        (change)="onFileSelected($event, 'hero')" 
-                        accept="image/*">
-                  <div class="preview-container">
-                    <div *ngIf="state.filePreviews.hero" class="image-preview">
-                      <img [src]="state.filePreviews.hero">
-                      <button class="remove-btn" (click)="removeFile('hero')">
-<i class="fas fa-trash-alt"class="me-2"></i>                        </button>
+            <div class="content-editor col-md-7" *ngIf="state.currentContent">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="mb-3 fw-semibold">
+                    {{ state.currentContent.Id ? ('MANAGE_SECTIONS.ACTIONS.EDIT_CONTENT' | translate) : 
+                       ('MANAGE_SECTIONS.ACTIONS.ADD_CONTENT' | translate) }}
+                  </h6>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-medium">{{ 'MANAGE_SECTIONS.LABELS.SUBJECT' | translate }}*</label>
+                    <input type="text" class="form-control" 
+                          [(ngModel)]="state.currentContent.Subject" name="contentSubject" required>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-medium">{{ 'MANAGE_SECTIONS.LABELS.CONTENT' | translate }}*</label>
+                    <textarea class="form-control" [(ngModel)]="state.currentContent.Content" 
+                              name="contentText" rows="5" required></textarea>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-medium">{{ 'MANAGE_SECTIONS.LABELS.ORDER' | translate }}</label>
+                    <input type="number" class="form-control" 
+                          [(ngModel)]="state.currentContent.Order" name="contentOrder" min="0">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-medium">{{ 'MANAGE_SECTIONS.LABELS.IMAGE' | translate }}</label>
+                    <input type="file" class="form-control" 
+                          (change)="onFileSelected($event, 'contentImage')" 
+                          accept="image/*">
+                    <div class="image-preview mt-2 position-relative d-inline-block" *ngIf="state.filePreviews.contentImage">
+                      <img [src]="state.filePreviews.contentImage" class="img-thumbnail" style="max-height: 120px;">
+                      <button class="btn btn-sm btn-danger remove-btn position-absolute top-0 end-0 m-1" (click)="removeFile('contentImage')">
+                        <fa-icon [icon]="icons.trash"></fa-icon>
+                      </button>
                     </div>
-                    <div *ngIf="state.currentSection.heroImageUrl && !state.filePreviews.hero" class="image-preview">
-                      <img [src]="getFullFileUrl(state.currentSection.heroImageUrl)">
-                      <span class="current-label">{{ 'MANAGE_SECTIONS.LABELS.CURRENT_IMAGE' | translate }}</span>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-medium">{{ 'MANAGE_SECTIONS.LABELS.VIDEO' | translate }}</label>
+                    <input type="text" class="form-control" 
+                          [(ngModel)]="state.currentContent.Url" name="videoUrl"
+                          placeholder="YouTube/Vimeo video URL">
+                    <div class="video-preview mt-2 position-relative" *ngIf="state.currentContent.Url">
+                      <div class="ratio ratio-16x9">
+                        <iframe [src]="getSafeVideoUrl(state.currentContent.Url)" 
+                                frameborder="0" allowfullscreen></iframe>
+                      </div>
+                      <button class="btn btn-sm btn-danger remove-btn position-absolute top-0 end-0 m-1" 
+                              (click)="state.currentContent.Url = ''">
+                        <fa-icon [icon]="icons.trash"></fa-icon>
+                      </button>
                     </div>
-                    <div *ngIf="!state.currentSection.heroImageUrl && !state.filePreviews.hero" class="empty-preview">
-<i class="fas fa-image"class="me-2"></i>                      <span>{{ 'MANAGE_SECTIONS.LABELS.NO_IMAGE_UPLOADED' | translate }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Video Card -->
-            <div class="media-card" *ngIf="state.currentSection.sectionType === SectionType.Media">
-              <div class="card-header">
-<i class="fas fa-video"class="me-2"></i>                {{ 'MANAGE_SECTIONS.LABELS.VIDEO' | translate }}
-              </div>
-              <div class="card-body">
-                <div class="upload-section">
-                  <label class="upload-label">{{ 'MANAGE_SECTIONS.LABELS.VIDEO_URL' | translate }}</label>
-                  <input type="url" class="form-control" 
-                        [(ngModel)]="state.currentSection.videoUrl" 
-                        name="videoUrl" 
-                        placeholder="https://youtube.com/watch?v=...">
-                  
-                  <label class="upload-label mt-3">{{ 'MANAGE_SECTIONS.LABELS.OR_UPLOAD_VIDEO' | translate }}</label>
-                  <input type="file" class="upload-input" 
-                        (change)="onFileSelected($event, 'video')" 
-                        accept="video/*">
-                  
-                  <div *ngIf="state.currentSection.videoUrl" class="video-preview mt-3">
-                    <div class="embed-responsive embed-responsive-16by9">
-                      <iframe [src]="getSafeVideoUrl(state.currentSection.videoUrl)" 
-                              frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <button class="remove-btn" (click)="state.currentSection.videoUrl = ''">
-<i class="fas fa-trash-alt"class="me-2"></i>                      </button>
                   </div>
                   
-                  <div *ngIf="state.currentSection.videoUrl?.startsWith('http')" class="video-info">
-                    <span>{{ 'MANAGE_SECTIONS.LABELS.USING_EXTERNAL_LINK' | translate }}</span>
+                  <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="IsActiveSwitch" 
+                          [(ngModel)]="state.currentContent.IsActive" name="isActive">
+                    <label class="form-check-label fw-medium" for="IsActiveSwitch">
+                      {{ 'MANAGE_SECTIONS.LABELS.ACTIVE' | translate }}
+                    </label>
                   </div>
                   
-                  <div *ngIf="state.fileInputs.video" class="video-info">
-                    <span>{{ 'MANAGE_SECTIONS.LABELS.NEW_FILE_SELECTED' | translate }}: {{state.fileInputs.video.name}}</span>
-                    <button class="remove-btn" (click)="removeFile('video')">
-<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PDF Card -->
-            <div class="media-card" *ngIf="state.currentSection.sectionType === SectionType.Books || 
-                                        state.currentSection.sectionType === SectionType.SadaARIDJournal">
-              <div class="card-header">
-<i class="fas fa-file-pdf"class="me-2"></i>                {{ (state.currentSection.sectionType === SectionType.Books ? 'MANAGE_SECTIONS.LABELS.BOOK_PDF' : 'MANAGE_SECTIONS.LABELS.JOURNAL_PDF') | translate }}
-              </div>
-              <div class="card-body">
-                <div class="upload-section">
-                  <label class="upload-label">{{ 'MANAGE_SECTIONS.LABELS.PDF_URL' | translate }}</label>
-                  <input type="url" class="form-control" 
-                        [(ngModel)]="state.currentSection.pdfUrl" 
-                        name="pdfUrl" 
-                        placeholder="https://example.com/document.pdf">
-                  
-                  <label class="upload-label mt-3">{{ 'MANAGE_SECTIONS.LABELS.OR_UPLOAD_PDF' | translate }}</label>
-                  <input type="file" class="upload-input" 
-                        (change)="onFileSelected($event, 'pdf')" 
-                        accept=".pdf">
-                  
-                  <div *ngIf="state.currentSection.pdfUrl" class="pdf-preview mt-3">
-<i class="fas fa-file-pdf"class="me-2"></i>                    <a [href]="getFullFileUrl(state.currentSection.pdfUrl)" 
-                       target="_blank" class="btn-view">
-                      {{ 'MANAGE_SECTIONS.LABELS.VIEW_PDF' | translate }}
-                    </a>
-                    <button class="remove-btn" (click)="state.currentSection.pdfUrl = ''">
-<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
-                  </div>
-                  
-                  <div *ngIf="state.currentSection.pdfUrl?.startsWith('http')" class="pdf-info">
-                    <span>{{ 'MANAGE_SECTIONS.LABELS.USING_EXTERNAL_LINK' | translate }}</span>
-                  </div>
-                  
-                  <div *ngIf="state.fileInputs.pdf" class="pdf-info">
-                    <span>{{ 'MANAGE_SECTIONS.LABELS.NEW_FILE_SELECTED' | translate }}: {{state.fileInputs.pdf.name}}</span>
-                    <button class="remove-btn" (click)="removeFile('pdf')">
-<i class="fas fa-trash-alt"class="me-2"></i>                    </button>
+                  <div class="d-flex justify-content-end gap-2 mt-4">
+                    <button type="button" class="btn btn-secondary" (click)="cancelContentEdit()">
+                      {{ 'MANAGE_SECTIONS.ACTIONS.CANCEL' | translate }}
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="addContent()">
+                      {{ 'MANAGE_SECTIONS.ACTIONS.SAVE_CONTENT' | translate }}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -344,148 +315,47 @@
           </div>
         </div>
 
-    <div *ngIf="state.currentTab === 'specific'" class="tab-content">
-  <div class="form-grid">
-    <!-- Journal Specific Fields -->
-    <div *ngIf="state.currentSection.sectionType === SectionType.SadaARIDJournal" class="specific-fields">
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.ISSN' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.issn" name="issn"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.ISSN' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.VOLUME' | translate }}</label>
-        <input type="number" class="form-control" 
-              [(ngModel)]="state.currentSection.volume" name="volume" min="1"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.VOLUME' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.ISSUE' | translate }}</label>
-        <input type="number" class="form-control" 
-              [(ngModel)]="state.currentSection.issue" name="issue" min="1"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.ISSUE' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.PUBLICATION_DATE' | translate }}</label>
-        <input type="date" class="form-control" 
-              [(ngModel)]="state.currentSection.publicationDate" name="publicationDate">
-      </div>
+        <div class="modal-footer bg-light px-4 py-3 mt-4">
+          <div class="d-flex justify-content-between w-100 align-items-center">
+            <div>
+              <button type="button" class="btn btn-outline-primary me-2" 
+                      (click)="prevTab()" 
+                      *ngIf="state.currentTab !== 'info'"
+                      [disabled]="state.isSubmitting">
+                <fa-icon [icon]="icons.left" class="me-2"></fa-icon>
+                {{ 'MANAGE_SECTIONS.ACTIONS.PREVIOUS' | translate }}
+              </button>
+              <button type="button" class="btn btn-primary" 
+                      (click)="nextTab()" 
+                      *ngIf="state.currentTab !== 'content'"
+                      [disabled]="state.isSubmitting">
+                {{ 'MANAGE_SECTIONS.ACTIONS.NEXT' | translate }}
+                <fa-icon [icon]="icons.right" class="ms-2"></fa-icon>
+              </button>
+            </div>
+            <div>
+              <button type="button" class="btn btn-outline-secondary me-2" 
+                      (click)="closeModal()"
+                      [disabled]="state.isSubmitting">
+                {{ 'MANAGE_SECTIONS.ACTIONS.CANCEL' | translate }}
+              </button>
+              <button type="submit" class="btn btn-success" 
+                      [disabled]="sectionForm.invalid || state.isSubmitting">
+                {{ (state.isEditing ? 'MANAGE_SECTIONS.ACTIONS.UPDATE' : 'MANAGE_SECTIONS.ACTIONS.SAVE') | translate }}
+                <span *ngIf="state.isSubmitting" class="spinner-border spinner-border-sm ms-2"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+  </app-modal>
 
-    <!-- Contact Us Specific Fields -->
-    <div *ngIf="state.currentSection.sectionType === SectionType.ContactUs" class="specific-fields">
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.ADDRESS_EN' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.address" name="address"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.ADDRESS_EN' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.ADDRESS_AR' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.addressAr" name="addressAr"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.ADDRESS_AR' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.PHONE' | translate }}</label>
-        <input type="tel" class="form-control" 
-              [(ngModel)]="state.currentSection.phone" name="phone"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.PHONE' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.EMAIL' | translate }}</label>
-        <input type="email" class="form-control" 
-              [(ngModel)]="state.currentSection.email" name="email"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.EMAIL' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.WORKING_HOURS_EN' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.workingHours" name="workingHours"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.WORKING_HOURS' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.WORKING_HOURS_AR' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.workingHoursAr" name="workingHoursAr"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.WORKING_HOURS' | translate">
-      </div>
-      <div class="form-group full-width">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.MAP_EMBED_URL' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.mapEmbedUrl" name="mapEmbedUrl"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.MAP_EMBED_URL' | translate">
-      </div>
-    </div>
-
-    <!-- Higher Management Specific Fields -->
-    <div *ngIf="state.currentSection.sectionType === SectionType.HigherManagement" class="specific-fields">
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.POSITION_EN' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.position" name="position"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.POSITION' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.POSITION_AR' | translate }}</label>
-        <input type="text" class="form-control" 
-              [(ngModel)]="state.currentSection.positionAr" name="positionAr"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.POSITION' | translate">
-      </div>
-    </div>
-
-    <!-- Partners Specific Fields -->
-    <div *ngIf="state.currentSection.sectionType === SectionType.OurPartners" class="specific-fields">
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.WEBSITE_URL' | translate }}</label>
-        <input type="url" class="form-control" 
-              [(ngModel)]="state.currentSection.websiteUrl" name="websiteUrl"
-              [placeholder]="'MANAGE_SECTIONS.PLACEHOLDERS.WEBSITE_URL' | translate">
-      </div>
-      <div class="form-group">
-        <label>{{ 'MANAGE_SECTIONS.LABELS.PARTNER_TYPE' | translate }}</label>
-        <select class="form-control" 
-                [(ngModel)]="state.currentSection.partnerType" 
-                name="partnerType">
-          <option [value]="null">{{ 'MANAGE_SECTIONS.PLACEHOLDERS.SELECT_PARTNER_TYPE' | translate }}</option>
-          <option *ngFor="let type of partnerTypes" [value]="type">
-            {{ type }}
-          </option>
-        </select>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-footer">
-  <div class="footer-content">
-    <div class="nav-buttons">
-      <button type="button" class="btn-nav prev" 
-              (click)="prevTab()" 
-              *ngIf="state.currentTab !== 'info'"
-              [disabled]="state.isSubmitting">
-<i class="fas fa-arrow-leftclass="class="me-2"></i>        {{ 'MANAGE_SECTIONS.ACTIONS.PREVIOUS' | translate }}
-      </button>
-      <button type="button" class="btn-nav next" 
-              (click)="nextTab()" 
-              *ngIf="state.currentTab !== 'specific' || !shouldShowSpecificTab()"
-              [disabled]="state.isSubmitting">
-        {{ 'MANAGE_SECTIONS.ACTIONS.NEXT' | translate }}
-<i class="fas fa-arrow-right"class="me-2"></i>      </button>
-    </div>
-    <div class="action-buttons">
-      <button type="button" class="btn-cancel" 
-              (click)="closeModal()"
-              [disabled]="state.isSubmitting">
-        {{ 'MANAGE_SECTIONS.ACTIONS.CANCEL' | translate }}
-      </button>
-      <button type="submit" class="btn-submit" 
-              [disabled]="!sectionForm.valid || state.isSubmitting">
-        {{ (state.isEditing ? 'MANAGE_SECTIONS.ACTIONS.UPDATE' : 'MANAGE_SECTIONS.ACTIONS.SAVE') | translate }}
-        {{ 'MANAGE_SECTIONS.LABELS.SECTION' | translate }}
-        <span *ngIf="state.isSubmitting" class="spinner"></span>
-      </button>
-    </div>
-  </div>
+  <!-- Confirm Dialog -->
+  <app-confirm-dialog 
+    *ngIf="showConfirmDialog"
+    [message]="'MANAGE_SECTIONS.CONFIRM.DELETE' | translate" 
+    (confirm)="confirmDelete()"
+    (cancel)="resetConfirmation()">
+  </app-confirm-dialog>
 </div>

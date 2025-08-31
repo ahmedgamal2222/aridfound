@@ -1,5 +1,5 @@
 export interface AuthResponse {
-  username: string;
+  userName: string;
   email: string;
   Roles: string[];  // <-- Capital "R"
   token: string;

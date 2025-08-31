@@ -1,94 +1,132 @@
-import { Injectable, inject } from '@angular/core';
+// section.service.ts
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../core/environments/environment';
-import { Section, SectionType } from '../../core/models/section.model';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Section, SectionContent, ViewType } from '../models/section.model';
+import { environment } from '../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class SectionService {
-  private http = inject(HttpClient);
-  private apiUrl = environment.apiUrl;
+  private apiUrl = `${environment.apiUrl}/sections`;
 
-  // Basic CRUD operations
+  constructor(private http: HttpClient) { }
+
+  // دوال الـ GET
   getAllSections(): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections`, { withCredentials: true });
+    return this.http.get<any[]>(this.apiUrl, { withCredentials: true }).pipe(
+      map((sections: any[]) => sections.map(section => this.processSection(section)))
+    );
   }
 
-  getSectionById(id: number): Observable<Section> {
-    return this.http.get<Section>(`${this.apiUrl}/sections/${id}`, { withCredentials: true });
+  getSectionById(Id: number): Observable<Section> {
+    return this.http.get<any>(`${this.apiUrl}/${Id}`, { withCredentials: true }).pipe(
+      map((section: any) => this.processSection(section))
+    );
   }
 
-  addSection(section: Section): Observable<Section> {
-    return this.http.post<Section>(`${this.apiUrl}/sections`, section, { withCredentials: true });
+  createSection(section: Partial<Section>): Observable<Section> {
+    const payload = this.prepareSectionPayload(section);
+    return this.http.post<Section>(this.apiUrl, payload, { withCredentials: true }).pipe(
+      map((response: any) => this.processSection(response))
+    );
   }
 
-  updateSection(id: number, section: Section): Observable<Section> {
-    return this.http.put<Section>(`${this.apiUrl}/sections/${id}`, section, { withCredentials: true });
+  updateSection(Id: number, section: Partial<Section>): Observable<Section> {
+    const payload = this.prepareSectionPayload(section);
+    return this.http.put<Section>(`${this.apiUrl}/${Id}`, payload, { withCredentials: true }).pipe(
+      map((response: any) => this.processSection(response))
+    );
   }
 
-  deleteSection(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiUrl}/sections/${id}`, { withCredentials: true });
+  // دوال المعالجة
+  private processSection(section: any): Section {
+    return {
+      ...section,
+      LanguageId: this.normalizeLanguageId(section.LanguageId),
+      Contents: section.Contents?.map((content: any) => this.processContent(content)) || []
+    };
   }
 
-  // Specialized section operations
-  getSectionsByType(type: SectionType): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections/type/${type}`, { withCredentials: true });
+  private processContent(content: any): SectionContent {
+    return {
+      ...content,
+      LanguageId: this.normalizeLanguageId(content.LanguageId)
+    };
+  }
+
+  private normalizeLanguageId(LanguageId: any): number | null {
+    if (LanguageId === undefined || LanguageId === null || LanguageId === '') {
+      return null;
+    }
+    
+    const num = Number(LanguageId);
+    return isNaN(num) ? null : num;
+  }
+
+private prepareSectionPayload(section: Partial<Section>): any {
+  const payload: any = { 
+    ...section
+  };
+
+  // نتأكد إن لو مش محدد لغة يبقى null
+  if (section.LanguageId === undefined) {
+    payload.LanguageId = null;
+  }
+
+  console.log('Final payload with LanguageId only:', payload);
+  return payload;
+}
+
+  private prepareContentPayload(content: Partial<SectionContent>): any {
+    const payload: any = { ...content };
+    
+    // معالجة LanguageId للإرسال للخادم
+    if (payload.LanguageId === null || payload.LanguageId === undefined) {
+      // إزالة الحقل تماماً بدلاً من إرسال null
+      delete payload.LanguageId;
+    }
+    
+    return payload;
+  }
+
+  // باقي الدوال...
+  deleteSection(Id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${Id}`, { withCredentials: true });
+  }
+
+  addContent(content: Partial<SectionContent>): Observable<SectionContent> {
+    const payload = this.prepareContentPayload(content);
+    return this.http.post<SectionContent>(`${this.apiUrl}/content`, payload, { withCredentials: true });
+  }
+
+  updateContent(Id: number, content: Partial<SectionContent>): Observable<SectionContent> {
+    const payload = this.prepareContentPayload(content);
+    return this.http.put<SectionContent>(`${this.apiUrl}/content/${Id}`, payload, { withCredentials: true });
+  }
+
+  deleteContent(Id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/content/${Id}`, { withCredentials: true });
+  }
+
+  getMenuSections(): Observable<Section[]> {
+    return this.http.get<Section[]>(`${this.apiUrl}/menu`, { withCredentials: true });
   }
 
   getHomePageSections(): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections/home`, { withCredentials: true });
+    return this.http.get<Section[]>(`${this.apiUrl}/home`, { withCredentials: true });
   }
 
-  getHeroSections(): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections/hero`, { withCredentials: true });
+  getFooterSections(): Observable<Section[]> {
+    return this.http.get<Section[]>(`${this.apiUrl}/footer`, { withCredentials: true });
   }
 
-  // File upload operations
-  addSectionWithFiles(formData: FormData): Observable<Section> {
-    return this.http.post<Section>(`${this.apiUrl}/sections/with-files`, formData, { 
-      withCredentials: true 
-    });
+  getLanguages(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/languages`, { withCredentials: true });
   }
 
-  updateSectionWithFiles(id: number, formData: FormData): Observable<Section> {
-    return this.http.put<Section>(`${this.apiUrl}/sections/with-files/${id}`, formData, { 
-      withCredentials: true 
-    });
-  }
-
-  // Media specific operations
-  uploadMediaFile(file: File, sectionId: number): Observable<{fileUrl: string}> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post<{fileUrl: string}>(
-      `${this.apiUrl}/sections/${sectionId}/media`, 
-      formData, 
-      { withCredentials: true }
-    );
-  }
-
-  // PDF specific operations (for Books and Journal)
-  uploadPdfFile(file: File, sectionId: number): Observable<{pdfUrl: string}> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.http.post<{pdfUrl: string}>(
-      `${this.apiUrl}/sections/${sectionId}/pdf`, 
-      formData, 
-      { withCredentials: true }
-    );
-  }
-
-  // Journal specific operations
-  getJournalIssues(): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections/journal/issues`, { 
-      withCredentials: true 
-    });
-  }
-
-  // Partner specific operations
-  getPartnersByType(type: string): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl}/sections/partners/${type}`, { 
-      withCredentials: true 
-    });
+  getViewTypes(): ViewType[] {
+    return Object.values(ViewType);
   }
 }

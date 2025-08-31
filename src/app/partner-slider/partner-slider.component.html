@@ -4,23 +4,23 @@
       <h2 class="section-title">
         {{ 'PARTNERS.OUR' | translate }} <span>{{ 'PARTNERS.PARTNERS' | translate }}</span>
       </h2>
-      <p class="section-description">{{ 'PARTNERS.COLLABORATION' | translate }}</p>
+      <p class="section-Description">{{ 'PARTNERS.COLLABORATION' | translate }}</p>
     </div>
 
     <div class="partners-container">
-      <div class="partners-slider">
-        <!-- Slider Track -->
-        <div class="slide-track" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
-          <div class="partner-group" *ngFor="let slide of slides; let i = index">
-            <div class="partner-card" *ngFor="let partner of slide">
+      <div class="partners-slIder">
+        <!-- SlIder Track -->
+        <div class="slIde-track" [style.transform]="'translateX(' + (-currentSlIde * 100) + '%)'">
+          <div class="partner-group" *ngFor="let slIde of slIdes; let i = index">
+            <div class="partner-card" *ngFor="let partner of slIde">
               <div class="partner-logo-container">
-                <img [src]="getFullImageUrl(partner.imageUrl)" 
+                <img [src]="getFullImageUrl(partner.ImageUrl)" 
                      [alt]="partner.title" 
                      class="partner-logo">
               </div>
               <div class="partner-info">
-                <h3 class="partner-name">{{partner.title}}</h3>
-                <p class="partner-description" *ngIf="partner.description">{{partner.description | truncate:120}}</p>
+                <h3 class="partner-Name">{{partner.title}}</h3>
+                <p class="partner-Description" *ngIf="partner.Description">{{partner.Description | truncate:120}}</p>
                 <a *ngIf="partner.websiteUrl" [href]="partner.websiteUrl" 
                    target="_blank" rel="noopener noreferrer" 
                    class="partner-link">
@@ -33,12 +33,12 @@
         </div>
 
         <!-- Navigation Controls -->
-        <div class="slider-controls">
-          <button class="control-btn" (click)="prevSlide()" [disabled]="slides.length <= 1"
+        <div class="slIder-controls">
+          <button class="control-btn" (click)="prevSlIde()" [disabled]="slIdes.length <= 1"
                   [attr.aria-label]="'PARTNERS.PREVIOUS' | translate">
 <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="control-btn" (click)="nextSlide()" [disabled]="slides.length <= 1"
+          <button class="control-btn" (click)="nextSlIde()" [disabled]="slIdes.length <= 1"
                   [attr.aria-label]="'PARTNERS.NEXT' | translate">
 <i class="fas fa-chevron-right"></i>
           </button>
@@ -46,12 +46,12 @@
       </div>
 
       <!-- Indicators -->
-      <div class="slider-indicators" *ngIf="slides.length > 1">
-        <div *ngFor="let slide of slides; let i = index" 
+      <div class="slIder-indicators" *ngIf="slIdes.length > 1">
+        <div *ngFor="let slIde of slIdes; let i = index" 
              class="indicator" 
-             [class.active]="i === currentSlide"
-             (click)="goToSlide(i)"
-             [attr.aria-label]="'PARTNERS.GOTO_SLIDE' | translate:{index: i + 1}">
+             [class.active]="i === currentSlIde"
+             (click)="goToSlIde(i)"
+             [attr.aria-label]="'PARTNERS.GOTO_SLIdE' | translate:{index: i + 1}">
         </div>
       </div>
     </div>

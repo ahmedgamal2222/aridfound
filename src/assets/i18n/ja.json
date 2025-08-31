@@ -1,19 +1,20 @@
 {
-   "FOOTER": {
-    "DESCRIPTION": "ARID財団は、世界中の機関や研究者との協力により、学術研究とイノベーションの推進に取り組んでいます。",
+  "FOOTER": {
+    "DESCRIPTION": "Arid Foundationは、学術研究、革新、開発に専念するリーディングプラットフォームです。",
     "QUICK_LINKS": "クイックリンク",
+    "SECTIONS": "私たちのセクション",
     "CONTACT_US": "お問い合わせ",
-    "ADDRESS": "サウジアラビア リヤド リサーチ地区 ナレッジストリート123",
-    "WORKING_HOURS": "日曜日 - 木曜日: 8:00 - 16:00",
+    "ADDRESS": "サウジアラビア、リヤド",
+    "WORKING_HOURS": "日曜日 - 木曜日: 8:00 - 17:00",
+    "ALL_RIGHTS_RESERVED": "全著作権所有",
     "NEWSLETTER": "ニュースレター",
-    "SUBSCRIBE_TEXT": "最新の研究やイベントに関する更新を受け取るには、ニュースレターに登録してください。",
+    "SUBSCRIBE_TEXT": "最新のニュースと更新情報を受け取るには、ニュースレターを購読してください。",
     "EMAIL_PLACEHOLDER": "メールアドレス",
-    "ALL_RIGHTS_RESERVED": "無断複写・転載を禁じます",
     "PRIVACY": "プライバシーポリシー",
     "TERMS": "利用規約"
   },"LOGIN": {
     "TITLE": "ログイン",
-    "USERNAME": "ユーザー名",
+    "USERName": "ユーザー名",
     "PASSWORD": "パスワード",
     "BUTTON": "ログイン",
     "LOADING": "ログイン中...",
@@ -27,8 +28,8 @@
     "ACADEMIC_PROGRAMS": "私たちの学術プログラム",
     "LEARN_MORE": "詳細を見る",
     "MEDIA_CENTER": "メディアセンター",
-    "EXPLORE_VIDEOS": "最新のビデオとメディアコンテンツを探索する",
-    "WATCH_VIDEO": "完全なビデオを見る",
+    "EXPLORE_VIdEOS": "最新のビデオとメディアコンテンツを探索する",
+    "WATCH_VIdEO": "完全なビデオを見る",
     "PUBLICATIONS": "私たちの出版物",
     "VIEW_DETAILS": "詳細を見る",
     "JOURNAL_ISSUES": "ジャーナルの号",
@@ -44,10 +45,10 @@
     "VISIT_WEBSITE": "ウェブサイトを訪問",
     "PREVIOUS": "前のスライド",
     "NEXT": "次のスライド",
-    "GOTO_SLIDE": "スライド{index}に移動"
+    "GOTO_SLIdE": "スライド{index}に移動"
   },
   "APP": {
-    "TITLE": "ARID財団"
+    "TITLE": "ARId財団"
   },
   "NAV": {
     "HOME": "ホーム",
@@ -62,8 +63,8 @@
   "MODAL": {
     "CLOSE": "閉じる"
   },
-  "SIDEBAR": {
-    "TITLE": "ARID管理者",
+  "SIdEBAR": {
+    "TITLE": "ARId管理者",
     "MANAGE_SECTIONS": "セクションを管理",
     "LOGOUT": "ログアウト"
   },
@@ -90,7 +91,7 @@
       "ACADEMIC_RESEARCH": "学術研究",
       "OUR_PARTNERS": "私たちのパートナー",
       "CONTACT_US": "お問い合わせ",
-      "SADA_ARID": "Sada ARIDジャーナル",
+      "SADA_ARId": "Sada ARIdジャーナル",
       "HIGHER_MANAGEMENT": "上級管理",
       "MEDIA": "メディア",
       "BOOKS": "書籍"
@@ -108,7 +109,7 @@
     "WORKING_HOURS": "営業時間"
   },
   "MEDIA": {
-    "BROWSER_NOT_SUPPORTED": "お使いのブラウザはvideoタグをサポートしていません"
+    "BROWSER_NOT_SUPPORTED": "お使いのブラウザはvIdeoタグをサポートしていません"
   },
   "COMMON": {
     "CLOSE": "閉じる",
@@ -119,119 +120,57 @@
     "LOAD_SECTION": "セクションの詳細の読み込みに失敗しました",
     "LOAD_SECTIONS": "セクションの読み込みに失敗しました"
   },
-  "MANAGE_SECTIONS": {
-    "MANAGE_SECTIONS.ACTIONS.ADD_NEW": "新しいセクションを追加",
-    "TITLE": "セクションを管理",
-    "TABS": {
-      "BASIC_INFO": "基本情報",
-      "CONTENT": "コンテンツ",
-      "MEDIA": "メディア",
-      "JOURNAL_DETAILS": "ジャーナルの詳細",
-      "CONTACT_INFO": "連絡先情報",
-      "POSITION": "ポジション",
-      "PARTNER_INFO": "パートナー情報",
-      "DETAILS": "詳細"
-    },
-    "ACTIONS": {
-      "ADD_NEW": "新規追加",
-      "ADD": "追加",
-      "EDIT": "編集",
-      "DELETE": "削除",
-      "SAVE": "保存",
-      "UPDATE": "更新",
-      "CANCEL": "キャンセル",
-      "PREVIOUS": "前へ",
-      "NEXT": "次へ"
-    },
-    "LABELS": {
-      "ALL": "すべて",
-      "TITLE_EN": "タイトル(英語)",
-      "TITLE_AR": "タイトル(アラビア語)",
-      "NO_ARABIC_TITLE": "アラビア語のタイトルなし",
-      "SECTION_TYPE": "セクションタイプ",
-      "DISPLAY_ORDER": "表示順",
-      "CREATED": "作成日",
-      "ACTIONS": "アクション",
-      "STATUS": "ステータス",
-      "ACTIVE_SECTION": "アクティブなセクション",
-      "SHOW_IN_HOMEPAGE": "ホームページに表示",
-      "HERO_SECTION": "ヒーローセクション",
-      "DESCRIPTION_EN": "説明(英語)",
-      "DESCRIPTION_AR": "説明(アラビア語)",
-      "CONTENT_EN": "コンテンツ(英語)",
-      "CONTENT_AR": "コンテンツ(アラビア語)",
-      "MAIN_IMAGE": "メイン画像",
-      "HERO_IMAGE": "ヒーロー画像",
-      "UPLOAD_IMAGE": "画像をアップロード",
-      "UPLOAD_VIDEO": "動画をアップロード",
-      "UPLOAD_PDF": "PDFをアップロード",
-      "VIDEO_URL": "動画URL",
-      "PDF_URL": "PDF URL",
-      "BOOK_PDF": "書籍PDF",
-      "JOURNAL_PDF": "ジャーナルPDF",
-      "VIEW_PDF": "PDFを表示",
-      "ISSN": "ISSN",
-      "VOLUME": "巻",
-      "ISSUE": "号",
-      "PUBLICATION_DATE": "公開日",
-      "ADDRESS_EN": "住所(英語)",
-      "ADDRESS_AR": "住所(アラビア語)",
-      "PHONE": "電話",
-      "EMAIL": "メール",
-      "WORKING_HOURS_EN": "営業時間(英語)",
-      "WORKING_HOURS_AR": "営業時間(アラビア語)",
-      "MAP_EMBED_URL": "地図埋め込みURL",
-      "POSITION_EN": "ポジション(英語)",
-      "POSITION_AR": "ポジション(アラビア語)",
-      "WEBSITE_URL": "ウェブサイトURL",
-      "PARTNER_TYPE": "パートナータイプ",
-      "SELECT_PARTNER_TYPE": "パートナータイプを選択",
-      "NO_IMAGE_UPLOADED": "画像がアップロードされていません",
-      "CURRENT_IMAGE": "現在の画像",
-      "USING_EXTERNAL_LINK": "外部リンクを使用中",
-      "NEW_FILE_SELECTED": "新しいファイルが選択されました",
-      "OR_UPLOAD_VIDEO": "または動画ファイルをアップロード",
-      "OR_UPLOAD_PDF": "またはPDFファイルをアップロード",
-      "SECTION": "セクション"
-    },
-    "PLACEHOLDERS": {
-      "ISSN": "ISSN番号を入力",
-      "VOLUME": "巻数",
-      "ISSUE": "号数",
-      "ADDRESS_EN": "英語の住所",
-      "ADDRESS_AR": "アラビア語の住所",
-      "PHONE": "電話番号",
-      "EMAIL": "メールアドレス",
-      "WORKING_HOURS": "営業時間",
-      "MAP_EMBED_URL": "Googleマップ埋め込みURL",
-      "POSITION": "役職名",
-      "WEBSITE_URL": "パートナーウェブサイトURL",
-      "SELECT_PARTNER_TYPE": "パートナータイプを選択"
-    },
-    "STATUS": {
-      "ACTIVE": "アクティブ",
-      "INACTIVE": "非アクティブ",
-      "HOME": "ホーム",
-      "HERO": "ヒーロー"
-    },
-    "MESSAGES": {
-      "SECTION_ADDED": "セクションが正常に追加されました",
-      "SECTION_UPDATED": "セクションが正常に更新されました",
-      "SECTION_DELETED": "セクションが正常に削除されました",
-      "NO_SECTIONS_FOUND": "選択したフィルターに一致するセクションが見つかりませんでした",
-      "CONFIRM_DELETE": "このセクションを削除してもよろしいですか？この操作は元に戻せません。",
-      "INVALID_VIDEO_URL": "有効なYouTubeまたはVimeoのURLを入力してください",
-      "FILE_SIZE_LIMIT": "ファイルサイズは5MB未満である必要があります"
+"MANAGE_SECTIONS": {
+      "TABS": {
+        "INFO": "基本情報",
+        "CONTENT": "コンテンツ"
+      },
+      "TITLE": "セクション管理",
+      "ACTIONS": {
+        "ADD": "追加",
+        "ADD_NEW": "新規追加",
+        "EDIT": "編集",
+        "DELETE": "削除",
+        "UPDATE": "更新",
+        "SAVE": "保存",
+        "CANCEL": "キャンセル",
+        "NEXT": "次へ",
+        "PREVIOUS": "前へ",
+        "ADD_CONTENT": "コンテンツを追加",
+        "EDIT_CONTENT": "コンテンツを編集",
+        "SAVE_CONTENT": "コンテンツを保存"
+      },
+      "LABELS": {
+        "NAME": "名前",
+        "VIEW_TYPE": "表示タイプ",
+        "ORDER": "順序",
+        "STATUS": "ステータス",
+        "CREATED": "作成日",
+        "ACTIONS": "操作",
+        "CONTENTS": "コンテンツ",
+        "SECTION": "セクション",
+        "LANGUAGE": "言語",
+        "DEFAULT_LANGUAGE": "デフォルト言語",
+        "MENU_SECTION": "メニューセクション",
+        "HOMEPAGE_SECTION": "ホームページセクション",
+        "FOOTER_SECTION": "フッターセクション",
+        "SUBJECT": "件名",
+        "CONTENT": "内容",
+        "IMAGE": "画像",
+        "VIDEO": "動画",
+        "ACTIVE": "有効"
+      },
+      "STATUS": {
+        "HOME": "ホーム",
+        "MENU": "メニュー",
+        "FOOTER": "フッター"
+      },
+      "MESSAGES": {
+        "NO_SECTIONS_FOUND": "セクションが見つかりません",
+        "NO_CONTENTS_FOUND": "コンテンツが見つかりません"
+      },
+      "CONFIRM": {
+        "DELETE": "このセクションを削除してもよろしいですか？"
+      }
     }
-  },
-  "SECTION_TYPES": {
-    "HOME_PAGE": "ホームページ",
-    "ACADEMIC_RESEARCH": "学術研究",
-    "OUR_PARTNERS": "私たちのパートナー",
-    "CONTACT_US": "お問い合わせ",
-    "SADA_ARID_JOURNAL": "Sada ARIDジャーナル",
-    "HIGHER_MANAGEMENT": "上級管理",
-    "MEDIA": "メディア",
-    "BOOKS": "書籍"
-  }
 }

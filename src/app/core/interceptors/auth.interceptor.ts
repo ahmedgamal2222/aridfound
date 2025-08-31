@@ -22,9 +22,9 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
   return next.handle(cloned);
 }
 }
-// ✅ هذا السطر هو المهم لتصدير AuthInterceptorProvider
-export const AuthInterceptorProvider = {
-  provide: HTTP_INTERCEPTORS,
+// ✅ هذا السطر هو المهم لتصدير AuthInterceptorProvIder
+export const AuthInterceptorProvIder = {
+  provIde: HTTP_INTERCEPTORS,
   useClass: AuthInterceptor,
   multi: true
 };
