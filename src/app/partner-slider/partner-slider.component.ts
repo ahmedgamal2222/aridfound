@@ -6,13 +6,13 @@ import { TruncatePipe } from "../../truncate.pipe";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-partner-slIder',
+  selector: 'app-partner-slider',
   standalone: true,
   imports: [CommonModule, CarouselModule,TruncatePipe, TranslateModule],
-  templateUrl: './partner-slIder.component.html',
-  styleUrls: ['./partner-slIder.component.css']
+  templateUrl: './partner-slider.component.html',
+  styleUrls: ['./partner-slider.component.css']
 })
-export class PartnerSlIderComponent implements OnInit, OnDestroy {
+export class PartnerSliderComponent implements OnInit, OnDestroy {
   @Input() partners: Section[] = [];
   @Input() autoPlay: boolean = true;
   @Input() interval: number = 5000;

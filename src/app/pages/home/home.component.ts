@@ -8,7 +8,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { RouterLink, RouterModule } from '@angular/router';
 import { TruncatePipe } from '../../../truncate.pipe';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { PartnerSlIderComponent } from '../../partner-slider/partner-slider.component';
+import { PartnerSliderComponent } from '../../partner-slider/partner-slider.component';
 import { environment } from '../../core/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
