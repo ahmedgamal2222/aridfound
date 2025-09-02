@@ -212,11 +212,23 @@ export class ManageSectionsComponent implements OnInit {
     });
   }
   
-  deleteSection(Id: number): void {
-    this.confirmAction = 'deleteSection';
-    this.itemToDelete = Id;
-    this.showConfirmDialog = true;
-  }
+ // manage-sections.component.ts - تحديث دوال الحذف
+deleteSection(id: number): void {
+    const confirmMessage = this.translate.instant('MANAGE_SECTIONS.CONFIRM.DELETE_SECTION');
+    
+    if (confirm(confirmMessage)) {
+        this.sectionService.deleteSection(id).subscribe({
+            next: () => {
+                this.showSuccess('MANAGE_SECTIONS.SUCCESS.SECTION_DELETED');
+                this.loadSections();
+            },
+            error: (err) => {
+                this.showError('MANAGE_SECTIONS.ERRORS.DELETE_SECTION', err);
+            }
+        });
+    }
+}
+
 
   confirmDelete(): void {
     if (!this.confirmAction || !this.itemToDelete) return;

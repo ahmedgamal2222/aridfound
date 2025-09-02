@@ -62,20 +62,21 @@
                 <span class="badge bg-success">{{ 'MANAGE_SECTIONS.LABELS.ACTIVE' | translate }}</span>
               </td>
               <td class="date-cell">{{section.CreatedAt | date:'shortDate'}}</td>
-              <td class="actions-cell pe-4 text-end">
-                <div class="btn-group btn-group-sm">
-                  <button class="btn btn-outline-primary rounded-start" 
-                          (click)="openEditModal(section)"
-                          [title]="'MANAGE_SECTIONS.ACTIONS.EDIT' | translate">
-                    <fa-icon [icon]="icons.edit"></fa-icon>
-                  </button>
-                  <button class="btn btn-outline-danger rounded-end" 
-                          (click)="deleteSection(section.Id)"
-                          [title]="'MANAGE_SECTIONS.ACTIONS.DELETE' | translate">
-                    <fa-icon [icon]="icons.trash"></fa-icon>
-                  </button>
-                </div>
-              </td>
+             <!-- تحديث جزء أزرار الحذف في القالب -->
+<td class="actions-cell pe-4 text-end">
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-outline-primary rounded-start" 
+                (click)="openEditModal(section)"
+                [title]="'MANAGE_SECTIONS.ACTIONS.EDIT' | translate">
+            <fa-icon [icon]="icons.edit"></fa-icon>
+        </button>
+        <button class="btn btn-outline-danger rounded-end" 
+                (click)="deleteSection(section.Id)"
+                [title]="'MANAGE_SECTIONS.ACTIONS.DELETE' | translate">
+            <fa-icon [icon]="icons.trash"></fa-icon>
+        </button>
+    </div>
+</td>
             </tr>
           </tbody>
         </table>

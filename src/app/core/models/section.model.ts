@@ -37,4 +37,6 @@ export interface SectionContent {
   Url?: string;
   Order: number;
   IsActive: boolean;
+    CreatedAt: Date;
+  UpdatedAt: Date;
 }

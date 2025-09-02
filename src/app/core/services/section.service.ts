@@ -92,9 +92,14 @@ private prepareSectionPayload(section: Partial<Section>): any {
   }
 
   // باقي الدوال...
-  deleteSection(Id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${Id}`, { withCredentials: true });
-  }
+// section.service.ts - إضافة دالة الحذف
+deleteSection(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, { withCredentials: true });
+}
+
+deleteContent(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/content/${id}`, { withCredentials: true });
+}
 
   addContent(content: Partial<SectionContent>): Observable<SectionContent> {
     const payload = this.prepareContentPayload(content);
@@ -106,10 +111,7 @@ private prepareSectionPayload(section: Partial<Section>): any {
     return this.http.put<SectionContent>(`${this.apiUrl}/content/${Id}`, payload, { withCredentials: true });
   }
 
-  deleteContent(Id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/content/${Id}`, { withCredentials: true });
-  }
-
+ 
   getMenuSections(): Observable<Section[]> {
     return this.http.get<Section[]>(`${this.apiUrl}/menu`, { withCredentials: true });
   }
